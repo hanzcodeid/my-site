@@ -4,13 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>HanzCode.id | Frontend Developer & Web Solutions</title>
-    <link rel="icon" type="image/x-icon" href="/Pict/favicon.ico">
-    <link rel="icon" type="image/png" sizes="16x16" href="/Pict/favicon-16x16.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/Pict/favicon-32x32.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/Pict/apple-touch-icon.png">
-    <link rel="manifest" href="/Pict/site.webmanifest">
-    <link rel="icon" type="image/png" sizes="192x192" href="/Pict/android-chrome-192x192.png">
-    <link rel="icon" type="image/png" sizes="512x512" href="/Pict/android-chrome-512x512.png">
+    <!-- PERBAIKAN FAVICON - menggunakan placeholder online yang valid -->
+    <link rel="icon" type="image/png" href="https://favicon.io/favicon-32x32.png">
+    <link rel="icon" type="image/x-icon" href="https://favicon.io/favicon.ico">
+    <link rel="apple-touch-icon" href="https://favicon.io/apple-touch-icon.png">
     <meta name="description" content="Portofolio HanzCode.id - frontend developer profesional. Lihat karya dan layanan pembuatan website modern di sini.">
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -305,6 +302,20 @@
             align-items: center;
             justify-content: center;
             color: #FBBF24;
+        }
+        /* GAMBAR BARU DI BAWAH TENTANG */
+        .about-banner {
+            margin-top: 2rem;
+            width: 100%;
+            display: flex;
+            justify-content: flex-start;
+        }
+        .about-banner img {
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+            border-radius: 20px;
+            display: block;
         }
 
         .services-grid {
@@ -864,6 +875,10 @@
                         <div class="info-item"><i class="fas fa-map-marker-alt"></i> Indonesia</div>
                         <div class="info-item"><i class="fab fa-whatsapp"></i> +62 896-8421-9904</div>
                         <div class="info-item"><i class="fas fa-clock"></i> 24/7 Support</div>
+                    </div>
+                    <!-- GAMBAR BARU: ukuran 1381x227, responsif, lebar mengikuti teks -->
+                    <div class="about-banner">
+                        <img src="https://placehold.co/1381x227/1a1e26/FBBF24?text=HanzCode.id+%7C+Web+Solutions" alt="HanzCode Banner">
                     </div>
                 </div>
             </div>
