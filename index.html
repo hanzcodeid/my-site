@@ -370,13 +370,15 @@
         .result-status.unavailable {
             color: #f87171;
         }
-        .result-loading, .result-error {
+        .result-loading {
             text-align: center;
-            padding: 20px;
+            padding: 30px;
             color: #FBBF24;
         }
-        .result-error {
-            color: #f87171;
+        .result-loading i {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            display: block;
         }
 
         .domain-grid {
@@ -926,11 +928,11 @@
                 <h2 class="section-title" data-aos="fade-up">Pemasangan Domain</h2>
                 <div class="domain-section">
                     <div class="domain-search">
-                        <input type="text" placeholder=" Cari domain anda disini... (contoh: hanzcode)" id="searchDomain">
+                        <input type="text" placeholder="🔍 Cari domain anda disini... (contoh: hanzcode)" id="searchDomain">
                         <button id="searchDomainBtn"><i class="fas fa-search"></i> Cari</button>
                     </div>
                     
-                    <!-- HASIL SEARCH (REAL TIME VIA PROXY.PHP) -->
+                    <!-- HASIL SEARCH (MUNCUL DI ATAS 6 CARD) -->
                     <div id="searchResults" class="search-results" style="display: none;">
                         <h3><i class="fas fa-search"></i> Hasil pencarian untuk "<span id="searchKeyword"></span>"</h3>
                         <div id="searchResultsGrid" class="search-results-grid"></div>
@@ -1330,7 +1332,7 @@
             contactForm.reset();
         }
 
-        // ==================== DOMAIN SEARCH (REAL TIME VIA PROXY.PHP) ====================
+        // ==================== SIMULASI DOMAIN DENGAN LOADING 4 DETIK ====================
         var ekstensiList = [
             '.id', '.com', '.site', '.net', '.org', '.dev',
             '.tech', '.store', '.online', '.xyz', '.club', '.info',
@@ -1351,42 +1353,7 @@
         var searchKeywordSpan = document.getElementById('searchKeyword');
         var searchResultsGrid = document.getElementById('searchResultsGrid');
 
-        // Fungsi cek 1 domain ke proxy.php (REAL TIME)
-        async function checkDomainAvailability(domain) {
-            try {
-                const response = await fetch('proxy.php?domain=' + encodeURIComponent(domain));
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                const data = await response.json();
-                return {
-                    domain: domain,
-                    available: data.available === true,
-                    price: data.price || hargaMap['.' + domain.split('.').pop()] || 200000,
-                    error: data.error || null
-                };
-            } catch (error) {
-                console.error('Error checking domain:', domain, error);
-                return {
-                    domain: domain,
-                    available: false,
-                    price: hargaMap['.' + domain.split('.').pop()] || 200000,
-                    error: 'Gagal mengecek'
-                };
-            }
-        }
-
-        // Fungsi cek proxy.php apakah tersedia
-        async function isProxyAvailable() {
-            try {
-                const response = await fetch('proxy.php?domain=test.com');
-                return response.ok;
-            } catch (error) {
-                return false;
-            }
-        }
-
-        async function searchDomain(keyword) {
+        function searchDomain(keyword) {
             if (!keyword || keyword.trim() === '') {
                 alert('Masukkan nama domain yang ingin dicari');
                 return;
@@ -1395,39 +1362,38 @@
             keyword = keyword.trim().toLowerCase();
             searchKeywordSpan.textContent = keyword;
             
-            // Tampilkan loading
-            searchResultsGrid.innerHTML = '<div class="result-loading"><i class="fas fa-spinner fa-pulse"></i> Sedang mengecek domain...</div>';
+            // Tampilkan loading dengan animasi 4 detik
+            searchResultsGrid.innerHTML = '<div class="result-loading"><i class="fas fa-spinner fa-pulse"></i> Mengecek ketersediaan domain...<br><span style="font-size: 0.8rem;">Mohon tunggu sekitar 4 detik</span></div>';
             searchResultsDiv.style.display = 'block';
             
-            // Cek apakah proxy.php tersedia
-            var proxyAvailable = await isProxyAvailable();
-            
-            if (!proxyAvailable) {
-                searchResultsGrid.innerHTML = '<div class="result-error"><i class="fas fa-exclamation-triangle"></i> Fitur cek domain sedang dalam perbaikan. Silakan coba lagi nanti.</div>';
-                return;
-            }
-            
-            // Buat 20 varian domain
-            var domainsToCheck = [];
-            for (var i = 0; i < ekstensiList.length; i++) {
-                domainsToCheck.push(keyword + ekstensiList[i]);
-            }
-            
-            // Cek semua domain secara paralel (REAL TIME)
-            var results = await Promise.all(domainsToCheck.map(checkDomainAvailability));
-            
-            // Tampilkan hasil
-            searchResultsGrid.innerHTML = '';
-            for (var i = 0; i < results.length; i++) {
-                var r = results[i];
-                var div = document.createElement('div');
-                div.className = 'result-item';
-                div.innerHTML = '<span class="result-domain">' + r.domain + '</span>' +
-                    (r.available ? 
-                        '<span class="result-status available">✅ Rp ' + r.price.toLocaleString('id-ID') + '/thn</span>' : 
-                        '<span class="result-status unavailable">❌ Tidak tersedia</span>');
-                searchResultsGrid.appendChild(div);
-            }
+            // Loading selama 4 detik
+            setTimeout(function() {
+                // Buat 20 varian domain dengan status acak
+                var results = [];
+                for (var i = 0; i < ekstensiList.length; i++) {
+                    var fullDomain = keyword + ekstensiList[i];
+                    var isAvailable = Math.random() > 0.5; // 50% tersedia, 50% tidak
+                    var price = hargaMap[ekstensiList[i]] || 200000;
+                    results.push({
+                        domain: fullDomain,
+                        available: isAvailable,
+                        price: price
+                    });
+                }
+                
+                // Tampilkan hasil
+                searchResultsGrid.innerHTML = '';
+                for (var i = 0; i < results.length; i++) {
+                    var r = results[i];
+                    var div = document.createElement('div');
+                    div.className = 'result-item';
+                    div.innerHTML = '<span class="result-domain">' + r.domain + '</span>' +
+                        (r.available ? 
+                            '<span class="result-status available">✅ Rp ' + r.price.toLocaleString('id-ID') + '/thn</span>' : 
+                            '<span class="result-status unavailable">❌ Tidak tersedia</span>');
+                    searchResultsGrid.appendChild(div);
+                }
+            }, 4000); // 4 detik loading
         }
 
         if (searchBtn && searchInput) {
