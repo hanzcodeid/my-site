@@ -3,115 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>HanzCode.id | Frontend Developer & Web Solutions</title>
-    <!-- FAVICON - file dari folder /Pict/ -->
+    <title>HanzCode.id | Frontend Developer</title>
     <link rel="icon" type="image/x-icon" href="/Pict/favicon.ico">
     <link rel="icon" type="image/png" sizes="16x16" href="/Pict/favicon-16x16.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/Pict/favicon-32x32.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/Pict/apple-touch-icon.png">
     <link rel="manifest" href="/Pict/site.webmanifest">
-    <meta name="description" content="Portofolio HanzCode.id - frontend developer profesional. Lihat karya dan layanan pembuatan website modern di sini.">
+    <meta name="description" content="HanzCode.id - frontend developer profesional">
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            -webkit-tap-highlight-color: transparent;
-        }
-
-        img {
-            -webkit-user-drag: none;
-            user-drag: none;
-            pointer-events: none;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        img { -webkit-user-drag: none; user-drag: none; pointer-events: none; }
         body {
             font-family: 'Inter', sans-serif;
             background: linear-gradient(135deg, #0a0c10 0%, #0f1117 100%);
             color: #e5e7eb;
             overflow-x: hidden;
         }
-
-        .header-wrapper {
-            position: sticky;
-            top: 20px;
-            z-index: 1000;
-            padding: 0 24px;
-            margin-top: 20px;
-        }
-
+        .header-wrapper { padding: 0 24px; margin: 20px 0; }
         .header {
             background: rgba(10, 12, 16, 0.85);
             backdrop-filter: blur(16px);
             border-radius: 100px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(251, 191, 36, 0.1);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.2), 0 0 0 1px rgba(251,191,36,0.1);
             display: flex;
             align-items: center;
             justify-content: space-between;
             padding: 8px 28px;
-            transition: all 0.3s ease;
             max-width: 1280px;
             margin: 0 auto;
         }
-
-        .header.scrolled {
-            background: rgba(10, 12, 16, 0.95);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(251, 191, 36, 0.2);
-        }
-
-        .logo {
-            font-weight: 800;
-            font-size: 1.8rem;
-            letter-spacing: -0.5px;
-        }
-        .logo .hanz { color: #ffffff; }
-        .logo .code { color: #FBBF24; }
-        .logo .dot { color: #FBBF24; }
-        .logo .id { color: #FBBF24; }
-
-        .nav-links {
-            display: flex;
-            gap: 1rem;
-            align-items: center;
-            flex-wrap: wrap;
-        }
+        .logo { font-weight: 800; font-size: 1.8rem; }
+        .logo .hanz { color: #fff; }
+        .logo .code, .logo .dot, .logo .id { color: #FBBF24; }
+        .nav-links { display: flex; gap: 1.5rem; align-items: center; }
         .nav-links a {
             text-decoration: none;
             font-weight: 500;
             color: #cbd5e1;
             transition: 0.25s;
-            font-size: 0.9rem;
-            position: relative;
+            font-size: 1rem;
             cursor: pointer;
+            padding: 8px 0;
+            position: relative;
         }
         .nav-links a:after {
             content: '';
             position: absolute;
-            bottom: -5px;
+            bottom: 0;
             left: 0;
             width: 0%;
             height: 2px;
             background: #FBBF24;
-            border-radius: 2px;
-            transition: width 0.25s ease;
+            transition: width 0.25s;
         }
         .nav-links a:hover:after,
         .nav-links a.active:after { width: 100%; }
         .nav-links a:hover,
         .nav-links a.active { color: #FBBF24; }
-        .btn-contact-nav {
-            background: #FBBF24;
-            color: #0a0c10 !important;
-            padding: 8px 24px;
-            border-radius: 100px;
-            font-weight: 600;
-        }
-        .btn-contact-nav:after { display: none; }
-        .btn-contact-nav:hover { background: #ffffff; color: #FBBF24 !important; transform: translateY(-2px); }
-
         .menu-toggle {
             display: none;
             font-size: 1.8rem;
@@ -120,7 +71,6 @@
             border: none;
             color: #e5e7eb;
         }
-
         @media (max-width: 900px) {
             .header { padding: 8px 20px; }
             .nav-links {
@@ -128,7 +78,7 @@
                 top: 85px;
                 left: 20px;
                 right: 20px;
-                background: rgba(10, 12, 16, 0.98);
+                background: rgba(10,12,16,0.98);
                 backdrop-filter: blur(20px);
                 flex-direction: column;
                 gap: 1.2rem;
@@ -138,42 +88,29 @@
                 z-index: 999;
                 border: 1px solid rgba(251,191,36,0.3);
             }
-            .nav-links.active { display: flex; animation: fadeSlideDown 0.3s ease; }
+            .nav-links.show { display: flex; animation: fadeSlideDown 0.3s ease; }
             .menu-toggle { display: block; }
             .logo { font-size: 1.4rem; }
         }
-
         @keyframes fadeSlideDown {
             from { opacity: 0; transform: translateY(-15px); }
             to { opacity: 1; transform: translateY(0); }
         }
-
-        .page-container {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 60px 24px;
-            min-height: 70vh;
-        }
-
-        .page {
-            display: none;
-            animation: fadePage 0.3s ease;
-        }
-        .page.active-page {
-            display: block;
-        }
+        .page-container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+        .page { display: none; animation: fadePage 0.3s ease; }
+        .page.active { display: block; }
         @keyframes fadePage {
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
         }
-
+        section { padding: 80px 0; }
         .section-title {
             font-size: 2.3rem;
             font-weight: 700;
             margin-bottom: 2.5rem;
             position: relative;
             display: inline-block;
-            color: #ffffff;
+            color: #fff;
         }
         .section-title:after {
             content: '';
@@ -185,8 +122,6 @@
             background: #FBBF24;
             border-radius: 4px;
         }
-
-        /* Beranda */
         .hero {
             display: flex;
             align-items: center;
@@ -196,7 +131,7 @@
         }
         .hero-content { flex: 1; }
         .hero-badge {
-            background: rgba(251, 191, 36, 0.12);
+            background: rgba(251,191,36,0.12);
             display: inline-flex;
             align-items: center;
             gap: 8px;
@@ -205,7 +140,7 @@
             font-size: 0.85rem;
             color: #FBBF24;
             margin-bottom: 1.5rem;
-            border: 1px solid rgba(251, 191, 36, 0.2);
+            border: 1px solid rgba(251,191,36,0.2);
         }
         .hero-content h1 { font-size: 3.2rem; font-weight: 800; line-height: 1.2; margin-bottom: 1.2rem; }
         .hero-content h1 .highlight { color: #FBBF24; }
@@ -219,7 +154,6 @@
             color: #0a0c10;
             padding: 12px 28px;
             border-radius: 100px;
-            text-decoration: none;
             font-weight: 600;
             transition: all 0.3s;
             border: 2px solid #FBBF24;
@@ -233,16 +167,13 @@
             color: #FBBF24;
             padding: 12px 28px;
             border-radius: 100px;
-            text-decoration: none;
             font-weight: 600;
             transition: all 0.3s;
             display: inline-block;
             cursor: pointer;
         }
-        .btn-outline:hover { background: rgba(251, 191, 36, 0.1); transform: translateY(-3px); }
+        .btn-outline:hover { background: rgba(251,191,36,0.1); transform: translateY(-3px); }
         .hero-image img { width: 100%; max-width: 380px; border-radius: 32px; }
-
-        /* Tentang */
         .about-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -254,204 +185,290 @@
         .about-info { display: flex; flex-wrap: wrap; gap: 1.2rem; margin-top: 1.5rem; }
         .info-item { display: flex; align-items: center; gap: 8px; }
         .info-item i {
-            width: 32px; height: 32px; background: rgba(251, 191, 36, 0.1);
+            width: 32px; height: 32px; background: rgba(251,191,36,0.1);
             border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #FBBF24;
         }
-        .about-banner { margin-top: 2rem; width: 100%; display: flex; justify-content: flex-start; }
-        .about-banner img { width: 100%; max-width: 100%; height: auto; border-radius: 20px; display: block; }
-
-        /* Layanan */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.8rem;
-        }
-        .service-card {
-            background: rgba(17, 22, 28, 0.6);
-            backdrop-filter: blur(10px);
-            border-radius: 28px;
-            padding: 2rem;
-            transition: all 0.3s;
-            border: 1px solid rgba(251, 191, 36, 0.1);
-        }
-        .service-card:hover { transform: translateY(-8px); border-color: rgba(251, 191, 36, 0.4); }
-        .service-icon {
-            width: 60px; height: 60px; background: rgba(251, 191, 36, 0.1);
-            border-radius: 18px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.2rem;
-        }
-        .service-icon i { font-size: 1.6rem; color: #FBBF24; }
-        .service-card h3 { font-size: 1.2rem; margin-bottom: 0.8rem; color: white; }
-        .service-card p { color: #9ca3af; font-size: 0.9rem; line-height: 1.5; }
-
-        /* Portofolio */
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 1.8rem;
-        }
-        .portfolio-card {
-            background: rgba(17, 22, 28, 0.6);
-            border-radius: 28px;
-            overflow: hidden;
-            transition: all 0.3s;
-            border: 1px solid rgba(251, 191, 36, 0.1);
-        }
-        .portfolio-card:hover { transform: translateY(-8px); border-color: rgba(251, 191, 36, 0.4); }
-        .portfolio-media { position: relative; width: 100%; padding-top: 56.25%; overflow: hidden; }
-        .portfolio-media img, .portfolio-media video {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; pointer-events: none;
-        }
-        .portfolio-media video { opacity: 0; transition: opacity 0.3s ease; }
-        .portfolio-card:hover .portfolio-media video { opacity: 1; }
-        .portfolio-card:hover .portfolio-media img { opacity: 0; }
-        .portfolio-content { padding: 1.5rem; }
-        .portfolio-category {
-            display: inline-block; font-size: 0.7rem; color: #FBBF24;
-            background: rgba(251, 191, 36, 0.1); padding: 4px 12px; border-radius: 30px; margin-bottom: 10px;
-        }
-        .portfolio-content h3 { font-size: 1.2rem; margin-bottom: 0.5rem; color: white; }
-        .portfolio-stats { display: flex; gap: 1rem; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid rgba(251, 191, 36, 0.1); }
-        .portfolio-stats span { font-size: 0.75rem; color: #9ca3af; }
-        .portfolio-stats i { color: #FBBF24; margin-right: 4px; }
-
-        /* FAQ */
-        .faq-container { display: flex; flex-direction: column; gap: 1rem; }
-        .faq-item {
-            background: rgba(17, 22, 28, 0.6);
-            border-radius: 20px;
-            border: 1px solid rgba(251, 191, 36, 0.1);
-            overflow: hidden;
-        }
-        .faq-question {
-            display: flex; justify-content: space-between; align-items: center;
-            padding: 1.2rem 1.5rem; cursor: pointer; font-weight: 600; color: white;
-        }
-        .faq-question i:first-child { color: #FBBF24; margin-right: 12px; }
-        .faq-icon { color: #FBBF24; transition: transform 0.3s; }
-        .faq-answer {
-            max-height: 0; padding: 0 1.5rem; overflow: hidden; transition: all 0.3s ease;
-            color: #9ca3af; line-height: 1.6;
-        }
-        .faq-item.active .faq-answer { max-height: 150px; padding: 0 1.5rem 1.2rem 1.5rem; }
-        .faq-item.active .faq-icon { transform: rotate(180deg); }
-
-        /* Pemesanan */
-        .form-container { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
-        .booking-form {
-            background: rgba(17, 22, 28, 0.6);
-            border-radius: 28px; padding: 2rem; border: 1px solid rgba(251, 191, 36, 0.1);
-        }
-        .booking-form input, .booking-form select, .booking-form textarea {
-            width: 100%; padding: 14px 18px; margin-bottom: 1rem;
-            background: rgba(0, 0, 0, 0.3); border: 1px solid rgba(251, 191, 36, 0.2);
-            border-radius: 16px; color: white; font-family: inherit; font-size: 0.9rem;
-        }
-        .custom-select { position: relative; width: 100%; margin-bottom: 1rem; }
-        .custom-select select {
-            appearance: none; width: 100%; padding: 14px 18px;
-            background: rgba(0, 0, 0, 0.3); border: 1px solid rgba(251, 191, 36, 0.2);
-            border-radius: 16px; color: white; cursor: pointer;
-        }
-        .custom-select::after {
-            content: '\f078'; font-family: 'Font Awesome 6 Free'; font-weight: 900;
-            position: absolute; right: 18px; top: 50%; transform: translateY(-50%);
-            color: #FBBF24; pointer-events: none;
-        }
-        .booking-form button {
-            width: 100%; background: #FBBF24; color: #0a0c10; padding: 14px;
-            border: none; border-radius: 16px; font-weight: 700; cursor: pointer;
-        }
-        .steps-card {
-            background: rgba(17, 22, 28, 0.6);
-            border-radius: 28px; padding: 2rem; border: 1px solid rgba(251, 191, 36, 0.1);
-        }
-        .steps-card h3 { color: #FBBF24; margin-bottom: 1rem; }
-        .steps-card ol { margin-left: 1.2rem; line-height: 2; color: #cbd5e1; }
-
-        /* Blog */
+        .about-banner { margin-top: 2rem; width: 100%; }
+        .about-banner img { width: 100%; height: auto; border-radius: 20px; }
         .blog-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 1.8rem;
         }
         .blog-card {
-            background: rgba(17, 22, 28, 0.6);
-            border-radius: 28px; overflow: hidden; transition: all 0.3s;
-            border: 1px solid rgba(251, 191, 36, 0.1);
+            background: rgba(17,22,28,0.6);
+            border-radius: 28px;
+            overflow: hidden;
+            transition: all 0.3s;
+            border: 1px solid rgba(251,191,36,0.1);
         }
-        .blog-card:hover { transform: translateY(-5px); border-color: rgba(251, 191, 36, 0.3); }
-        .blog-img { width: 100%; height: 200px; object-fit: cover; pointer-events: none; }
+        .blog-card:hover { transform: translateY(-5px); border-color: rgba(251,191,36,0.3); }
+        .blog-img { width: 100%; height: 200px; object-fit: cover; }
         .blog-content { padding: 1.5rem; }
         .blog-date { font-size: 0.7rem; color: #FBBF24; margin-bottom: 8px; }
         .blog-content h3 { font-size: 1.1rem; margin-bottom: 8px; color: white; }
         .blog-preview { color: #9ca3af; font-size: 0.85rem; line-height: 1.5; margin-bottom: 12px; }
         .blog-full {
-            max-height: 0; overflow: hidden; transition: max-height 0.5s ease-out;
-            color: #cbd5e1; font-size: 0.85rem; line-height: 1.6;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-out;
+            color: #cbd5e1;
+            font-size: 0.85rem;
+            line-height: 1.6;
         }
-        .blog-full.show { max-height: 500px; transition: max-height 0.5s ease-in; margin-top: 12px; padding-top: 12px; border-top: 1px solid rgba(251, 191, 36, 0.2); }
+        .blog-full.show { max-height: 500px; transition: max-height 0.5s ease-in; margin-top: 12px; padding-top: 12px; border-top: 1px solid rgba(251,191,36,0.2); }
         .read-more-btn {
-            color: #FBBF24; text-decoration: none; font-size: 0.8rem; font-weight: 500;
-            cursor: pointer; display: inline-flex; align-items: center; gap: 5px; margin-top: 8px;
+            color: #FBBF24;
+            font-size: 0.8rem;
+            font-weight: 500;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            margin-top: 8px;
         }
-        .read-more-btn i { transition: transform 0.3s; }
-        .read-more-btn.active i { transform: rotate(180deg); }
-
-        /* Testimonial */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.8rem;
+        }
+        .service-card {
+            background: rgba(17,22,28,0.6);
+            backdrop-filter: blur(10px);
+            border-radius: 28px;
+            padding: 2rem;
+            transition: all 0.3s;
+            border: 1px solid rgba(251,191,36,0.1);
+        }
+        .service-card:hover { transform: translateY(-8px); border-color: rgba(251,191,36,0.4); }
+        .service-icon {
+            width: 60px; height: 60px; background: rgba(251,191,36,0.1);
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.2rem;
+        }
+        .service-icon i { font-size: 1.6rem; color: #FBBF24; }
+        .service-card h3 { font-size: 1.2rem; margin-bottom: 0.8rem; color: white; }
+        .service-card p { color: #9ca3af; font-size: 0.9rem; line-height: 1.5; }
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        .step-item { text-align: center; padding: 1.5rem; }
+        .step-number {
+            width: 50px; height: 50px;
+            background: #FBBF24;
+            color: #0a0c10;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin: 0 auto 1rem;
+        }
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.8rem;
+        }
+        .portfolio-card {
+            background: rgba(17,22,28,0.6);
+            border-radius: 28px;
+            overflow: hidden;
+            transition: all 0.3s;
+            border: 1px solid rgba(251,191,36,0.1);
+        }
+        .portfolio-card:hover { transform: translateY(-8px); border-color: rgba(251,191,36,0.4); }
+        .portfolio-media { position: relative; width: 100%; padding-top: 56.25%; overflow: hidden; }
+        .portfolio-media img, .portfolio-media video {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;
+        }
+        .portfolio-media video { opacity: 0; transition: opacity 0.3s ease; }
+        .portfolio-card:hover .portfolio-media video { opacity: 1; }
+        .portfolio-card:hover .portfolio-media img { opacity: 0; }
+        .portfolio-content { padding: 1.5rem; }
+        .portfolio-category {
+            display: inline-block;
+            font-size: 0.7rem;
+            color: #FBBF24;
+            background: rgba(251,191,36,0.1);
+            padding: 4px 12px;
+            border-radius: 30px;
+            margin-bottom: 10px;
+        }
+        .portfolio-content h3 { font-size: 1.2rem; margin-bottom: 0.5rem; color: white; }
         .testimonial-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 1.8rem;
         }
         .testimonial-card {
-            background: rgba(17, 22, 28, 0.6);
-            border-radius: 24px; padding: 1.8rem; border: 1px solid rgba(251, 191, 36, 0.1);
+            background: rgba(17,22,28,0.6);
+            border-radius: 24px;
+            padding: 1.8rem;
+            border: 1px solid rgba(251,191,36,0.1);
         }
         .testimonial-text { font-style: italic; color: #cbd5e1; line-height: 1.6; margin-bottom: 1.2rem; }
         .testimonial-author { display: flex; align-items: center; gap: 12px; }
         .testimonial-author img {
-            width: 45px; height: 45px; border-radius: 50%; object-fit: cover;
-            border: 2px solid #FBBF24; pointer-events: none;
+            width: 45px; height: 45px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #FBBF24;
         }
-
-        /* Kontak */
+        .faq-container { display: flex; flex-direction: column; gap: 1rem; }
+        .faq-item {
+            background: rgba(17,22,28,0.6);
+            border-radius: 20px;
+            border: 1px solid rgba(251,191,36,0.1);
+            overflow: hidden;
+        }
+        .faq-question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 1.5rem;
+            cursor: pointer;
+            font-weight: 600;
+            color: white;
+        }
+        .faq-question i:first-child { color: #FBBF24; margin-right: 12px; }
+        .faq-icon { color: #FBBF24; transition: transform 0.3s; }
+        .faq-answer {
+            max-height: 0;
+            padding: 0 1.5rem;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            color: #9ca3af;
+            line-height: 1.6;
+        }
+        .faq-item.active .faq-answer { max-height: 150px; padding: 0 1.5rem 1.2rem 1.5rem; }
+        .faq-item.active .faq-icon { transform: rotate(180deg); }
+        .form-container { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+        .booking-form {
+            background: rgba(17,22,28,0.6);
+            border-radius: 28px;
+            padding: 2rem;
+            border: 1px solid rgba(251,191,36,0.1);
+        }
+        .booking-form input, .booking-form select, .booking-form textarea {
+            width: 100%;
+            padding: 14px 18px;
+            margin-bottom: 1rem;
+            background: rgba(0,0,0,0.3);
+            border: 1px solid rgba(251,191,36,0.2);
+            border-radius: 16px;
+            color: white;
+            font-family: inherit;
+            font-size: 0.9rem;
+        }
+        .custom-select { position: relative; width: 100%; margin-bottom: 1rem; }
+        .custom-select select {
+            appearance: none;
+            width: 100%;
+            padding: 14px 18px;
+            background: rgba(0,0,0,0.3);
+            border: 1px solid rgba(251,191,36,0.2);
+            border-radius: 16px;
+            color: white;
+            cursor: pointer;
+        }
+        .custom-select::after {
+            content: '\f078';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            right: 18px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #FBBF24;
+            pointer-events: none;
+        }
+        .booking-form button {
+            width: 100%;
+            background: #FBBF24;
+            color: #0a0c10;
+            padding: 14px;
+            border: none;
+            border-radius: 16px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+        .steps-card {
+            background: rgba(17,22,28,0.6);
+            border-radius: 28px;
+            padding: 2rem;
+            border: 1px solid rgba(251,191,36,0.1);
+        }
+        .steps-card h3 { color: #FBBF24; margin-bottom: 1rem; }
+        .steps-card ol { margin-left: 1.2rem; line-height: 2; color: #cbd5e1; }
         .contact-premium { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
         .contact-info-card, .contact-form-card {
-            background: rgba(17, 22, 28, 0.6);
-            backdrop-filter: blur(10px); border-radius: 32px; padding: 2rem;
-            border: 1px solid rgba(251, 191, 36, 0.15); transition: all 0.3s;
+            background: rgba(17,22,28,0.6);
+            backdrop-filter: blur(10px);
+            border-radius: 32px;
+            padding: 2rem;
+            border: 1px solid rgba(251,191,36,0.15);
+            transition: all 0.3s;
         }
-        .contact-info-card:hover, .contact-form-card:hover { border-color: rgba(251, 191, 36, 0.4); transform: translateY(-5px); }
+        .contact-info-card:hover, .contact-form-card:hover { border-color: rgba(251,191,36,0.4); transform: translateY(-5px); }
         .contact-info-card h3, .contact-form-card h3 { font-size: 1.5rem; color: #FBBF24; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 10px; }
-        .contact-detail { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.2rem; padding: 0.8rem; background: rgba(0, 0, 0, 0.2); border-radius: 20px; }
+        .contact-detail { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.2rem; padding: 0.8rem; background: rgba(0,0,0,0.2); border-radius: 20px; }
         .contact-detail i {
-            width: 45px; height: 45px; background: rgba(251, 191, 36, 0.15);
-            border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #FBBF24;
+            width: 45px; height: 45px;
+            background: rgba(251,191,36,0.15);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #FBBF24;
         }
-        .social-premium { margin-top: 1.8rem; padding-top: 1.2rem; border-top: 1px solid rgba(251, 191, 36, 0.2); }
+        .social-premium { margin-top: 1.8rem; padding-top: 1.2rem; border-top: 1px solid rgba(251,191,36,0.2); }
         .social-icons-premium { display: flex; gap: 1rem; flex-wrap: wrap; }
         .social-icons-premium a {
-            width: 44px; height: 44px; background: rgba(251, 191, 36, 0.1);
-            border-radius: 50%; display: flex; align-items: center; justify-content: center;
-            color: #FBBF24; transition: all 0.3s; text-decoration: none;
+            width: 44px; height: 44px;
+            background: rgba(251,191,36,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #FBBF24;
+            transition: all 0.3s;
+            text-decoration: none;
         }
         .social-icons-premium a:hover { background: #FBBF24; color: #0a0c10; transform: translateY(-5px); }
         .contact-form-card input, .contact-form-card textarea {
-            width: 100%; padding: 14px 18px; margin-bottom: 1rem;
-            background: rgba(0, 0, 0, 0.3); border: 1px solid rgba(251, 191, 36, 0.2);
-            border-radius: 16px; color: white; font-family: inherit;
+            width: 100%;
+            padding: 14px 18px;
+            margin-bottom: 1rem;
+            background: rgba(0,0,0,0.3);
+            border: 1px solid rgba(251,191,36,0.2);
+            border-radius: 16px;
+            color: white;
+            font-family: inherit;
         }
         .contact-form-card button {
-            width: 100%; background: #FBBF24; color: #0a0c10; padding: 14px;
-            border: none; border-radius: 16px; font-weight: 700; cursor: pointer;
-            display: flex; align-items: center; justify-content: center; gap: 8px;
+            width: 100%;
+            background: #FBBF24;
+            color: #0a0c10;
+            padding: 14px;
+            border: none;
+            border-radius: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
         }
-
-        /* FOOTER BARU - RAMAI & PANTAS */
         footer {
             background: #06080c;
-            margin-top: 2rem;
-            border-top: 1px solid rgba(251, 191, 36, 0.1);
+            border-top: 1px solid rgba(251,191,36,0.1);
         }
         .footer-container {
             max-width: 1280px;
@@ -481,18 +498,9 @@
             background: #FBBF24;
             border-radius: 2px;
         }
-        .footer-col p {
-            color: #9ca3af;
-            font-size: 0.85rem;
-            line-height: 1.6;
-            margin-bottom: 1rem;
-        }
-        .footer-col ul {
-            list-style: none;
-        }
-        .footer-col ul li {
-            margin-bottom: 0.7rem;
-        }
+        .footer-col p { color: #9ca3af; font-size: 0.85rem; line-height: 1.6; margin-bottom: 1rem; }
+        .footer-col ul { list-style: none; }
+        .footer-col ul li { margin-bottom: 0.7rem; }
         .footer-col ul li a {
             color: #9ca3af;
             text-decoration: none;
@@ -501,11 +509,9 @@
             display: inline-flex;
             align-items: center;
             gap: 6px;
+            cursor: pointer;
         }
-        .footer-col ul li a:hover {
-            color: #FBBF24;
-            transform: translateX(5px);
-        }
+        .footer-col ul li a:hover { color: #FBBF24; transform: translateX(5px); }
         .footer-contact-info {
             display: flex;
             align-items: center;
@@ -514,19 +520,15 @@
             color: #9ca3af;
             font-size: 0.85rem;
         }
-        .footer-contact-info i {
-            width: 30px;
-            color: #FBBF24;
-        }
+        .footer-contact-info i { width: 30px; color: #FBBF24; }
         .footer-social {
             display: flex;
             gap: 1rem;
             margin-top: 1rem;
         }
         .footer-social a {
-            width: 38px;
-            height: 38px;
-            background: rgba(251, 191, 36, 0.1);
+            width: 38px; height: 38px;
+            background: rgba(251,191,36,0.1);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -535,13 +537,9 @@
             transition: all 0.3s;
             text-decoration: none;
         }
-        .footer-social a:hover {
-            background: #FBBF24;
-            color: #0a0c10;
-            transform: translateY(-3px);
-        }
+        .footer-social a:hover { background: #FBBF24; color: #0a0c10; transform: translateY(-3px); }
         .footer-bottom {
-            border-top: 1px solid rgba(251, 191, 36, 0.1);
+            border-top: 1px solid rgba(251,191,36,0.1);
             padding-top: 25px;
             display: flex;
             justify-content: space-between;
@@ -549,23 +547,16 @@
             flex-wrap: wrap;
             gap: 1rem;
         }
-        .footer-bottom p {
-            color: #6b7280;
-            font-size: 0.8rem;
-        }
-        .footer-bottom-links {
-            display: flex;
-            gap: 1.5rem;
-        }
+        .footer-bottom p { color: #6b7280; font-size: 0.8rem; }
+        .footer-bottom-links { display: flex; gap: 1.5rem; }
         .footer-bottom-links a {
             color: #6b7280;
             text-decoration: none;
             font-size: 0.8rem;
             transition: 0.2s;
+            cursor: pointer;
         }
-        .footer-bottom-links a:hover {
-            color: #FBBF24;
-        }
+        .footer-bottom-links a:hover { color: #FBBF24; }
         @media (max-width: 768px) {
             .footer-grid { gap: 1.8rem; }
             .footer-bottom { flex-direction: column; text-align: center; }
@@ -589,329 +580,293 @@
             <i class="fas fa-bars"></i>
         </div>
         <div class="nav-links" id="navLinks">
-            <a data-page="beranda" class="active">Beranda</a>
-            <a data-page="tentang">Tentang</a>
-            <a data-page="layanan">Layanan</a>
-            <a data-page="portofolio">Portofolio</a>
-            <a data-page="faq">FAQ</a>
-            <a data-page="pemesanan">Pemesanan</a>
-            <a data-page="blog">Blog</a>
-            <a data-page="testimonial">Testimonial</a>
-            <a data-page="kontak">Kontak</a>
-            <a data-page="kontak" class="btn-contact-nav">Hubungi</a>
+            <a href="#tentang" data-page="tentang" class="active">Tentang</a>
+            <a href="#layanan" data-page="layanan">Layanan</a>
+            <a href="#karya" data-page="karya">Karya</a>
+            <a href="#kontak" data-page="kontak">Kontak</a>
         </div>
     </div>
 </div>
 
 <main>
     <div class="page-container">
-        <!-- BERANDA -->
-        <div id="page-beranda" class="page active-page">
-            <div class="hero" data-aos="fade-up">
-                <div class="hero-content">
-                    <div class="hero-badge"><i class="fas fa-code"></i> Frontend Developer</div>
-                    <h1>Building <span class="highlight">Digital Experiences</span><br>That Inspire</h1>
-                    <p>HanzCode.id - solusi pengembangan web modern dengan fokus pada performa, estetika, dan pengalaman pengguna yang luar biasa.</p>
-                    <div class="hero-stats">
-                        <div><div class="stat-number">587B+</div><div class="stat-label">Suka</div></div>
-                        <div><div class="stat-number">156k</div><div class="stat-label">Pengikut</div></div>
-                        <div><div class="stat-number">267+</div><div class="stat-label">Project</div></div>
+        <!-- HALAMAN TENTANG (Beranda + Tentang + Blog) -->
+        <div id="page-tentang" class="page active">
+            <section>
+                <div class="hero" data-aos="fade-up">
+                    <div class="hero-content">
+                        <div class="hero-badge"><i class="fas fa-code"></i> Frontend Developer</div>
+                        <h1>Building <span class="highlight">Digital Experiences</span><br>That Inspire</h1>
+                        <p>HanzCode.id - solusi pengembangan web modern dengan fokus pada performa, estetika, dan pengalaman pengguna yang luar biasa.</p>
+                        <div class="hero-stats">
+                            <div><div class="stat-number">587B+</div><div class="stat-label">Suka</div></div>
+                            <div><div class="stat-number">156k</div><div class="stat-label">Pengikut</div></div>
+                            <div><div class="stat-number">267+</div><div class="stat-label">Project</div></div>
+                        </div>
+                        <div class="hero-buttons">
+                            <a href="#karya" class="btn-primary" data-page="karya">Lihat Karya <i class="fas fa-arrow-right"></i></a>
+                            <a href="#kontak" class="btn-outline" data-page="kontak">Konsultasi <i class="fas fa-comment"></i></a>
+                        </div>
                     </div>
-                    <div class="hero-buttons">
-                        <button class="btn-primary" data-page-nav="portofolio">Lihat Portofolio <i class="fas fa-arrow-right"></i></button>
-                        <button class="btn-outline" data-page-nav="kontak">Konsultasi <i class="fas fa-comment"></i></button>
+                    <div class="hero-image">
+                        <img src="Pict/Beranda.png" alt="HanzCode">
                     </div>
                 </div>
-                <div class="hero-image">
-                    <img src="Pict/Beranda.png" alt="HanzCode">
+            </section>
+
+            <section>
+                <div class="about-grid" data-aos="fade-up">
+                    <div class="about-img"><img src="Pict/Tentang kami.png" alt="About"></div>
+                    <div class="about-text">
+                        <h2 class="section-title">Tentang Kami</h2>
+                        <p>HanzCode.id adalah layanan pengembangan web yang berfokus pada kualitas, performa, dan kepuasan klien. Kami membantu bisnis dan individu memiliki website modern yang responsive dan optimal.</p>
+                        <p>Dengan pengalaman mengerjakan berbagai project dari company profile hingga web application, kami siap membantu mewujudkan ide digital Anda menjadi kenyataan.</p>
+                        <div class="about-info">
+                            <div class="info-item"><i class="fas fa-map-marker-alt"></i> Indonesia</div>
+                            <div class="info-item"><i class="fab fa-whatsapp"></i> +62 896-8421-9904</div>
+                            <div class="info-item"><i class="fas fa-clock"></i> 24/7 Support</div>
+                        </div>
+                        <div class="about-banner">
+                            <img src="Pict/Analisa.jpeg" alt="HanzCode Banner">
+                        </div>
+                    </div>
                 </div>
-            </div>
+            </section>
+
+            <section>
+                <h2 class="section-title" data-aos="fade-up">Blog & Artikel</h2>
+                <div class="blog-grid">
+                    <div class="blog-card" data-aos="fade-up">
+                        <img src="Pict/Blog tips.png" class="blog-img">
+                        <div class="blog-content">
+                            <div class="blog-date"><i class="far fa-calendar-alt"></i> 15 Mar 2025</div>
+                            <h3>Tips Memilih Website Company Profile</h3>
+                            <div class="blog-preview">Panduan memilih website yang tepat untuk bisnis Anda...</div>
+                            <div class="blog-full">
+                                <p>Memilih website company profile yang tepat adalah investasi penting bagi bisnis Anda.</p>
+                                <h4>1. Desain Responsif</h4>
+                                <p>Pastikan website tampil sempurna di semua perangkat.</p>
+                            </div>
+                            <span class="read-more-btn">Baca selengkapnya <i class="fas fa-chevron-down"></i></span>
+                        </div>
+                    </div>
+                    <div class="blog-card" data-aos="fade-up" data-aos-delay="100">
+                        <img src="Pict/Blog SEO.png" class="blog-img">
+                        <div class="blog-content">
+                            <div class="blog-date"><i class="far fa-calendar-alt"></i> 10 Mar 2025</div>
+                            <h3>SEO Penting untuk Bisnis Online</h3>
+                            <div class="blog-preview">Kenapa SEO sangat krusial untuk bisnis Anda...</div>
+                            <div class="blog-full">
+                                <p>SEO adalah kunci agar website bisnis Anda ditemukan di Google.</p>
+                                <h4>Manfaat SEO:</h4>
+                                <p>• Meningkatkan visibilitas online<br>• Menarik traffic organik</p>
+                            </div>
+                            <span class="read-more-btn">Baca selengkapnya <i class="fas fa-chevron-down"></i></span>
+                        </div>
+                    </div>
+                    <div class="blog-card" data-aos="fade-up" data-aos-delay="200">
+                        <img src="https://images.pexels.com/photos/1181263/pexels-photo-1181263.jpeg?auto=compress&cs=tinysrgb&w=600" class="blog-img">
+                        <div class="blog-content">
+                            <div class="blog-date"><i class="far fa-calendar-alt"></i> 5 Mar 2025</div>
+                            <h3>Trend Web Development 2025</h3>
+                            <div class="blog-preview">Teknologi terbaru yang wajib diketahui developer...</div>
+                            <div class="blog-full">
+                                <p>Tahun 2025 membawa banyak inovasi dalam web development.</p>
+                                <h4>Trend Utama:</h4>
+                                <p>• AI-Powered Tools<br>• Motion UI<br>• PWA</p>
+                            </div>
+                            <span class="read-more-btn">Baca selengkapnya <i class="fas fa-chevron-down"></i></span>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </div>
 
-        <!-- TENTANG -->
-        <div id="page-tentang" class="page">
-            <div class="about-grid" data-aos="fade-up">
-                <div class="about-img"><img src="Pict/Tentang kami.png" alt="About"></div>
-                <div class="about-text">
-                    <h2 class="section-title">Tentang Kami</h2>
-                    <p>HanzCode.id adalah layanan pengembangan web yang berfokus pada kualitas, performa, dan kepuasan klien. Kami membantu bisnis dan individu memiliki website modern yang responsive dan optimal.</p>
-                    <p>Dengan pengalaman mengerjakan berbagai project dari company profile hingga web application, kami siap membantu mewujudkan ide digital Anda menjadi kenyataan.</p>
-                    <div class="about-info">
-                        <div class="info-item"><i class="fas fa-map-marker-alt"></i> Indonesia</div>
-                        <div class="info-item"><i class="fab fa-whatsapp"></i> +62 896-8421-9904</div>
-                        <div class="info-item"><i class="fas fa-clock"></i> 24/7 Support</div>
-                    </div>
-                    <div class="about-banner">
-                        <img src="Pict/Analisa.jpeg" alt="HanzCode Banner Analisa">
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- LAYANAN -->
+        <!-- HALAMAN LAYANAN -->
         <div id="page-layanan" class="page">
-            <h2 class="section-title" data-aos="fade-up">Layanan Kami</h2>
-            <div class="services-grid">
-                <div class="service-card" data-aos="fade-up"><div class="service-icon"><i class="fas fa-laptop-code"></i></div><h3>Company Profile</h3><p>Website perusahaan profesional dengan desain modern dan responsive.</p></div>
-                <div class="service-card" data-aos="fade-up" data-aos-delay="100"><div class="service-icon"><i class="fas fa-globe"></i></div><h3>Web Application</h3><p>Aplikasi web interaktif dengan performa tinggi dan fitur lengkap.</p></div>
-                <div class="service-card" data-aos="fade-up" data-aos-delay="200"><div class="service-icon"><i class="fas fa-mobile-alt"></i></div><h3>Responsive Design</h3><p>Tampilan sempurna di semua perangkat dari desktop hingga mobile.</p></div>
-                <div class="service-card" data-aos="fade-up" data-aos-delay="300"><div class="service-icon"><i class="fas fa-chart-line"></i></div><h3>SEO Optimization</h3><p>Optimasi kecepatan dan SEO agar website mudah ditemukan.</p></div>
-            </div>
+            <section>
+                <h2 class="section-title" data-aos="fade-up">Layanan Kami</h2>
+                <div class="services-grid">
+                    <div class="service-card" data-aos="fade-up"><div class="service-icon"><i class="fas fa-laptop-code"></i></div><h3>Company Profile</h3><p>Website perusahaan profesional dengan desain modern dan responsive.</p></div>
+                    <div class="service-card" data-aos="fade-up" data-aos-delay="100"><div class="service-icon"><i class="fas fa-globe"></i></div><h3>Web Application</h3><p>Aplikasi web interaktif dengan performa tinggi dan fitur lengkap.</p></div>
+                    <div class="service-card" data-aos="fade-up" data-aos-delay="200"><div class="service-icon"><i class="fas fa-mobile-alt"></i></div><h3>Responsive Design</h3><p>Tampilan sempurna di semua perangkat dari desktop hingga mobile.</p></div>
+                    <div class="service-card" data-aos="fade-up" data-aos-delay="300"><div class="service-icon"><i class="fas fa-chart-line"></i></div><h3>SEO Optimization</h3><p>Optimasi kecepatan dan SEO agar website mudah ditemukan.</p></div>
+                </div>
+            </section>
+
+            <section>
+                <h2 class="section-title" data-aos="fade-up">Cara Kerja</h2>
+                <div class="steps-grid">
+                    <div class="step-item"><div class="step-number">1</div><h3>Konsultasi</h3><p>Diskusi kebutuhan dan tujuan website</p></div>
+                    <div class="step-item"><div class="step-number">2</div><h3>Desain</h3><p>Pembuatan mockup dan desain UI/UX</p></div>
+                    <div class="step-item"><div class="step-number">3</div><h3>Development</h3><p>Proses coding dan pengembangan</p></div>
+                    <div class="step-item"><div class="step-number">4</div><h3>Launch</h3><p>Review, revisi, dan go live</p></div>
+                </div>
+            </section>
         </div>
 
-        <!-- PORTOFOLIO -->
-        <div id="page-portofolio" class="page">
-            <h2 class="section-title" data-aos="fade-up">Portofolio</h2>
-            <div class="portfolio-grid">
-                <div class="portfolio-card" data-aos="fade-up">
-                    <div class="portfolio-media">
-                        <img src="Pict/Campany profil.png" alt="Company Profile">
-                        <video src="Pict/Campany profil video.mp4" loop muted playsinline></video>
-                    </div>
-                    <div class="portfolio-content">
-                        <div class="portfolio-category">Company Profile</div>
-                        <h3>Landingpage Company Profile</h3>
-                        <div class="portfolio-stats"><span><i class="fas fa-heart"></i> 175k</span><span><i class="fas fa-eye"></i> 23Jt</span></div>
-                    </div>
-                </div>
-                <div class="portfolio-card" data-aos="fade-up" data-aos-delay="100">
-                    <div class="portfolio-media">
-                        <img src="Pict/Web aplications.png" alt="Web App">
-                        <video src="Pict/Web Applications video.mp4" loop muted playsinline></video>
-                    </div>
-                    <div class="portfolio-content">
-                        <div class="portfolio-category">Web App</div>
-                        <h3>Multingpage Web Application</h3>
-                        <div class="portfolio-stats"><span><i class="fas fa-heart"></i> 84k</span><span><i class="fas fa-eye"></i> 571k</span></div>
-                    </div>
-                </div>
-                <div class="portfolio-card" data-aos="fade-up" data-aos-delay="200">
-                    <div class="portfolio-media">
-                        <img src="Pict/Online store platfrom.png" alt="E-Commerce">
-                        <video src="Pict/Online store platfrom video.mp4" loop muted playsinline></video>
-                    </div>
-                    <div class="portfolio-content">
-                        <div class="portfolio-category">E-Commerce</div>
-                        <h3>Online Store Platform</h3>
-                        <div class="portfolio-stats"><span><i class="fas fa-heart"></i> 343k</span><span><i class="fas fa-eye"></i> 56Jt</span></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- FAQ -->
-        <div id="page-faq" class="page">
-            <h2 class="section-title" data-aos="fade-up">FAQ</h2>
-            <div class="faq-container">
-                <div class="faq-item"><div class="faq-question"><i class="fas fa-question-circle"></i> Berapa lama waktu pengerjaan website?<i class="fas fa-chevron-down faq-icon"></i></div><div class="faq-answer">Waktu pengerjaan biasanya 5-7 hari kerja tergantung kompleksitas project.</div></div>
-                <div class="faq-item"><div class="faq-question"><i class="fas fa-question-circle"></i> Apakah kami masih dapat support setelah website selesai?<i class="fas fa-chevron-down faq-icon"></i></div><div class="faq-answer">Ya, kami support setelah pembayaran selama 7 hari untuk update ( bukan menambah fitur).</div></div>
-                <div class="faq-item"><div class="faq-question"><i class="fas fa-question-circle"></i> Metode pembayaran apa saja?<i class="fas fa-chevron-down faq-icon"></i></div><div class="faq-answer">Untuk saat ini pembayaran  hanya bisa melewati DANA</div></div>
-                <div class="faq-item"><div class="faq-question"><i class="fas fa-question-circle"></i> Apakah bisa konsultasi gratis?<i class="fas fa-chevron-down faq-icon"></i></div><div class="faq-answer">Tentu, konsultasi awal gratis untuk membahas kebutuhan website Anda.</div></div>
-            </div>
-        </div>
-
-        <!-- PEMESANAN -->
-        <div id="page-pemesanan" class="page">
-            <h2 class="section-title" data-aos="fade-up">Form Pemesanan</h2>
-            <div class="form-container">
-                <div class="booking-form" data-aos="fade-right">
-                    <form id="bookingForm">
-                        <input type="text" placeholder="Nama Lengkap" id="bookingName" required>
-                        <div class="custom-select">
-                            <select id="bookingService" required>
-                                <option value="">Pilih Layanan</option>
-                                <option value="Company Profile">Company Profile</option>
-                                <option value="Web Application">Web Application</option>
-                                <option value="E-Commerce">E-Commerce</option>
-                                <option value="Landing Page">Landing Page</option>
-                            </select>
+        <!-- HALAMAN KARYA (Portofolio + Testimonial) -->
+        <div id="page-karya" class="page">
+            <section>
+                <h2 class="section-title" data-aos="fade-up">Portofolio</h2>
+                <div class="portfolio-grid">
+                    <div class="portfolio-card" data-aos="fade-up">
+                        <div class="portfolio-media">
+                            <img src="Pict/Campany profil.png" alt="Company Profile">
+                            <video src="Pict/Campany profil video.mp4" loop muted playsinline></video>
                         </div>
-                        <textarea rows="4" placeholder="Deskripsi Kebutuhan / Komentar" id="bookingDesc" required></textarea>
-                        <button type="submit"><i class="fas fa-paper-plane"></i> Kirim Pesanan</button>
-                    </form>
-                </div>
-                <div class="steps-card" data-aos="fade-left">
-                    <h3>Cara Pemesanan</h3>
-                    <ol>
-                        <li>Isi form dengan nama dan kebutuhan website</li>
-                        <li>Pilih layanan yang diinginkan</li>
-                        <li>Tim kami akan menghubungi via WhatsApp</li>
-                        <li>Diskusi dan konfirmasi spesifikasi</li>
-                        <li>Pembayaran DP 50%</li>
-                        <li>Proses pengerjaan website</li>
-                        <li>Review dan pelunasan</li>
-                        <li>Website siap online!</li>
-                    </ol>
-                </div>
-            </div>
-        </div>
-
-        <!-- BLOG -->
-        <div id="page-blog" class="page">
-            <h2 class="section-title" data-aos="fade-up">Blog & Artikel</h2>
-            <div class="blog-grid">
-                <div class="blog-card" data-aos="fade-up">
-                    <img src="Pict/Blog tips.png" class="blog-img">
-                    <div class="blog-content">
-                        <div class="blog-date"><i class="far fa-calendar-alt"></i> 15 Mar 2025</div>
-                        <h3>Tips Memilih Website Company Profile</h3>
-                        <div class="blog-preview">Panduan memilih website yang tepat untuk bisnis Anda agar lebih profesional...</div>
-                        <div class="blog-full">
-                            <p>Memilih website company profile yang tepat adalah investasi penting bagi bisnis Anda. Website bukan hanya sekadar halaman digital, tetapi juga wajah perusahaan di dunia online.</p>
-                            <h4>1. Desain Responsif</h4>
-                            <p>Pastikan website tampil sempurna di desktop, tablet, maupun smartphone.</p>
-                            <h4>2. Brand Identity</h4>
-                            <p>Warna dan tata letak harus selaras dengan citra perusahaan Anda.</p>
-                            <h4>3. Kecepatan Loading</h4>
-                            <p>Pengguna cenderung meninggalkan website yang lambat. Optimasi sangat penting.</p>
-                            <p>Dengan website profesional, kredibilitas bisnis Anda akan meningkat.</p>
+                        <div class="portfolio-content">
+                            <div class="portfolio-category">Company Profile</div>
+                            <h3>Landingpage Company Profile</h3>
                         </div>
-                        <span class="read-more-btn">Baca selengkapnya <i class="fas fa-chevron-down"></i></span>
+                    </div>
+                    <div class="portfolio-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="portfolio-media">
+                            <img src="Pict/Web aplications.png" alt="Web App">
+                            <video src="Pict/Web Applications video.mp4" loop muted playsinline></video>
+                        </div>
+                        <div class="portfolio-content">
+                            <div class="portfolio-category">Web App</div>
+                            <h3>Multipage Web Application</h3>
+                        </div>
+                    </div>
+                    <div class="portfolio-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="portfolio-media">
+                            <img src="Pict/Online store platfrom.png" alt="E-Commerce">
+                            <video src="Pict/Online store platfrom video.mp4" loop muted playsinline></video>
+                        </div>
+                        <div class="portfolio-content">
+                            <div class="portfolio-category">E-Commerce</div>
+                            <h3>Online Store Platform</h3>
+                        </div>
                     </div>
                 </div>
-                <div class="blog-card" data-aos="fade-up" data-aos-delay="100">
-                    <img src="Pict/Blog SEO.png" class="blog-img">
-                    <div class="blog-content">
-                        <div class="blog-date"><i class="far fa-calendar-alt"></i> 10 Mar 2025</div>
-                        <h3>SEO Penting untuk Bisnis Online</h3>
-                        <div class="blog-preview">Kenapa SEO sangat krusial untuk meningkatkan visibilitas bisnis Anda...</div>
-                        <div class="blog-full">
-                            <p>SEO (Search Engine Optimization) adalah kunci agar website bisnis Anda ditemukan di mesin pencari seperti Google.</p>
-                            <h4>Manfaat SEO:</h4>
-                            <p>• Meningkatkan visibilitas online<br>• Menarik traffic organik berkualitas<br>• Membangun kredibilitas brand<br>• ROI jangka panjang</p>
-                            <p>Optimasi SEO yang tepat akan membantu bisnis Anda tumbuh secara berkelanjutan.</p>
-                        </div>
-                        <span class="read-more-btn">Baca selengkapnya <i class="fas fa-chevron-down"></i></span>
-                    </div>
+            </section>
+
+            <section>
+                <h2 class="section-title" data-aos="fade-up">Testimonial</h2>
+                <div class="testimonial-grid">
+                    <div class="testimonial-card" data-aos="fade-up"><div class="testimonial-text">"HanzCode.id mengerjakan website company profile kami dengan sangat profesional. Hasilnya modern dan cepat!"</div><div class="testimonial-author"><img src="https://randomuser.me/api/portraits/men/32.jpg"><div><h4>Budi Santoso</h4><p>CEO, PT Maju Bersama</p></div></div></div>
+                    <div class="testimonial-card" data-aos="fade-up" data-aos-delay="100"><div class="testimonial-text">"Desain yang diberikan sangat estetik dan responsif. Proses komunikasi lancar, hasil melebihi ekspektasi!"</div><div class="testimonial-author"><img src="https://randomuser.me/api/portraits/women/68.jpg"><div><h4>Amanda Wijaya</h4><p>Owner, Bloom Studio</p></div></div></div>
+                    <div class="testimonial-card" data-aos="fade-up" data-aos-delay="200"><div class="testimonial-text">"Kualitas kode rapi dan mudah dikembangkan. HanzCode.id benar-benar profesional!"</div><div class="testimonial-author"><img src="https://randomuser.me/api/portraits/men/45.jpg"><div><h4>Reza Pratama</h4><p>CTO, TechSolution</p></div></div></div>
                 </div>
-                <div class="blog-card" data-aos="fade-up" data-aos-delay="200">
-                    <img src="https://images.pexels.com/photos/1181263/pexels-photo-1181263.jpeg?auto=compress&cs=tinysrgb&w=600" class="blog-img">
-                    <div class="blog-content">
-                        <div class="blog-date"><i class="far fa-calendar-alt"></i> 5 Mar 2025</div>
-                        <h3>Trend Web Development 2025</h3>
-                        <div class="blog-preview">Teknologi dan framework terbaru yang wajib diketahui developer...</div>
-                        <div class="blog-full">
-                            <p>Tahun 2025 membawa banyak inovasi dalam dunia web development.</p>
-                            <h4>Trend Utama:</h4>
-                            <p>• AI-Powered Development Tools<br>• Motion UI yang sophisticated<br>• Web3 Integration<br>• Progressive Web Apps (PWA)<br>• Serverless Architecture</p>
-                            <p>Mengikuti trend terbaru akan membantu website Anda tetap relevan dan kompetitif.</p>
-                        </div>
-                        <span class="read-more-btn">Baca selengkapnya <i class="fas fa-chevron-down"></i></span>
-                    </div>
-                </div>
-            </div>
+            </section>
         </div>
 
-        <!-- TESTIMONIAL -->
-        <div id="page-testimonial" class="page">
-            <h2 class="section-title" data-aos="fade-up">Testimonial</h2>
-            <div class="testimonial-grid">
-                <div class="testimonial-card" data-aos="fade-up"><div class="testimonial-text">"HanzCode.id mengerjakan website company profile kami dengan sangat profesional. Hasilnya modern dan cepat!"</div><div class="testimonial-author"><img src="https://randomuser.me/api/portraits/men/32.jpg"><div><h4>Budi Santoso</h4><p>CEO, PT Maju Bersama</p></div></div></div>
-                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="100"><div class="testimonial-text">"Desain yang diberikan sangat estetik dan responsif. Proses komunikasi lancar, hasil melebihi ekspektasi!"</div><div class="testimonial-author"><img src="https://randomuser.me/api/portraits/women/68.jpg"><div><h4>Amanda Wijaya</h4><p>Owner, Bloom Studio</p></div></div></div>
-                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="200"><div class="testimonial-text">"Kualitas kode rapi dan mudah dikembangkan. HanzCode.id benar-benar profesional!"</div><div class="testimonial-author"><img src="https://randomuser.me/api/portraits/men/45.jpg"><div><h4>Reza Pratama</h4><p>CTO, TechSolution</p></div></div></div>
-            </div>
-        </div>
-
-        <!-- KONTAK -->
+        <!-- HALAMAN KONTAK (FAQ + Pemesanan + Kontak) -->
         <div id="page-kontak" class="page">
-            <h2 class="section-title" data-aos="fade-up">Hubungi Kami</h2>
-            <div class="contact-premium">
-                <div class="contact-info-card" data-aos="fade-right">
-                    <h3><i class="fas fa-address-card"></i> Informasi Kontak</h3>
-                    <div class="contact-detail">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <div><h4>Alamat</h4><p>Indramayu, Indonesia</p></div>
+            <section>
+                <h2 class="section-title" data-aos="fade-up">FAQ</h2>
+                <div class="faq-container">
+                    <div class="faq-item"><div class="faq-question"><i class="fas fa-question-circle"></i> Berapa lama waktu pengerjaan website?<i class="fas fa-chevron-down faq-icon"></i></div><div class="faq-answer">5-7 hari kerja tergantung kompleksitas project.</div></div>
+                    <div class="faq-item"><div class="faq-question"><i class="fas fa-question-circle"></i> Apakah dapat support setelah website selesai?<i class="fas fa-chevron-down faq-icon"></i></div><div class="faq-answer">Ya, support 7 hari setelah pembayaran untuk update minor.</div></div>
+                    <div class="faq-item"><div class="faq-question"><i class="fas fa-question-circle"></i> Metode pembayaran?<i class="fas fa-chevron-down faq-icon"></i></div><div class="faq-answer">Saat ini melalui DANA.</div></div>
+                    <div class="faq-item"><div class="faq-question"><i class="fas fa-question-circle"></i> Konsultasi gratis?<i class="fas fa-chevron-down faq-icon"></i></div><div class="faq-answer">Tentu, konsultasi awal gratis.</div></div>
+                </div>
+            </section>
+
+            <section>
+                <h2 class="section-title" data-aos="fade-up">Form Pemesanan</h2>
+                <div class="form-container">
+                    <div class="booking-form" data-aos="fade-right">
+                        <form id="bookingForm">
+                            <input type="text" placeholder="Nama Lengkap" id="bookingName" required>
+                            <div class="custom-select">
+                                <select id="bookingService" required>
+                                    <option value="">Pilih Layanan</option>
+                                    <option value="Company Profile">Company Profile</option>
+                                    <option value="Web Application">Web Application</option>
+                                    <option value="E-Commerce">E-Commerce</option>
+                                    <option value="Landing Page">Landing Page</option>
+                                </select>
+                            </div>
+                            <textarea rows="4" placeholder="Deskripsi Kebutuhan" id="bookingDesc" required></textarea>
+                            <button type="submit"><i class="fas fa-paper-plane"></i> Kirim Pesanan</button>
+                        </form>
                     </div>
-                    <div class="contact-detail">
-                        <i class="fas fa-phone-alt"></i>
-                        <div><h4>Telepon</h4><p>+62 896-8421-9904</p></div>
-                    </div>
-                    <div class="contact-detail">
-                        <i class="fas fa-clock"></i>
-                        <div><h4>Jam Operasional</h4><p>Senin - Jumat, 15:00 - 22:00 WIB</p></div>
-                    </div>
-                    <div class="social-premium">
-                        <h4>Ikuti Kami</h4>
-                        <div class="social-icons-premium">
-                            <a href="https://wa.me/628567858301" target="_blank"><i class="fab fa-whatsapp"></i></a>
-                            <a href="https://wa.me/6289684219904" target="_blank"><i class="fab fa-whatsapp"></i><span style="font-size:0.7rem; margin-left:2px;">B</span></a>
-                            <a href="https://www.tiktok.com/@hanzcodeid" target="_blank"><i class="fab fa-tiktok"></i></a>
-                        </div>
+                    <div class="steps-card" data-aos="fade-left">
+                        <h3>Cara Pemesanan</h3>
+                        <ol>
+                            <li>Isi form dengan nama dan kebutuhan</li>
+                            <li>Pilih layanan yang diinginkan</li>
+                            <li>Tim kami akan menghubungi via WhatsApp</li>
+                            <li>Diskusi dan konfirmasi spesifikasi</li>
+                            <li>Pembayaran DP 50%</li>
+                            <li>Proses pengerjaan website</li>
+                            <li>Review dan pelunasan</li>
+                            <li>Website siap online!</li>
+                        </ol>
                     </div>
                 </div>
-                <div class="contact-form-card" data-aos="fade-left">
-                    <h3><i class="fas fa-paper-plane"></i> Kirim Pesan</h3>
-                    <form id="contactForm">
-                        <input type="text" placeholder="Nama Lengkap" id="contactName" required>
-                        <textarea rows="4" placeholder="Tulis pesan Anda..." id="contactMessage" required></textarea>
-                        <button type="submit"><i class="fas fa-envelope"></i> Kirim Pesan</button>
-                    </form>
+            </section>
+
+            <section>
+                <h2 class="section-title" data-aos="fade-up">Hubungi Kami</h2>
+                <div class="contact-premium">
+                    <div class="contact-info-card" data-aos="fade-right">
+                        <h3><i class="fas fa-address-card"></i> Informasi Kontak</h3>
+                        <div class="contact-detail"><i class="fas fa-map-marker-alt"></i><div><h4>Alamat</h4><p>Indramayu, Indonesia</p></div></div>
+                        <div class="contact-detail"><i class="fas fa-phone-alt"></i><div><h4>Telepon</h4><p>+62 896-8421-9904</p></div></div>
+                        <div class="contact-detail"><i class="fas fa-clock"></i><div><h4>Jam Operasional</h4><p>Senin - Jumat, 15:00 - 22:00 WIB</p></div></div>
+                        <div class="social-premium"><h4>Ikuti Kami</h4><div class="social-icons-premium"><a href="https://wa.me/628567858301" target="_blank"><i class="fab fa-whatsapp"></i></a><a href="https://wa.me/6289684219904" target="_blank"><i class="fab fa-whatsapp"></i></a><a href="https://www.tiktok.com/@hanzcodeid" target="_blank"><i class="fab fa-tiktok"></i></a></div></div>
+                    </div>
+                    <div class="contact-form-card" data-aos="fade-left">
+                        <h3><i class="fas fa-paper-plane"></i> Kirim Pesan</h3>
+                        <form id="contactForm">
+                            <input type="text" placeholder="Nama Lengkap" id="contactName" required>
+                            <textarea rows="4" placeholder="Tulis pesan Anda..." id="contactMessage" required></textarea>
+                            <button type="submit"><i class="fas fa-envelope"></i> Kirim Pesan</button>
+                        </form>
+                    </div>
                 </div>
-            </div>
+            </section>
         </div>
     </div>
 </main>
 
-<!-- FOOTER RAMAI & PANTAS -->
 <footer>
     <div class="footer-container">
         <div class="footer-grid">
             <div class="footer-col">
                 <h4>HanzCode.id</h4>
-                <p>Solusi pengembangan web modern dengan fokus pada performa, estetika, dan pengalaman pengguna yang luar biasa.</p>
+                <p>Solusi pengembangan web modern dengan fokus pada performa, estetika, dan pengalaman pengguna.</p>
                 <div class="footer-social">
                     <a href="https://wa.me/628567858301" target="_blank"><i class="fab fa-whatsapp"></i></a>
                     <a href="https://www.tiktok.com/@hanzcodeid" target="_blank"><i class="fab fa-tiktok"></i></a>
                     <a href="#"><i class="fab fa-instagram"></i></a>
                     <a href="#"><i class="fab fa-github"></i></a>
-                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
                 </div>
+            </div>
+            <div class="footer-col">
+                <h4>Menu</h4>
+                <ul>
+                    <li><a href="#tentang" data-page="tentang"><i class="fas fa-chevron-right"></i> Tentang</a></li>
+                    <li><a href="#layanan" data-page="layanan"><i class="fas fa-chevron-right"></i> Layanan</a></li>
+                    <li><a href="#karya" data-page="karya"><i class="fas fa-chevron-right"></i> Karya</a></li>
+                    <li><a href="#kontak" data-page="kontak"><i class="fas fa-chevron-right"></i> Kontak</a></li>
+                </ul>
             </div>
             <div class="footer-col">
                 <h4>Layanan</h4>
                 <ul>
-                    <li><a href="#" data-page-nav="layanan"><i class="fas fa-chevron-right"></i> Company Profile</a></li>
-                    <li><a href="#" data-page-nav="layanan"><i class="fas fa-chevron-right"></i> Web Application</a></li>
-                    <li><a href="#" data-page-nav="layanan"><i class="fas fa-chevron-right"></i> Responsive Design</a></li>
-                    <li><a href="#" data-page-nav="layanan"><i class="fas fa-chevron-right"></i> SEO Optimization</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>Perusahaan</h4>
-                <ul>
-                    <li><a href="#" data-page-nav="tentang"><i class="fas fa-chevron-right"></i> Tentang Kami</a></li>
-                    <li><a href="#" data-page-nav="portofolio"><i class="fas fa-chevron-right"></i> Portofolio</a></li>
-                    <li><a href="#" data-page-nav="blog"><i class="fas fa-chevron-right"></i> Blog</a></li>
-                    <li><a href="#" data-page-nav="faq"><i class="fas fa-chevron-right"></i> FAQ</a></li>
-                    <li><a href="#" data-page-nav="kontak"><i class="fas fa-chevron-right"></i> Kontak</a></li>
+                    <li><a href="#layanan" data-page="layanan"><i class="fas fa-chevron-right"></i> Company Profile</a></li>
+                    <li><a href="#layanan" data-page="layanan"><i class="fas fa-chevron-right"></i> Web Application</a></li>
+                    <li><a href="#layanan" data-page="layanan"><i class="fas fa-chevron-right"></i> SEO Optimization</a></li>
                 </ul>
             </div>
             <div class="footer-col">
                 <h4>Kontak</h4>
-                <div class="footer-contact-info">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <span>Indramayu, Indonesia</span>
-                </div>
-                <div class="footer-contact-info">
-                    <i class="fab fa-whatsapp"></i>
-                    <span>+62 896-8421-9904</span>
-                </div>
-                <div class="footer-contact-info">
-                    <i class="far fa-envelope"></i>
-                    <span>hanzcode@gmail.com</span>
-                </div>
-                <div class="footer-contact-info">
-                    <i class="far fa-clock"></i>
-                    <span>15:00 - 22:00 WIB</span>
-                </div>
+                <div class="footer-contact-info"><i class="fas fa-map-marker-alt"></i><span>Indramayu, Indonesia</span></div>
+                <div class="footer-contact-info"><i class="fab fa-whatsapp"></i><span>+62 896-8421-9904</span></div>
+                <div class="footer-contact-info"><i class="far fa-envelope"></i><span>hanzcode@gmail.com</span></div>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2026 HanzCode.id — Frontend Developer & Web Solutions. Open req all website</p>
+            <p>&copy; 2026 HanzCode.id — Frontend Developer & Web Solutions</p>
             <div class="footer-bottom-links">
+                <a href="#tentang" data-page="tentang">Tentang</a>
+                <a href="#kontak" data-page="kontak">Kontak</a>
                 <a href="#">Kebijakan Privasi</a>
-                <a href="#">Syarat & Ketentuan</a>
-                <a href="#">Sitemap</a>
             </div>
         </div>
     </div>
@@ -919,110 +874,164 @@
 
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
-    // Proteksi
-    document.addEventListener('keydown', function(e) {
-        if ((e.ctrlKey && e.key === 'u') || (e.ctrlKey && e.key === 'U') || e.key === 'F12' ||
-            (e.ctrlKey && e.shiftKey && e.key === 'I') || (e.ctrlKey && e.shiftKey && e.key === 'J')) {
-            e.preventDefault();
-        }
-    });
-    document.addEventListener('contextmenu', function(e) { e.preventDefault(); return false; });
-
-    AOS.init({ duration: 600, once: false, offset: 80, mirror: true });
-
-    // MULTI PAGE SEMU (TAB NAVIGATION)
-    function showPage(pageId) {
-        document.querySelectorAll('.page').forEach(page => page.classList.remove('active-page'));
-        document.getElementById(`page-${pageId}`).classList.add('active-page');
-        document.querySelectorAll('.nav-links a[data-page]').forEach(link => {
-            if (link.getAttribute('data-page') === pageId) {
-                link.classList.add('active');
-            } else {
-                link.classList.remove('active');
+    (function() {
+        // Proteksi
+        document.addEventListener('keydown', function(e) {
+            if ((e.ctrlKey && e.key === 'u') || (e.ctrlKey && e.key === 'U') || e.key === 'F12' ||
+                (e.ctrlKey && e.shiftKey && e.key === 'I') || (e.ctrlKey && e.shiftKey && e.key === 'J')) {
+                e.preventDefault();
             }
         });
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-        AOS.refresh();
-    }
+        document.addEventListener('contextmenu', function(e) { e.preventDefault(); return false; });
 
-    document.querySelectorAll('.nav-links a[data-page]').forEach(link => {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            const pageId = this.getAttribute('data-page');
-            showPage(pageId);
-            document.getElementById('navLinks')?.classList.remove('active');
-        });
-    });
+        AOS.init({ duration: 600, once: false, offset: 80, mirror: true });
 
-    document.querySelectorAll('[data-page-nav]').forEach(btn => {
-        btn.addEventListener('click', function(e) {
-            e.preventDefault();
-            const pageId = this.getAttribute('data-page-nav');
-            showPage(pageId);
-        });
-    });
-
-    // FAQ Accordion
-    document.querySelectorAll('.faq-item').forEach(item => {
-        item.querySelector('.faq-question')?.addEventListener('click', () => item.classList.toggle('active'));
-    });
-
-    // Hover video
-    document.querySelectorAll('.portfolio-media').forEach(media => {
-        const video = media.querySelector('video');
-        if(video) {
-            const card = media.parentElement;
-            card.addEventListener('mouseenter', () => video.play());
-            card.addEventListener('mouseleave', () => { video.pause(); video.currentTime = 0; });
-        }
-    });
-
-    // Blog Expand/Collapse
-    document.querySelectorAll('.read-more-btn').forEach(btn => {
-        btn.addEventListener('click', function(e) {
-            e.stopPropagation();
-            const blogCard = this.closest('.blog-card');
-            const fullContent = blogCard.querySelector('.blog-full');
-            const isActive = this.classList.contains('active');
-            if (isActive) {
-                fullContent.classList.remove('show');
-                this.classList.remove('active');
-                this.innerHTML = 'Baca selengkapnya <i class="fas fa-chevron-down"></i>';
-            } else {
-                fullContent.classList.add('show');
-                this.classList.add('active');
-                this.innerHTML = 'Baca secara singkat <i class="fas fa-chevron-up"></i>';
+        // Fungsi ganti halaman
+        function changePage(pageId) {
+            // Sembunyikan semua halaman
+            document.querySelectorAll('.page').forEach(function(page) {
+                page.classList.remove('active');
+            });
+            // Tampilkan halaman yang dipilih
+            var targetPage = document.getElementById('page-' + pageId);
+            if (targetPage) {
+                targetPage.classList.add('active');
             }
-        });
-    });
+            // Update class active di menu header
+            var menuLinks = document.querySelectorAll('.nav-links a[data-page]');
+            for (var i = 0; i < menuLinks.length; i++) {
+                var link = menuLinks[i];
+                if (link.getAttribute('data-page') === pageId) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            }
+            // Scroll ke atas
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            // Refresh AOS
+            setTimeout(function() { AOS.refresh(); }, 100);
+        }
 
-    // Form Pemesanan
-    document.getElementById('bookingForm')?.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const name = document.getElementById('bookingName')?.value;
-        const service = document.getElementById('bookingService')?.value;
-        const desc = document.getElementById('bookingDesc')?.value;
-        const message = `Halo HanzCode.id, saya ${name} ingin memesan layanan ${service}. Berikut kebutuhan saya: ${desc}`;
-        window.open(`https://wa.me/6289684219904?text=${encodeURIComponent(message)}`, '_blank');
-        e.target.reset();
-    });
+        // Pasang event listener ke semua menu header
+        var menuItems = document.querySelectorAll('.nav-links a[data-page]');
+        for (var i = 0; i < menuItems.length; i++) {
+            menuItems[i].addEventListener('click', function(e) {
+                e.preventDefault();
+                var pageId = this.getAttribute('data-page');
+                changePage(pageId);
+                // Tutup menu mobile
+                var navLinks = document.getElementById('navLinks');
+                if (navLinks && navLinks.classList.contains('show')) {
+                    navLinks.classList.remove('show');
+                }
+            });
+        }
 
-    // Form Contact
-    document.getElementById('contactForm')?.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const name = document.getElementById('contactName')?.value;
-        const message = document.getElementById('contactMessage')?.value;
-        window.open(`https://wa.me/628567858301?text=${encodeURIComponent(`Halo, saya ${name}. ${message}`)}`, '_blank');
-        e.target.reset();
-    });
+        // Pasang event listener ke semua tombol dengan data-page (di hero, footer, dll)
+        var pageButtons = document.querySelectorAll('[data-page]');
+        for (var i = 0; i < pageButtons.length; i++) {
+            var btn = pageButtons[i];
+            // Skip yang sudah di-handle (menu header)
+            if (btn.closest('.nav-links')) continue;
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                var pageId = this.getAttribute('data-page');
+                changePage(pageId);
+                // Tutup menu mobile
+                var navLinks = document.getElementById('navLinks');
+                if (navLinks && navLinks.classList.contains('show')) {
+                    navLinks.classList.remove('show');
+                }
+            });
+        }
 
-    // Mobile menu
-    document.getElementById('menuToggle')?.addEventListener('click', () => document.getElementById('navLinks')?.classList.toggle('active'));
+        // Toggle menu mobile
+        var menuToggle = document.getElementById('menuToggle');
+        if (menuToggle) {
+            menuToggle.addEventListener('click', function() {
+                var navLinks = document.getElementById('navLinks');
+                if (navLinks) {
+                    navLinks.classList.toggle('show');
+                }
+            });
+        }
 
-    // Header scroll
-    window.addEventListener('scroll', () => {
-        document.querySelector('.header')?.classList.toggle('scrolled', window.scrollY > 20);
-    });
+        // FAQ Accordion
+        var faqItems = document.querySelectorAll('.faq-item');
+        for (var i = 0; i < faqItems.length; i++) {
+            var question = faqItems[i].querySelector('.faq-question');
+            if (question) {
+                question.addEventListener('click', function() {
+                    this.parentElement.classList.toggle('active');
+                });
+            }
+        }
+
+        // Hover video
+        var portfolioMedia = document.querySelectorAll('.portfolio-media');
+        for (var i = 0; i < portfolioMedia.length; i++) {
+            var media = portfolioMedia[i];
+            var video = media.querySelector('video');
+            if (video) {
+                var card = media.parentElement;
+                card.addEventListener('mouseenter', function() {
+                    var v = this.querySelector('video');
+                    if (v) v.play();
+                });
+                card.addEventListener('mouseleave', function() {
+                    var v = this.querySelector('video');
+                    if (v) { v.pause(); v.currentTime = 0; }
+                });
+            }
+        }
+
+        // Blog Expand/Collapse
+        var readMoreBtns = document.querySelectorAll('.read-more-btn');
+        for (var i = 0; i < readMoreBtns.length; i++) {
+            readMoreBtns[i].addEventListener('click', function(e) {
+                e.stopPropagation();
+                var blogCard = this.closest('.blog-card');
+                var fullContent = blogCard.querySelector('.blog-full');
+                var isActive = this.classList.contains('active');
+                if (isActive) {
+                    fullContent.classList.remove('show');
+                    this.classList.remove('active');
+                    this.innerHTML = 'Baca selengkapnya <i class="fas fa-chevron-down"></i>';
+                } else {
+                    fullContent.classList.add('show');
+                    this.classList.add('active');
+                    this.innerHTML = 'Baca secara singkat <i class="fas fa-chevron-up"></i>';
+                }
+            });
+        }
+
+        // Form Pemesanan
+        var bookingForm = document.getElementById('bookingForm');
+        if (bookingForm) {
+            bookingForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                var name = document.getElementById('bookingName').value;
+                var service = document.getElementById('bookingService').value;
+                var desc = document.getElementById('bookingDesc').value;
+                var message = 'Halo HanzCode.id, saya ' + name + ' ingin memesan layanan ' + service + '. Kebutuhan: ' + desc;
+                window.open('https://wa.me/6289684219904?text=' + encodeURIComponent(message), '_blank');
+                bookingForm.reset();
+            });
+        }
+
+        // Form Contact
+        var contactForm = document.getElementById('contactForm');
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                var name = document.getElementById('contactName').value;
+                var message = document.getElementById('contactMessage').value;
+                window.open('https://wa.me/628567858301?text=' + encodeURIComponent('Halo, saya ' + name + '. ' + message), '_blank');
+                contactForm.reset();
+            });
+        }
+    })();
 </script>
 </body>
 </html>
