@@ -22,23 +22,21 @@
             color: #e5e7eb;
             overflow-x: hidden;
         }
-        
-        /* HEADER - TRANSPARAN, VIDEO TEMBUS */
-        .header-wrapper { 
-            padding: 0 24px; 
+
+        /* HEADER - NORMAL (BUKAN STICKY), IKUT DIAM DENGAN BERANDA */
+        .header-wrapper {
             position: fixed;
-            top: 20px;
+            top: 0;
             left: 0;
             right: 0;
-            z-index: 1001; 
-            max-width: 1400px;
-            margin: 0 auto;
+            z-index: 100;
+            padding: 20px 24px 0 24px;
+            background: #0a0c10;
         }
         .header {
-            background: rgba(10, 12, 16, 0.6);
-            backdrop-filter: blur(16px);
+            background: #0a0c10;
             border-radius: 100px;
-            box-shadow: 0 8px 32px rgba(0,0,0,0.2), 0 0 0 1px rgba(251,191,36,0.1);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.2), 0 0 0 1px rgba(251,191,36,0.15);
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -75,18 +73,16 @@
         .nav-links a:hover,
         .nav-links a.active { color: #FBBF24; }
         .btn-contact-nav {
-            background: #1a1c22 !important;
-            color: #FBBF24 !important;
+            background: #0a0c10 !important;
+            border: 1px solid #FBBF24;
             padding: 8px 24px !important;
-            border-radius: 100px !important;
-            font-weight: 600 !important;
-            border: 1px solid rgba(251,191,36,0.3) !important;
+            border-radius: 100px;
         }
         .btn-contact-nav:hover {
             background: #FBBF24 !important;
             color: #0a0c10 !important;
-            transform: translateY(-2px);
         }
+        .btn-contact-nav:after { display: none; }
         .menu-toggle {
             display: none;
             font-size: 1.8rem;
@@ -97,14 +93,13 @@
             z-index: 1002;
         }
         @media (max-width: 900px) {
-            .header-wrapper { padding: 0 16px; top: 10px; }
             .header { padding: 8px 20px; }
             .nav-links {
                 position: fixed;
-                top: 75px;
-                left: 16px;
-                right: 16px;
-                background: rgba(10,12,16,0.98);
+                top: 85px;
+                left: 20px;
+                right: 20px;
+                background: #0a0c10;
                 backdrop-filter: blur(20px);
                 flex-direction: column;
                 gap: 1.2rem;
@@ -114,6 +109,7 @@
                 z-index: 1000;
                 border: 1px solid rgba(251,191,36,0.3);
                 box-shadow: 0 20px 35px -10px rgba(0,0,0,0.5);
+                pointer-events: auto;
             }
             .nav-links a {
                 font-size: 1.1rem;
@@ -121,6 +117,8 @@
                 width: 100%;
                 text-align: center;
                 border-radius: 40px;
+                transition: all 0.2s;
+                pointer-events: auto;
             }
             .nav-links a:hover {
                 background: rgba(251,191,36,0.15);
@@ -139,47 +137,45 @@
             from { opacity: 0; transform: translateY(-15px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        
-        /* HERO VIDEO FIXED SEBAGAI BACKGROUND */
-        .hero-video-fixed {
+
+        /* BERANDA (HERO) - FIXED TIDAK BERGERAK */
+        .hero-fixed {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100vh;
-            z-index: -1;
+            z-index: 0;
             overflow: hidden;
         }
         .hero-video-bg {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        .hero-overlay-fixed {
-            position: fixed;
+            position: absolute;
             top: 0;
             left: 0;
             width: 100%;
-            height: 100vh;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+        }
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             background: rgba(0, 0, 0, 0.7);
-            z-index: -1;
+            z-index: 1;
         }
-        
-        /* KONTEN UTAMA - MENIMPA VIDEO */
-        .main-content {
-            position: relative;
+        .hero-content-wrapper {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             z-index: 2;
-            background: transparent;
-            margin-top: 80px;
-        }
-        
-        /* HERO SECTION (BERANDA) - TETAP DI ATAS TAPI TIDAK SCROLL */
-        .hero-section {
-            min-height: calc(100vh - 80px);
             display: flex;
             align-items: center;
-            position: relative;
-            z-index: 3;
+            justify-content: center;
         }
         .hero-container {
             max-width: 1280px;
@@ -193,7 +189,6 @@
             justify-content: space-between;
             gap: 3rem;
             flex-wrap: wrap;
-            padding: 40px 0;
         }
         .hero-content { flex: 1; }
         .hero-badge {
@@ -228,7 +223,7 @@
         }
         .btn-primary:hover { background: transparent; color: #FBBF24; transform: translateY(-3px); }
         .btn-outline {
-            background: #1a1c22;
+            background: #0a0c10;
             border: 2px solid #FBBF24;
             color: #FBBF24;
             padding: 12px 28px;
@@ -241,21 +236,20 @@
         .btn-outline:hover { background: #FBBF24; color: #0a0c10; transform: translateY(-3px); }
         .hero-image img { width: 100%; max-width: 380px; border-radius: 32px; }
         @media (max-width: 768px) {
-            .hero { padding: 40px 0; flex-direction: column-reverse; text-align: center; }
+            .hero { flex-direction: column-reverse; text-align: center; }
             .hero-stats, .hero-buttons { justify-content: center; }
             .hero-content h1 { font-size: 2.2rem; }
-            .hero-section { min-height: auto; }
+            .hero-image img { max-width: 280px; }
         }
-        
-        /* KONTEN HALAMAN - BACKGROUND GELAP TRANSPARAN */
-        .page-container { 
-            max-width: 1280px; 
-            margin: 0 auto; 
-            padding: 0 24px;
-            background: rgba(10, 12, 16, 0.85);
-            backdrop-filter: blur(2px);
-            border-radius: 32px 32px 0 0;
+
+        /* KONTEN SCROLL (TENTANG, LAYANAN, KARYA, KONTAK) */
+        .scroll-content {
+            position: relative;
+            z-index: 10;
+            background: linear-gradient(135deg, #0a0c10 0%, #0f1117 100%);
+            margin-top: 100vh;
         }
+        .page-container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
         .page { display: none; }
         .page.active { display: block; }
         section { padding: 80px 0; }
@@ -286,7 +280,7 @@
             align-items: center;
         }
         .about-img img { width: 100%; border-radius: 32px; }
-        .about-text p { color: #cbd5e1; line-height: 1.6; margin-bottom: 1.2rem; }
+        .about-text p { color: #9ca3af; line-height: 1.6; margin-bottom: 1.2rem; }
         .about-info { display: flex; flex-wrap: wrap; gap: 1.2rem; margin-top: 1.5rem; }
         .info-item { display: flex; align-items: center; gap: 8px; }
         .info-item i {
@@ -305,12 +299,7 @@
             background: transparent;
             padding: 1rem;
         }
-        .visi-box, .misi-box {
-            flex: 1;
-            padding: 1rem;
-            transition: all 0.3s ease;
-            background: transparent;
-        }
+        .visi-box, .misi-box { flex: 1; padding: 1rem; transition: all 0.3s ease; background: transparent; }
         .visi-box:hover, .misi-box:hover { transform: translateY(-5px); }
         .visi-box h3, .misi-box h3 {
             color: #FBBF24;
@@ -320,16 +309,8 @@
             align-items: center;
             gap: 10px;
         }
-        .visi-box p, .misi-box p {
-            color: #cbd5e1;
-            line-height: 1.8;
-            font-size: 0.95rem;
-            margin-bottom: 0.8rem;
-        }
-        .visi-box ul, .misi-box ul {
-            list-style: none;
-            margin-top: 0.5rem;
-        }
+        .visi-box p, .misi-box p { color: #cbd5e1; line-height: 1.8; font-size: 0.95rem; margin-bottom: 0.8rem; }
+        .visi-box ul, .misi-box ul { list-style: none; margin-top: 0.5rem; }
         .visi-box ul li, .misi-box ul li {
             color: #9ca3af;
             padding: 6px 0;
@@ -338,10 +319,7 @@
             gap: 10px;
             font-size: 0.9rem;
         }
-        .visi-box ul li i, .misi-box ul li i {
-            color: #FBBF24;
-            width: 20px;
-        }
+        .visi-box ul li i, .misi-box ul li i { color: #FBBF24; width: 20px; }
         .visi-misi-divider {
             width: 2px;
             background: linear-gradient(180deg, #FBBF24 0%, #FBBF24 70%, transparent 100%);
@@ -376,10 +354,7 @@
                 background: linear-gradient(90deg, #FBBF24, #FBBF24 70%, transparent 100%);
                 margin: 1rem 0;
             }
-            .visi-misi-divider::before, .visi-misi-divider::after {
-                top: -4px;
-                left: 0;
-            }
+            .visi-misi-divider::before, .visi-misi-divider::after { top: -4px; left: 0; }
         }
 
         /* KEMAMPUAN KAMI */
@@ -391,7 +366,7 @@
             margin-top: 1rem;
         }
         .skill-card {
-            background: rgba(17,22,28,0.7);
+            background: rgba(17,22,28,0.5);
             border: 1px solid rgba(251,191,36,0.15);
             border-radius: 24px;
             padding: 1.5rem;
@@ -399,15 +374,9 @@
             transition: all 0.3s ease;
             backdrop-filter: blur(4px);
         }
-        .skill-card:hover {
-            transform: translateY(-8px);
-            border-color: #FBBF24;
-            background: rgba(17,22,28,0.9);
-        }
+        .skill-card:hover { transform: translateY(-8px); border-color: #FBBF24; background: rgba(17,22,28,0.7); }
         .skill-icon {
-            width: 70px;
-            height: 70px;
-            background: rgba(251,191,36,0.1);
+            width: 70px; height: 70px; background: rgba(251,191,36,0.1);
             border-radius: 20px;
             display: flex;
             align-items: center;
@@ -415,21 +384,10 @@
             margin: 0 auto 1rem;
             transition: 0.3s;
         }
-        .skill-card:hover .skill-icon {
-            background: #FBBF24;
-            transform: scale(1.05);
-        }
+        .skill-card:hover .skill-icon { background: #FBBF24; transform: scale(1.05); }
         .skill-card:hover .skill-icon i { color: #0a0c10; }
-        .skill-icon i {
-            font-size: 2rem;
-            color: #FBBF24;
-            transition: 0.3s;
-        }
-        .skill-card h3 {
-            font-size: 1.2rem;
-            color: white;
-            margin-bottom: 0.5rem;
-        }
+        .skill-icon i { font-size: 2rem; color: #FBBF24; transition: 0.3s; }
+        .skill-card h3 { font-size: 1.2rem; color: white; margin-bottom: 0.5rem; }
         .skill-bar {
             width: 100%;
             height: 6px;
@@ -438,21 +396,9 @@
             margin: 0.8rem 0;
             overflow: hidden;
         }
-        .skill-progress {
-            height: 100%;
-            background: #FBBF24;
-            border-radius: 10px;
-        }
-        .skill-percent {
-            font-size: 0.8rem;
-            color: #FBBF24;
-            font-weight: 600;
-        }
-        .skill-desc {
-            font-size: 0.7rem;
-            color: #9ca3af;
-            margin-top: 0.5rem;
-        }
+        .skill-progress { height: 100%; background: #FBBF24; border-radius: 10px; width: 0%; transition: width 1s ease; }
+        .skill-percent { font-size: 0.8rem; color: #FBBF24; font-weight: 600; }
+        .skill-desc { font-size: 0.7rem; color: #9ca3af; margin-top: 0.5rem; }
 
         /* Blog Grid */
         .blog-grid {
@@ -463,7 +409,7 @@
         @media (max-width: 900px) { .blog-grid { grid-template-columns: repeat(2, 1fr); } }
         @media (max-width: 600px) { .blog-grid { grid-template-columns: 1fr; } }
         .blog-card {
-            background: rgba(17,22,28,0.7);
+            background: rgba(17,22,28,0.6);
             border-radius: 28px;
             overflow: hidden;
             transition: all 0.3s;
@@ -502,7 +448,7 @@
             gap: 1.8rem;
         }
         .service-card {
-            background: rgba(17,22,28,0.7);
+            background: rgba(17,22,28,0.6);
             backdrop-filter: blur(10px);
             border-radius: 28px;
             padding: 2rem;
@@ -520,8 +466,9 @@
         }
         .service-icon i { font-size: 1.6rem; color: #FBBF24; }
         .service-card h3 { font-size: 1.2rem; margin-bottom: 0.8rem; color: white; }
-        .service-card p { color: #cbd5e1; font-size: 0.9rem; line-height: 1.5; }
+        .service-card p { color: #9ca3af; font-size: 0.9rem; line-height: 1.5; }
 
+        /* Steps */
         .steps-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -542,13 +489,14 @@
             margin: 0 auto 1rem;
         }
 
+        /* Portfolio */
         .portfolio-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 1.8rem;
         }
         .portfolio-card {
-            background: rgba(17,22,28,0.7);
+            background: rgba(17,22,28,0.6);
             border-radius: 28px;
             overflow: hidden;
             transition: all 0.3s;
@@ -574,13 +522,14 @@
         }
         .portfolio-content h3 { font-size: 1.2rem; margin-bottom: 0.5rem; color: white; }
 
+        /* Testimonial */
         .testimonial-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 1.8rem;
         }
         .testimonial-card {
-            background: rgba(17,22,28,0.7);
+            background: rgba(17,22,28,0.6);
             border-radius: 24px;
             padding: 1.8rem;
             border: 1px solid rgba(251,191,36,0.1);
@@ -594,9 +543,10 @@
             border: 2px solid #FBBF24;
         }
 
+        /* FAQ */
         .faq-container { display: flex; flex-direction: column; gap: 1rem; }
         .faq-item {
-            background: rgba(17,22,28,0.7);
+            background: rgba(17,22,28,0.6);
             border-radius: 20px;
             border: 1px solid rgba(251,191,36,0.1);
             overflow: hidden;
@@ -617,15 +567,16 @@
             padding: 0 1.5rem;
             overflow: hidden;
             transition: all 0.3s ease;
-            color: #cbd5e1;
+            color: #9ca3af;
             line-height: 1.6;
         }
         .faq-item.active .faq-answer { max-height: 150px; padding: 0 1.5rem 1.2rem 1.5rem; }
         .faq-item.active .faq-icon { transform: rotate(180deg); }
 
+        /* Form */
         .form-container { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
         .booking-form {
-            background: rgba(17,22,28,0.7);
+            background: rgba(17,22,28,0.6);
             border-radius: 28px;
             padding: 2rem;
             border: 1px solid rgba(251,191,36,0.1);
@@ -674,7 +625,7 @@
             cursor: pointer;
         }
         .steps-card {
-            background: rgba(17,22,28,0.7);
+            background: rgba(17,22,28,0.6);
             border-radius: 28px;
             padding: 2rem;
             border: 1px solid rgba(251,191,36,0.1);
@@ -682,9 +633,10 @@
         .steps-card h3 { color: #FBBF24; margin-bottom: 1rem; }
         .steps-card ol { margin-left: 1.2rem; line-height: 2; color: #cbd5e1; }
 
+        /* Contact */
         .contact-premium { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
         .contact-info-card, .contact-form-card {
-            background: rgba(17,22,28,0.7);
+            background: rgba(17,22,28,0.6);
             backdrop-filter: blur(10px);
             border-radius: 32px;
             padding: 2rem;
@@ -693,7 +645,7 @@
         }
         .contact-info-card:hover, .contact-form-card:hover { border-color: rgba(251,191,36,0.4); transform: translateY(-5px); }
         .contact-info-card h3, .contact-form-card h3 { font-size: 1.5rem; color: #FBBF24; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 10px; }
-        .contact-detail { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.2rem; padding: 0.8rem; background: rgba(0,0,0,0.3); border-radius: 20px; }
+        .contact-detail { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.2rem; padding: 0.8rem; background: rgba(0,0,0,0.2); border-radius: 20px; }
         .contact-detail i {
             width: 45px; height: 45px;
             background: rgba(251,191,36,0.15);
@@ -742,10 +694,10 @@
             gap: 8px;
         }
 
+        /* Footer */
         footer {
             background: #06080c;
             border-top: 1px solid rgba(251,191,36,0.1);
-            margin-top: 0;
         }
         .footer-container {
             max-width: 1280px;
@@ -840,21 +792,12 @@
             .footer-bottom-links { justify-content: center; }
             .about-grid, .form-container, .contact-premium { grid-template-columns: 1fr; }
             .section-title { font-size: 1.8rem; }
-            .page-container { padding: 0 16px; }
         }
     </style>
 </head>
 <body>
 
-<!-- VIDEO BACKGROUND FIXED -->
-<div class="hero-video-fixed">
-    <video class="hero-video-bg" autoplay loop muted playsinline>
-        <source src="Pict/Sinematik.mp4" type="video/mp4">
-    </video>
-</div>
-<div class="hero-overlay-fixed"></div>
-
-<!-- HEADER TRANSPARAN -->
+<!-- HEADER - TETAP DIAM DENGAN BERANDA -->
 <div class="header-wrapper">
     <div class="header">
         <div class="logo">
@@ -872,11 +815,15 @@
     </div>
 </div>
 
-<main class="main-content">
-    <!-- HERO SECTION (BERANDA) - TETAP DI ATAS -->
-    <div class="hero-section">
+<!-- BERANDA (HERO) - FIXED TIDAK BERGERAK -->
+<div class="hero-fixed">
+    <video class="hero-video-bg" autoplay loop muted playsinline>
+        <source src="Pict/Sinematik.mp4" type="video/mp4">
+    </video>
+    <div class="hero-overlay"></div>
+    <div class="hero-content-wrapper">
         <div class="hero-container">
-            <div class="hero" data-aos="fade-up">
+            <div class="hero">
                 <div class="hero-content">
                     <div class="hero-badge"><i class="fas fa-code"></i> Frontend Developer</div>
                     <h1>Building <span class="highlight">Digital Experiences</span><br>That Inspire</h1>
@@ -897,9 +844,12 @@
             </div>
         </div>
     </div>
+</div>
 
-    <!-- KONTEN HALAMAN TENTANG (menimpa video saat scroll) -->
+<!-- KONTEN SCROLL (TENTANG, LAYANAN, KARYA, KONTAK) -->
+<div class="scroll-content">
     <div class="page-container">
+        <!-- HALAMAN TENTANG -->
         <div id="page-tentang" class="page active">
             <!-- Tentang Kami -->
             <section>
@@ -1221,55 +1171,55 @@
             </section>
         </div>
     </div>
-</main>
 
-<footer>
-    <div class="footer-container">
-        <div class="footer-grid">
-            <div class="footer-col">
-                <h4>HanzCode.id</h4>
-                <p>Solusi pengembangan web modern dengan fokus pada performa, estetika, dan pengalaman pengguna.</p>
-                <div class="footer-social">
-                    <a href="https://wa.me/628567858301" target="_blank"><i class="fab fa-whatsapp"></i></a>
-                    <a href="https://www.tiktok.com/@hanzcodeid" target="_blank"><i class="fab fa-tiktok"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-github"></i></a>
+    <footer>
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>HanzCode.id</h4>
+                    <p>Solusi pengembangan web modern dengan fokus pada performa, estetika, dan pengalaman pengguna.</p>
+                    <div class="footer-social">
+                        <a href="https://wa.me/628567858301" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.tiktok.com/@hanzcodeid" target="_blank"><i class="fab fa-tiktok"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Menu</h4>
+                    <ul>
+                        <li><a href="#tentang" data-page="tentang"><i class="fas fa-chevron-right"></i> Tentang</a></li>
+                        <li><a href="#layanan" data-page="layanan"><i class="fas fa-chevron-right"></i> Layanan</a></li>
+                        <li><a href="#karya" data-page="karya"><i class="fas fa-chevron-right"></i> Karya</a></li>
+                        <li><a href="#kontak" data-page="kontak"><i class="fas fa-chevron-right"></i> Kontak</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Layanan</h4>
+                    <ul>
+                        <li><a href="#layanan" data-page="layanan"><i class="fas fa-chevron-right"></i> Company Profile</a></li>
+                        <li><a href="#layanan" data-page="layanan"><i class="fas fa-chevron-right"></i> Custom Domain</a></li>
+                        <li><a href="#layanan" data-page="layanan"><i class="fas fa-chevron-right"></i> SEO Optimization</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Kontak</h4>
+                    <div class="footer-contact-info"><i class="fas fa-map-marker-alt"></i><span>Indramayu, Indonesia</span></div>
+                    <div class="footer-contact-info"><i class="fab fa-whatsapp"></i><span>+62 896-8421-9904</span></div>
+                    <div class="footer-contact-info"><i class="far fa-envelope"></i><span>hanzcode@gmail.com</span></div>
                 </div>
             </div>
-            <div class="footer-col">
-                <h4>Menu</h4>
-                <ul>
-                    <li><a href="#tentang" data-page="tentang"><i class="fas fa-chevron-right"></i> Tentang</a></li>
-                    <li><a href="#layanan" data-page="layanan"><i class="fas fa-chevron-right"></i> Layanan</a></li>
-                    <li><a href="#karya" data-page="karya"><i class="fas fa-chevron-right"></i> Karya</a></li>
-                    <li><a href="#kontak" data-page="kontak"><i class="fas fa-chevron-right"></i> Kontak</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>Layanan</h4>
-                <ul>
-                    <li><a href="#layanan" data-page="layanan"><i class="fas fa-chevron-right"></i> Company Profile</a></li>
-                    <li><a href="#layanan" data-page="layanan"><i class="fas fa-chevron-right"></i> Custom Domain</a></li>
-                    <li><a href="#layanan" data-page="layanan"><i class="fas fa-chevron-right"></i> SEO Optimization</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>Kontak</h4>
-                <div class="footer-contact-info"><i class="fas fa-map-marker-alt"></i><span>Indramayu, Indonesia</span></div>
-                <div class="footer-contact-info"><i class="fab fa-whatsapp"></i><span>+62 896-8421-9904</span></div>
-                <div class="footer-contact-info"><i class="far fa-envelope"></i><span>hanzcode@gmail.com</span></div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 HanzCode.id — Frontend Developer & Web Solutions</p>
+                <div class="footer-bottom-links">
+                    <a href="#tentang" data-page="tentang">Tentang</a>
+                    <a href="#kontak" data-page="kontak">Kontak</a>
+                    <a href="#">Kebijakan Privasi</a>
+                </div>
             </div>
         </div>
-        <div class="footer-bottom">
-            <p>&copy; 2026 HanzCode.id — Frontend Developer & Web Solutions</p>
-            <div class="footer-bottom-links">
-                <a href="#tentang" data-page="tentang">Tentang</a>
-                <a href="#kontak" data-page="kontak">Kontak</a>
-                <a href="#">Kebijakan Privasi</a>
-            </div>
-        </div>
-    </div>
-</footer>
+    </footer>
+</div>
 
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
