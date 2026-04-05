@@ -23,7 +23,7 @@
             overflow-x: hidden;
         }
 
-        /* HEADER - NORMAL (BUKAN STICKY), IKUT DIAM DENGAN BERANDA */
+        /* HEADER - TRANSPARAN, VIDEO TEMBUS */
         .header-wrapper {
             position: fixed;
             top: 0;
@@ -31,12 +31,13 @@
             right: 0;
             z-index: 100;
             padding: 20px 24px 0 24px;
-            background: #0a0c10;
+            background: transparent;
         }
         .header {
-            background: #0a0c10;
+            background: transparent;
             border-radius: 100px;
-            box-shadow: 0 8px 32px rgba(0,0,0,0.2), 0 0 0 1px rgba(251,191,36,0.15);
+            backdrop-filter: blur(12px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2), 0 0 0 1px rgba(251,191,36,0.1);
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -73,7 +74,7 @@
         .nav-links a:hover,
         .nav-links a.active { color: #FBBF24; }
         .btn-contact-nav {
-            background: #0a0c10 !important;
+            background: rgba(10,12,16,0.8) !important;
             border: 1px solid #FBBF24;
             padding: 8px 24px !important;
             border-radius: 100px;
@@ -99,7 +100,7 @@
                 top: 85px;
                 left: 20px;
                 right: 20px;
-                background: #0a0c10;
+                background: rgba(10,12,16,0.95);
                 backdrop-filter: blur(20px);
                 flex-direction: column;
                 gap: 1.2rem;
@@ -163,7 +164,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.7);
+            background: rgba(0, 0, 0, 0.65);
             z-index: 1;
         }
         .hero-content-wrapper {
@@ -223,7 +224,7 @@
         }
         .btn-primary:hover { background: transparent; color: #FBBF24; transform: translateY(-3px); }
         .btn-outline {
-            background: #0a0c10;
+            background: rgba(10,12,16,0.7);
             border: 2px solid #FBBF24;
             color: #FBBF24;
             padding: 12px 28px;
@@ -797,7 +798,7 @@
 </head>
 <body>
 
-<!-- HEADER - TETAP DIAM DENGAN BERANDA -->
+<!-- HEADER - TRANSPARAN -->
 <div class="header-wrapper">
     <div class="header">
         <div class="logo">
@@ -815,7 +816,7 @@
     </div>
 </div>
 
-<!-- BERANDA (HERO) - FIXED TIDAK BERGERAK -->
+<!-- BERANDA (HERO) - FIXED TIDAK BERGERAK, HANYA DI HALAMAN TENTANG -->
 <div class="hero-fixed">
     <video class="hero-video-bg" autoplay loop muted playsinline>
         <source src="Pict/Sinematik.mp4" type="video/mp4">
@@ -849,7 +850,7 @@
 <!-- KONTEN SCROLL (TENTANG, LAYANAN, KARYA, KONTAK) -->
 <div class="scroll-content">
     <div class="page-container">
-        <!-- HALAMAN TENTANG -->
+        <!-- HALAMAN TENTANG (dengan Hero di atasnya) -->
         <div id="page-tentang" class="page active">
             <!-- Tentang Kami -->
             <section>
@@ -871,7 +872,7 @@
                 </div>
             </section>
 
-            <!-- VISI & MISI -->
+            <!-- VISI & MISI (MISI HANYA 2 POIN) -->
             <section class="visi-misi-section" data-aos="fade-up">
                 <h2 class="section-title">Visi & Misi</h2>
                 <div class="visi-misi-wrapper" data-aos="fade-up" data-aos-delay="100">
@@ -889,10 +890,7 @@
                     <div class="misi-box" data-aos="fade-left">
                         <h3><i class="fas fa-bullseye"></i> Misi Kami</h3>
                         <p>1. Memberikan layanan pengembangan website berkualitas tinggi dengan harga yang terjangkau.</p>
-                        <p>2. Terus belajar dan mengikuti perkembangan teknologi terbaru di dunia web development.</p>
-                        <p>3. Membangun hubungan jangka panjang dengan klien melalui pelayanan yang jujur, transparan, dan responsif.</p>
-                        <p>4. Membantu klien mencapai tujuan bisnis mereka melalui website yang efektif dan optimal.</p>
-                        <p>5. Memberikan edukasi dan literasi digital kepada masyarakat tentang pentingnya website untuk bisnis.</p>
+                        <p>2. Membangun hubungan jangka panjang dengan klien melalui pelayanan yang jujur, transparan, dan responsif.</p>
                     </div>
                 </div>
             </section>
@@ -1031,7 +1029,7 @@
             </section>
         </div>
 
-        <!-- HALAMAN LAYANAN -->
+        <!-- HALAMAN LAYANAN (TANPA HERO) -->
         <div id="page-layanan" class="page">
             <section>
                 <h2 class="section-title" data-aos="fade-up">Layanan Kami</h2>
@@ -1089,7 +1087,7 @@
             </section>
         </div>
 
-        <!-- HALAMAN KARYA -->
+        <!-- HALAMAN KARYA (TANPA HERO) -->
         <div id="page-karya" class="page">
             <section>
                 <h2 class="section-title" data-aos="fade-up">Portofolio</h2>
@@ -1137,7 +1135,7 @@
             </section>
         </div>
 
-        <!-- HALAMAN KONTAK -->
+        <!-- HALAMAN KONTAK (TANPA HERO) -->
         <div id="page-kontak" class="page">
             <section>
                 <h2 class="section-title" data-aos="fade-up">FAQ</h2>
