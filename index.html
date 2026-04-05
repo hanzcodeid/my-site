@@ -22,7 +22,15 @@
             color: #e5e7eb;
             overflow-x: hidden;
         }
-        .header-wrapper { padding: 0 24px; margin: 20px 0; position: relative; z-index: 1001; }
+        .header-wrapper { 
+            padding: 0 24px; 
+            margin: 20px 0; 
+            position: relative; 
+            z-index: 1001; 
+            max-width: 1400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
         .header {
             background: rgba(10, 12, 16, 0.85);
             backdrop-filter: blur(16px);
@@ -117,42 +125,19 @@
             from { opacity: 0; transform: translateY(-15px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        .page-container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
-        .page { display: none; animation: fadePage 0.3s ease; }
-        .page.active { display: block; }
-        @keyframes fadePage {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        section { padding: 80px 0; }
-        .section-title {
-            font-size: 2.3rem;
-            font-weight: 700;
-            margin-bottom: 2.5rem;
+        
+        /* HERO VIDEO FULL WIDTH */
+        .hero-fullwidth {
             position: relative;
-            display: inline-block;
-            color: #fff;
-        }
-        .section-title:after {
-            content: '';
-            position: absolute;
-            bottom: -12px;
-            left: 0;
-            width: 60px;
-            height: 4px;
-            background: #FBBF24;
-            border-radius: 4px;
-        }
-
-        /* HERO DENGAN VIDEO BACKGROUND */
-        .hero-section {
-            position: relative;
+            width: 100vw;
+            left: 50%;
+            right: 50%;
+            margin-left: -50vw;
+            margin-right: -50vw;
             min-height: 90vh;
             display: flex;
             align-items: center;
             overflow: hidden;
-            border-radius: 32px;
-            margin: 20px 0;
         }
         .hero-video-bg {
             position: absolute;
@@ -172,16 +157,21 @@
             background: rgba(0, 0, 0, 0.75);
             z-index: 1;
         }
-        .hero {
+        .hero-container {
             position: relative;
             z-index: 2;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+            width: 100%;
+        }
+        .hero {
             display: flex;
             align-items: center;
             justify-content: space-between;
             gap: 3rem;
             flex-wrap: wrap;
-            padding: 60px 40px;
-            width: 100%;
+            padding: 60px 0;
         }
         .hero-content { flex: 1; }
         .hero-badge {
@@ -229,11 +219,38 @@
         .btn-outline:hover { background: rgba(251,191,36,0.1); transform: translateY(-3px); }
         .hero-image img { width: 100%; max-width: 380px; border-radius: 32px; }
         @media (max-width: 768px) {
-            .hero { padding: 40px 20px; flex-direction: column-reverse; text-align: center; }
+            .hero { padding: 40px 0; flex-direction: column-reverse; text-align: center; }
             .hero-stats, .hero-buttons { justify-content: center; }
             .hero-content h1 { font-size: 2.2rem; }
         }
         
+        .page-container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+        .page { display: none; animation: fadePage 0.3s ease; }
+        .page.active { display: block; }
+        @keyframes fadePage {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        section { padding: 80px 0; }
+        .section-title {
+            font-size: 2.3rem;
+            font-weight: 700;
+            margin-bottom: 2.5rem;
+            position: relative;
+            display: inline-block;
+            color: #fff;
+        }
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -12px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: #FBBF24;
+            border-radius: 4px;
+        }
+
         /* About */
         .about-grid {
             display: grid;
@@ -252,7 +269,7 @@
         .about-banner { margin-top: 2rem; width: 100%; }
         .about-banner img { width: 100%; height: auto; border-radius: 20px; }
 
-        /* VISI & MISI - tanpa background grup, garis panjang */
+        /* VISI & MISI */
         .visi-misi-section {
             margin: 3rem 0;
         }
@@ -342,6 +359,84 @@
                 top: -4px;
                 left: 0;
             }
+        }
+
+        /* KEMAMPUAN KAMI - Skill Cards */
+        .skills-section {
+            margin: 2rem 0;
+        }
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+        .skill-card {
+            background: rgba(17,22,28,0.5);
+            border: 1px solid rgba(251,191,36,0.15);
+            border-radius: 24px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(4px);
+        }
+        .skill-card:hover {
+            transform: translateY(-8px);
+            border-color: #FBBF24;
+            background: rgba(17,22,28,0.7);
+        }
+        .skill-icon {
+            width: 70px;
+            height: 70px;
+            background: rgba(251,191,36,0.1);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            transition: 0.3s;
+        }
+        .skill-card:hover .skill-icon {
+            background: #FBBF24;
+            transform: scale(1.05);
+        }
+        .skill-card:hover .skill-icon i {
+            color: #0a0c10;
+        }
+        .skill-icon i {
+            font-size: 2rem;
+            color: #FBBF24;
+            transition: 0.3s;
+        }
+        .skill-card h3 {
+            font-size: 1.2rem;
+            color: white;
+            margin-bottom: 0.5rem;
+        }
+        .skill-bar {
+            width: 100%;
+            height: 6px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+            margin: 0.8rem 0;
+            overflow: hidden;
+        }
+        .skill-progress {
+            height: 100%;
+            background: #FBBF24;
+            border-radius: 10px;
+            width: 0%;
+            transition: width 1s ease;
+        }
+        .skill-percent {
+            font-size: 0.8rem;
+            color: #FBBF24;
+            font-weight: 600;
+        }
+        .skill-desc {
+            font-size: 0.7rem;
+            color: #9ca3af;
+            margin-top: 0.5rem;
         }
 
         /* Blog Grid */
@@ -763,36 +858,38 @@
 </div>
 
 <main>
+    <!-- HERO FULL WIDTH dengan Video -->
+    <div class="hero-fullwidth">
+        <video class="hero-video-bg" autoplay loop muted playsinline>
+            <source src="https://cdn.pixabay.com/video/2022/11/14/139386-772107966_large.mp4" type="video/mp4">
+        </video>
+        <div class="hero-overlay"></div>
+        <div class="hero-container">
+            <div class="hero" data-aos="fade-up">
+                <div class="hero-content">
+                    <div class="hero-badge"><i class="fas fa-code"></i> Frontend Developer</div>
+                    <h1>Building <span class="highlight">Digital Experiences</span><br>That Inspire</h1>
+                    <p>HanzCode.id - solusi pengembangan web modern dengan fokus pada performa, estetika, dan pengalaman pengguna yang luar biasa.</p>
+                    <div class="hero-stats">
+                        <div><div class="stat-number">587B+</div><div class="stat-label">Suka</div></div>
+                        <div><div class="stat-number">156k</div><div class="stat-label">Pengikut</div></div>
+                        <div><div class="stat-number">267+</div><div class="stat-label">Project</div></div>
+                    </div>
+                    <div class="hero-buttons">
+                        <a href="#karya" class="btn-primary" data-page="karya">Lihat Karya <i class="fas fa-arrow-right"></i></a>
+                        <a href="#kontak" class="btn-outline" data-page="kontak">Konsultasi <i class="fas fa-comment"></i></a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <img src="Pict/Beranda.png" alt="HanzCode">
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="page-container">
         <!-- HALAMAN TENTANG -->
         <div id="page-tentang" class="page active">
-            <!-- Hero dengan Video Background -->
-            <div class="hero-section" data-aos="fade-up">
-                <video class="hero-video-bg" autoplay loop muted playsinline>
-                    <source src="https://cdn.pixabay.com/video/2022/11/14/139386-772107966_large.mp4" type="video/mp4">
-                </video>
-                <div class="hero-overlay"></div>
-                <div class="hero">
-                    <div class="hero-content">
-                        <div class="hero-badge"><i class="fas fa-code"></i> Frontend Developer</div>
-                        <h1>Building <span class="highlight">Digital Experiences</span><br>That Inspire</h1>
-                        <p>HanzCode.id - solusi pengembangan web modern dengan fokus pada performa, estetika, dan pengalaman pengguna yang luar biasa.</p>
-                        <div class="hero-stats">
-                            <div><div class="stat-number">587B+</div><div class="stat-label">Suka</div></div>
-                            <div><div class="stat-number">156k</div><div class="stat-label">Pengikut</div></div>
-                            <div><div class="stat-number">267+</div><div class="stat-label">Project</div></div>
-                        </div>
-                        <div class="hero-buttons">
-                            <a href="#karya" class="btn-primary" data-page="karya">Lihat Karya <i class="fas fa-arrow-right"></i></a>
-                            <a href="#kontak" class="btn-outline" data-page="kontak">Konsultasi <i class="fas fa-comment"></i></a>
-                        </div>
-                    </div>
-                    <div class="hero-image">
-                        <img src="Pict/Beranda.png" alt="HanzCode">
-                    </div>
-                </div>
-            </div>
-
             <!-- Tentang Kami -->
             <section>
                 <div class="about-grid" data-aos="fade-up">
@@ -813,7 +910,7 @@
                 </div>
             </section>
 
-            <!-- VISI & MISI (tanpa background grup, garis panjang, isi banyak) -->
+            <!-- VISI & MISI -->
             <section class="visi-misi-section" data-aos="fade-up">
                 <h2 class="section-title">Visi & Misi</h2>
                 <div class="visi-misi-wrapper" data-aos="fade-up" data-aos-delay="100">
@@ -835,6 +932,48 @@
                         <p>3. Membangun hubungan jangka panjang dengan klien melalui pelayanan yang jujur, transparan, dan responsif.</p>
                         <p>4. Membantu klien mencapai tujuan bisnis mereka melalui website yang efektif dan optimal.</p>
                         <p>5. Memberikan edukasi dan literasi digital kepada masyarakat tentang pentingnya website untuk bisnis.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- KEMAMPUAN KAMI -->
+            <section class="skills-section" data-aos="fade-up">
+                <h2 class="section-title">Kemampuan Kami</h2>
+                <div class="skills-grid">
+                    <div class="skill-card" data-aos="zoom-in" data-aos-delay="0">
+                        <div class="skill-icon"><i class="fab fa-html5"></i></div>
+                        <h3>HTML5</h3>
+                        <div class="skill-bar"><div class="skill-progress" style="width: 95%;"></div></div>
+                        <div class="skill-percent">95%</div>
+                        <div class="skill-desc">Struktur semantik, SEO friendly, modern</div>
+                    </div>
+                    <div class="skill-card" data-aos="zoom-in" data-aos-delay="100">
+                        <div class="skill-icon"><i class="fab fa-css3-alt"></i></div>
+                        <h3>CSS3</h3>
+                        <div class="skill-bar"><div class="skill-progress" style="width: 90%;"></div></div>
+                        <div class="skill-percent">90%</div>
+                        <div class="skill-desc">Flexbox, Grid, Animasi, Responsive</div>
+                    </div>
+                    <div class="skill-card" data-aos="zoom-in" data-aos-delay="200">
+                        <div class="skill-icon"><i class="fab fa-js"></i></div>
+                        <h3>JavaScript</h3>
+                        <div class="skill-bar"><div class="skill-progress" style="width: 85%;"></div></div>
+                        <div class="skill-percent">85%</div>
+                        <div class="skill-desc">ES6+, DOM, Async, Framework</div>
+                    </div>
+                    <div class="skill-card" data-aos="zoom-in" data-aos-delay="300">
+                        <div class="skill-icon"><i class="fas fa-globe"></i></div>
+                        <h3>Domain & Hosting</h3>
+                        <div class="skill-bar"><div class="skill-progress" style="width: 88%;"></div></div>
+                        <div class="skill-percent">88%</div>
+                        <div class="skill-desc">DNS, SSL, cPanel, Deployment</div>
+                    </div>
+                    <div class="skill-card" data-aos="zoom-in" data-aos-delay="400">
+                        <div class="skill-icon"><i class="fas fa-chart-line"></i></div>
+                        <h3>SEO</h3>
+                        <div class="skill-bar"><div class="skill-progress" style="width: 82%;"></div></div>
+                        <div class="skill-percent">82%</div>
+                        <div class="skill-desc">On-page, Kecepatan, Meta tag</div>
                     </div>
                 </div>
             </section>
@@ -1124,7 +1263,6 @@
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
     (function() {
-        // Proteksi
         document.addEventListener('keydown', function(e) {
             if ((e.ctrlKey && e.key === 'u') || (e.ctrlKey && e.key === 'U') || e.key === 'F12' ||
                 (e.ctrlKey && e.shiftKey && e.key === 'I') || (e.ctrlKey && e.shiftKey && e.key === 'J')) {
