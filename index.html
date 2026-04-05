@@ -13,6 +13,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         img { -webkit-user-drag: none; user-drag: none; pointer-events: none; }
@@ -23,7 +24,7 @@
             overflow-x: hidden;
         }
 
-        /* HEADER - TRANSPARAN, VIDEO TEMBUS */
+        /* HEADER - TRANSPARAN DENGAN BLUR */
         .header-wrapper {
             position: fixed;
             top: 0;
@@ -34,9 +35,9 @@
             background: transparent;
         }
         .header {
-            background: transparent;
+            background: rgba(10, 12, 16, 0.85);
+            backdrop-filter: blur(16px);
             border-radius: 100px;
-            backdrop-filter: blur(12px);
             box-shadow: 0 4px 20px rgba(0,0,0,0.2), 0 0 0 1px rgba(251,191,36,0.1);
             display: flex;
             align-items: center;
@@ -243,7 +244,7 @@
             .hero-image img { max-width: 280px; }
         }
 
-        /* KONTEN SCROLL (TENTANG, LAYANAN, KARYA, KONTAK) */
+        /* KONTEN SCROLL */
         .scroll-content {
             position: relative;
             z-index: 10;
@@ -401,6 +402,54 @@
         .skill-percent { font-size: 0.8rem; color: #FBBF24; font-weight: 600; }
         .skill-desc { font-size: 0.7rem; color: #9ca3af; margin-top: 0.5rem; }
 
+        /* GRAFIK SURFACE */
+        .chart-section {
+            margin: 2rem 0;
+        }
+        .chart-container {
+            background: rgba(17,22,28,0.4);
+            border-radius: 28px;
+            padding: 2rem;
+            border: 1px solid rgba(251,191,36,0.15);
+            backdrop-filter: blur(4px);
+        }
+        .chart-container canvas {
+            max-height: 400px;
+            width: 100%;
+        }
+        .chart-title {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            color: #FBBF24;
+        }
+
+        /* Testimonial */
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.8rem;
+        }
+        .testimonial-card {
+            background: rgba(17,22,28,0.6);
+            border-radius: 24px;
+            padding: 1.8rem;
+            border: 1px solid rgba(251,191,36,0.1);
+            transition: all 0.3s;
+        }
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(251,191,36,0.3);
+        }
+        .testimonial-text { font-style: italic; color: #cbd5e1; line-height: 1.6; margin-bottom: 1.2rem; }
+        .testimonial-author { display: flex; align-items: center; gap: 12px; }
+        .testimonial-author img {
+            width: 45px; height: 45px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #FBBF24;
+        }
+
         /* Blog Grid */
         .blog-grid {
             display: grid;
@@ -522,27 +571,6 @@
             margin-bottom: 10px;
         }
         .portfolio-content h3 { font-size: 1.2rem; margin-bottom: 0.5rem; color: white; }
-
-        /* Testimonial */
-        .testimonial-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.8rem;
-        }
-        .testimonial-card {
-            background: rgba(17,22,28,0.6);
-            border-radius: 24px;
-            padding: 1.8rem;
-            border: 1px solid rgba(251,191,36,0.1);
-        }
-        .testimonial-text { font-style: italic; color: #cbd5e1; line-height: 1.6; margin-bottom: 1.2rem; }
-        .testimonial-author { display: flex; align-items: center; gap: 12px; }
-        .testimonial-author img {
-            width: 45px; height: 45px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 2px solid #FBBF24;
-        }
 
         /* FAQ */
         .faq-container { display: flex; flex-direction: column; gap: 1rem; }
@@ -798,7 +826,7 @@
 </head>
 <body>
 
-<!-- HEADER - TRANSPARAN -->
+<!-- HEADER - TRANSPARAN DENGAN BLUR -->
 <div class="header-wrapper">
     <div class="header">
         <div class="logo">
@@ -816,7 +844,7 @@
     </div>
 </div>
 
-<!-- BERANDA (HERO) - FIXED TIDAK BERGERAK, HANYA DI HALAMAN TENTANG -->
+<!-- BERANDA (HERO) - FIXED TIDAK BERGERAK -->
 <div class="hero-fixed">
     <video class="hero-video-bg" autoplay loop muted playsinline>
         <source src="Pict/Sinematik.mp4" type="video/mp4">
@@ -847,10 +875,10 @@
     </div>
 </div>
 
-<!-- KONTEN SCROLL (TENTANG, LAYANAN, KARYA, KONTAK) -->
+<!-- KONTEN SCROLL -->
 <div class="scroll-content">
     <div class="page-container">
-        <!-- HALAMAN TENTANG (dengan Hero di atasnya) -->
+        <!-- HALAMAN TENTANG -->
         <div id="page-tentang" class="page active">
             <!-- Tentang Kami -->
             <section>
@@ -872,7 +900,7 @@
                 </div>
             </section>
 
-            <!-- VISI & MISI (MISI HANYA 2 POIN) -->
+            <!-- VISI & MISI -->
             <section class="visi-misi-section" data-aos="fade-up">
                 <h2 class="section-title">Visi & Misi</h2>
                 <div class="visi-misi-wrapper" data-aos="fade-up" data-aos-delay="100">
@@ -904,35 +932,63 @@
                         <h3>HTML5</h3>
                         <div class="skill-bar"><div class="skill-progress" style="width: 95%;"></div></div>
                         <div class="skill-percent">95%</div>
-                        <div class="skill-desc">Struktur semantik, SEO friendly, modern</div>
+                        <div class="skill-desc">Struktur semantik, SEO friendly</div>
                     </div>
                     <div class="skill-card" data-aos="zoom-in" data-aos-delay="100">
                         <div class="skill-icon"><i class="fab fa-css3-alt"></i></div>
                         <h3>CSS3</h3>
                         <div class="skill-bar"><div class="skill-progress" style="width: 90%;"></div></div>
                         <div class="skill-percent">90%</div>
-                        <div class="skill-desc">Flexbox, Grid, Animasi, Responsive</div>
+                        <div class="skill-desc">Flexbox, Grid, Animasi</div>
                     </div>
                     <div class="skill-card" data-aos="zoom-in" data-aos-delay="200">
                         <div class="skill-icon"><i class="fab fa-js"></i></div>
                         <h3>JavaScript</h3>
                         <div class="skill-bar"><div class="skill-progress" style="width: 85%;"></div></div>
                         <div class="skill-percent">85%</div>
-                        <div class="skill-desc">ES6+, DOM, Async, Framework</div>
+                        <div class="skill-desc">ES6+, DOM, Framework</div>
                     </div>
                     <div class="skill-card" data-aos="zoom-in" data-aos-delay="300">
                         <div class="skill-icon"><i class="fas fa-globe"></i></div>
                         <h3>Domain & Hosting</h3>
                         <div class="skill-bar"><div class="skill-progress" style="width: 88%;"></div></div>
                         <div class="skill-percent">88%</div>
-                        <div class="skill-desc">DNS, SSL, cPanel, Deployment</div>
+                        <div class="skill-desc">DNS, SSL, Deployment</div>
                     </div>
                     <div class="skill-card" data-aos="zoom-in" data-aos-delay="400">
                         <div class="skill-icon"><i class="fas fa-chart-line"></i></div>
                         <h3>SEO</h3>
                         <div class="skill-bar"><div class="skill-progress" style="width: 82%;"></div></div>
                         <div class="skill-percent">82%</div>
-                        <div class="skill-desc">On-page, Kecepatan, Meta tag</div>
+                        <div class="skill-desc">On-page, Kecepatan</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- GRAFIK SURFACE -->
+            <section class="chart-section" data-aos="fade-up">
+                <h2 class="section-title">Pertumbuhan Pelanggan</h2>
+                <div class="chart-container">
+                    <div class="chart-title"><i class="fas fa-chart-line"></i> Jumlah Pelanggan per Bulan (2025)</div>
+                    <canvas id="customerChart" width="800" height="400"></canvas>
+                </div>
+            </section>
+
+            <!-- TESTIMONIAL (dipindahkan dari Karya) -->
+            <section data-aos="fade-up">
+                <h2 class="section-title">Apa Kata Klien Kami?</h2>
+                <div class="testimonial-grid">
+                    <div class="testimonial-card" data-aos="fade-up">
+                        <div class="testimonial-text">"HanzCode.id mengerjakan website company profile kami dengan sangat profesional. Hasilnya modern dan cepat!"</div>
+                        <div class="testimonial-author"><img src="https://randomuser.me/api/portraits/men/32.jpg"><div><h4>Budi Santoso</h4><p>CEO, PT Maju Bersama</p></div></div>
+                    </div>
+                    <div class="testimonial-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="testimonial-text">"Desain yang diberikan sangat estetik dan responsif. Proses komunikasi lancar, hasil melebihi ekspektasi!"</div>
+                        <div class="testimonial-author"><img src="https://randomuser.me/api/portraits/women/68.jpg"><div><h4>Amanda Wijaya</h4><p>Owner, Bloom Studio</p></div></div>
+                    </div>
+                    <div class="testimonial-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="testimonial-text">"Kualitas kode rapi dan mudah dikembangkan. HanzCode.id benar-benar profesional!"</div>
+                        <div class="testimonial-author"><img src="https://randomuser.me/api/portraits/men/45.jpg"><div><h4>Reza Pratama</h4><p>CTO, TechSolution</p></div></div>
                     </div>
                 </div>
             </section>
@@ -1029,7 +1085,7 @@
             </section>
         </div>
 
-        <!-- HALAMAN LAYANAN (TANPA HERO) -->
+        <!-- HALAMAN LAYANAN -->
         <div id="page-layanan" class="page">
             <section>
                 <h2 class="section-title" data-aos="fade-up">Layanan Kami</h2>
@@ -1087,7 +1143,7 @@
             </section>
         </div>
 
-        <!-- HALAMAN KARYA (TANPA HERO) -->
+        <!-- HALAMAN KARYA (hanya Portofolio) -->
         <div id="page-karya" class="page">
             <section>
                 <h2 class="section-title" data-aos="fade-up">Portofolio</h2>
@@ -1124,18 +1180,9 @@
                     </div>
                 </div>
             </section>
-
-            <section>
-                <h2 class="section-title" data-aos="fade-up">Testimonial</h2>
-                <div class="testimonial-grid">
-                    <div class="testimonial-card" data-aos="fade-up"><div class="testimonial-text">"HanzCode.id mengerjakan website company profile kami dengan sangat profesional. Hasilnya modern dan cepat!"</div><div class="testimonial-author"><img src="https://randomuser.me/api/portraits/men/32.jpg"><div><h4>Budi Santoso</h4><p>CEO, PT Maju Bersama</p></div></div></div>
-                    <div class="testimonial-card" data-aos="fade-up" data-aos-delay="100"><div class="testimonial-text">"Desain yang diberikan sangat estetik dan responsif. Proses komunikasi lancar, hasil melebihi ekspektasi!"</div><div class="testimonial-author"><img src="https://randomuser.me/api/portraits/women/68.jpg"><div><h4>Amanda Wijaya</h4><p>Owner, Bloom Studio</p></div></div></div>
-                    <div class="testimonial-card" data-aos="fade-up" data-aos-delay="200"><div class="testimonial-text">"Kualitas kode rapi dan mudah dikembangkan. HanzCode.id benar-benar profesional!"</div><div class="testimonial-author"><img src="https://randomuser.me/api/portraits/men/45.jpg"><div><h4>Reza Pratama</h4><p>CTO, TechSolution</p></div></div></div>
-                </div>
-            </section>
         </div>
 
-        <!-- HALAMAN KONTAK (TANPA HERO) -->
+        <!-- HALAMAN KONTAK -->
         <div id="page-kontak" class="page">
             <section>
                 <h2 class="section-title" data-aos="fade-up">FAQ</h2>
@@ -1231,6 +1278,59 @@
         document.addEventListener('contextmenu', function(e) { e.preventDefault(); return false; });
 
         AOS.init({ duration: 600, once: false, offset: 80, mirror: true });
+
+        // GRAFIK SURFACE
+        var ctx = document.getElementById('customerChart').getContext('2d');
+        var chart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des'],
+                datasets: [{
+                    label: 'Jumlah Pelanggan',
+                    data: [12, 15, 18, 22, 28, 35, 42, 50, 58, 67, 75, 85],
+                    borderColor: '#FBBF24',
+                    backgroundColor: 'rgba(251, 191, 36, 0.1)',
+                    borderWidth: 2,
+                    pointBackgroundColor: '#FBBF24',
+                    pointBorderColor: '#0a0c10',
+                    pointRadius: 4,
+                    pointHoverRadius: 6,
+                    tension: 0.3,
+                    fill: true
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: true,
+                plugins: {
+                    legend: {
+                        labels: { color: '#cbd5e1' }
+                    },
+                    tooltip: {
+                        backgroundColor: '#0a0c10',
+                        titleColor: '#FBBF24',
+                        bodyColor: '#cbd5e1',
+                        borderColor: '#FBBF24',
+                        borderWidth: 1
+                    }
+                },
+                scales: {
+                    x: {
+                        ticks: { color: '#9ca3af' },
+                        grid: { color: 'rgba(255,255,255,0.05)' }
+                    },
+                    y: {
+                        ticks: { color: '#9ca3af' },
+                        grid: { color: 'rgba(255,255,255,0.05)' },
+                        title: {
+                            display: true,
+                            text: 'Jumlah Klien',
+                            color: '#9ca3af'
+                        }
+                    }
+                }
+            }
+        });
 
         function changePage(pageId) {
             document.querySelectorAll('.page').forEach(function(page) {
