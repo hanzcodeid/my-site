@@ -22,7 +22,7 @@
             color: #e5e7eb;
             overflow-x: hidden;
         }
-        .header-wrapper { padding: 0 24px; margin: 20px 0; }
+        .header-wrapper { padding: 0 24px; margin: 20px 0; position: relative; z-index: 1001; }
         .header {
             background: rgba(10, 12, 16, 0.85);
             backdrop-filter: blur(16px);
@@ -70,6 +70,7 @@
             background: none;
             border: none;
             color: #e5e7eb;
+            z-index: 1002;
         }
         @media (max-width: 900px) {
             .header { padding: 8px 20px; }
@@ -85,9 +86,29 @@
                 padding: 1.8rem;
                 border-radius: 32px;
                 display: none;
-                z-index: 999;
+                z-index: 1000;
                 border: 1px solid rgba(251,191,36,0.3);
+                box-shadow: 0 20px 35px -10px rgba(0,0,0,0.5);
+                pointer-events: auto;
             }
+            .nav-links a {
+                font-size: 1.1rem;
+                padding: 12px 20px;
+                width: 100%;
+                text-align: center;
+                border-radius: 40px;
+                transition: all 0.2s;
+                pointer-events: auto;
+            }
+            .nav-links a:hover {
+                background: rgba(251,191,36,0.15);
+                color: #FBBF24;
+            }
+            .nav-links a.active {
+                background: rgba(251,191,36,0.2);
+                color: #FBBF24;
+            }
+            .nav-links a:after { display: none; }
             .nav-links.show { display: flex; animation: fadeSlideDown 0.3s ease; }
             .menu-toggle { display: block; }
             .logo { font-size: 1.4rem; }
@@ -190,10 +211,18 @@
         }
         .about-banner { margin-top: 2rem; width: 100%; }
         .about-banner img { width: 100%; height: auto; border-radius: 20px; }
+        
+        /* BLOG GRID 3x2 */
         .blog-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 1.8rem;
+        }
+        @media (max-width: 900px) {
+            .blog-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 600px) {
+            .blog-grid { grid-template-columns: 1fr; }
         }
         .blog-card {
             background: rgba(17,22,28,0.6);
@@ -203,30 +232,31 @@
             border: 1px solid rgba(251,191,36,0.1);
         }
         .blog-card:hover { transform: translateY(-5px); border-color: rgba(251,191,36,0.3); }
-        .blog-img { width: 100%; height: 200px; object-fit: cover; }
-        .blog-content { padding: 1.5rem; }
-        .blog-date { font-size: 0.7rem; color: #FBBF24; margin-bottom: 8px; }
-        .blog-content h3 { font-size: 1.1rem; margin-bottom: 8px; color: white; }
-        .blog-preview { color: #9ca3af; font-size: 0.85rem; line-height: 1.5; margin-bottom: 12px; }
+        .blog-img { width: 100%; height: 180px; object-fit: cover; }
+        .blog-content { padding: 1.2rem; }
+        .blog-date { font-size: 0.7rem; color: #FBBF24; margin-bottom: 6px; }
+        .blog-content h3 { font-size: 1rem; margin-bottom: 6px; color: white; }
+        .blog-preview { color: #9ca3af; font-size: 0.8rem; line-height: 1.4; margin-bottom: 10px; }
         .blog-full {
             max-height: 0;
             overflow: hidden;
             transition: max-height 0.5s ease-out;
             color: #cbd5e1;
-            font-size: 0.85rem;
-            line-height: 1.6;
+            font-size: 0.8rem;
+            line-height: 1.5;
         }
-        .blog-full.show { max-height: 500px; transition: max-height 0.5s ease-in; margin-top: 12px; padding-top: 12px; border-top: 1px solid rgba(251,191,36,0.2); }
+        .blog-full.show { max-height: 300px; transition: max-height 0.5s ease-in; margin-top: 10px; padding-top: 10px; border-top: 1px solid rgba(251,191,36,0.2); }
         .read-more-btn {
             color: #FBBF24;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             font-weight: 500;
             cursor: pointer;
             display: inline-flex;
             align-items: center;
             gap: 5px;
-            margin-top: 8px;
+            margin-top: 6px;
         }
+        
         .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -252,6 +282,127 @@
         .service-icon i { font-size: 1.6rem; color: #FBBF24; }
         .service-card h3 { font-size: 1.2rem; margin-bottom: 0.8rem; color: white; }
         .service-card p { color: #9ca3af; font-size: 0.9rem; line-height: 1.5; }
+
+        /* DOMAIN SECTION */
+        .domain-section {
+            background: rgba(17,22,28,0.6);
+            border-radius: 32px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 1px solid rgba(251,191,36,0.2);
+        }
+        .domain-search {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        .domain-search input {
+            flex: 1;
+            padding: 16px 20px;
+            background: rgba(0,0,0,0.4);
+            border: 1px solid rgba(251,191,36,0.3);
+            border-radius: 60px;
+            color: white;
+            font-size: 1rem;
+            font-family: inherit;
+        }
+        .domain-search input:focus {
+            outline: none;
+            border-color: #FBBF24;
+        }
+        .domain-search button {
+            background: #FBBF24;
+            border: none;
+            padding: 0 28px;
+            border-radius: 60px;
+            color: #0a0c10;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1rem;
+            transition: 0.3s;
+        }
+        .domain-search button:hover {
+            background: white;
+            transform: translateY(-2px);
+        }
+        .domain-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+        @media (max-width: 900px) {
+            .domain-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 500px) {
+            .domain-grid { grid-template-columns: 1fr; }
+        }
+        .domain-card {
+            background: rgba(0,0,0,0.3);
+            border-radius: 24px;
+            padding: 1.2rem;
+            border: 1px solid rgba(251,191,36,0.15);
+            transition: 0.3s;
+        }
+        .domain-card:hover {
+            border-color: #FBBF24;
+            transform: translateY(-3px);
+        }
+        .domain-name {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #FBBF24;
+            margin-bottom: 0.8rem;
+        }
+        .domain-features {
+            list-style: none;
+            margin: 0.8rem 0;
+        }
+        .domain-features li {
+            font-size: 0.75rem;
+            color: #9ca3af;
+            padding: 4px 0;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .domain-features li i {
+            color: #FBBF24;
+            font-size: 0.7rem;
+        }
+        .domain-price {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: white;
+            margin-top: 0.8rem;
+            padding-top: 0.8rem;
+            border-top: 1px solid rgba(251,191,36,0.2);
+        }
+        .domain-price span {
+            font-size: 0.7rem;
+            color: #9ca3af;
+            font-weight: normal;
+        }
+        .domain-order {
+            width: 100%;
+            margin-top: 0.8rem;
+            background: rgba(251,191,36,0.15);
+            border: 1px solid rgba(251,191,36,0.3);
+            padding: 8px;
+            border-radius: 40px;
+            color: #FBBF24;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .domain-order:hover {
+            background: #FBBF24;
+            color: #0a0c10;
+        }
+
         .steps-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -637,43 +788,85 @@
                 <h2 class="section-title" data-aos="fade-up">Blog & Artikel</h2>
                 <div class="blog-grid">
                     <div class="blog-card" data-aos="fade-up">
-                        <img src="Pict/Blog tips.png" class="blog-img">
+                        <img src="https://picsum.photos/id/1/400/250" class="blog-img">
                         <div class="blog-content">
-                            <div class="blog-date"><i class="far fa-calendar-alt"></i> 15 Mar 2025</div>
-                            <h3>Tips Memilih Website Company Profile</h3>
-                            <div class="blog-preview">Panduan memilih website yang tepat untuk bisnis Anda...</div>
+                            <div class="blog-date"><i class="far fa-calendar-alt"></i> 1 Apr 2025</div>
+                            <h3>Pengalaman Pertama Bikin Website untuk Klien</h3>
+                            <div class="blog-preview">Cerita awal mula saya terjun ke dunia frontend developer...</div>
                             <div class="blog-full">
-                                <p>Memilih website company profile yang tepat adalah investasi penting bagi bisnis Anda.</p>
-                                <h4>1. Desain Responsif</h4>
-                                <p>Pastikan website tampil sempurna di semua perangkat.</p>
+                                <p>Semua berawal dari tugas kuliah. Saya ditawari teman untuk bikin website toko online sederhana. Awalnya ragu, tapi ternyata seru!</p>
+                                <h4>Pelajaran berharga:</h4>
+                                <p>• Komunikasi dengan klien itu penting<br>• Jangan takut bilang "tidak tahu"<br>• Terus belajar setiap hari</p>
                             </div>
                             <span class="read-more-btn">Baca selengkapnya <i class="fas fa-chevron-down"></i></span>
                         </div>
                     </div>
                     <div class="blog-card" data-aos="fade-up" data-aos-delay="100">
-                        <img src="Pict/Blog SEO.png" class="blog-img">
+                        <img src="https://picsum.photos/id/26/400/250" class="blog-img">
                         <div class="blog-content">
-                            <div class="blog-date"><i class="far fa-calendar-alt"></i> 10 Mar 2025</div>
-                            <h3>SEO Penting untuk Bisnis Online</h3>
-                            <div class="blog-preview">Kenapa SEO sangat krusial untuk bisnis Anda...</div>
+                            <div class="blog-date"><i class="far fa-calendar-alt"></i> 25 Mar 2025</div>
+                            <h3>Kenapa Saya Pilih Tailwind CSS?</h3>
+                            <div class="blog-preview">Alasan saya meninggalkan CSS biasa dan beralih ke Tailwind...</div>
                             <div class="blog-full">
-                                <p>SEO adalah kunci agar website bisnis Anda ditemukan di Google.</p>
-                                <h4>Manfaat SEO:</h4>
-                                <p>• Meningkatkan visibilitas online<br>• Menarik traffic organik</p>
+                                <p>Tailwind mengubah cara saya menulis CSS. Dengan utility-first, saya bisa lebih cepat dan konsisten.</p>
+                                <h4>Keuntungan:</h4>
+                                <p>• Tidak perlu pusing mikirin nama class<br>• Desain konsisten<br>• File CSS lebih kecil</p>
                             </div>
                             <span class="read-more-btn">Baca selengkapnya <i class="fas fa-chevron-down"></i></span>
                         </div>
                     </div>
                     <div class="blog-card" data-aos="fade-up" data-aos-delay="200">
-                        <img src="https://images.pexels.com/photos/1181263/pexels-photo-1181263.jpeg?auto=compress&cs=tinysrgb&w=600" class="blog-img">
+                        <img src="https://picsum.photos/id/91/400/250" class="blog-img">
                         <div class="blog-content">
-                            <div class="blog-date"><i class="far fa-calendar-alt"></i> 5 Mar 2025</div>
-                            <h3>Trend Web Development 2025</h3>
-                            <div class="blog-preview">Teknologi terbaru yang wajib diketahui developer...</div>
+                            <div class="blog-date"><i class="far fa-calendar-alt"></i> 18 Mar 2025</div>
+                            <h3>Tips Website Cepat di HP</h3>
+                            <div class="blog-preview">3 cara sederhana bikin website nggak lemot di smartphone...</div>
                             <div class="blog-full">
-                                <p>Tahun 2025 membawa banyak inovasi dalam web development.</p>
-                                <h4>Trend Utama:</h4>
-                                <p>• AI-Powered Tools<br>• Motion UI<br>• PWA</p>
+                                <p>Pengguna mobile makin banyak. Website lambat = customer kabur.</p>
+                                <h4>Tips:</h4>
+                                <p>• Kompres gambar pakai Squoosh<br>• Hindari terlalu banyak animasi<br>• Pakai font sistem saja</p>
+                            </div>
+                            <span class="read-more-btn">Baca selengkapnya <i class="fas fa-chevron-down"></i></span>
+                        </div>
+                    </div>
+                    <div class="blog-card" data-aos="fade-up" data-aos-delay="300">
+                        <img src="https://picsum.photos/id/15/400/250" class="blog-img">
+                        <div class="blog-content">
+                            <div class="blog-date"><i class="far fa-calendar-alt"></i> 10 Mar 2025</div>
+                            <h3>Figma vs Coding Langsung?</h3>
+                            <div class="blog-preview">Pengalaman saya bikin website tanpa desain dulu...</div>
+                            <div class="blog-full">
+                                <p>Saya dulu suka langsung coding. Tapi setelah pakai Figma, kerjaan jadi lebih rapi dan klien lebih puas.</p>
+                                <h4>Kesimpulan:</h4>
+                                <p>Desain dulu itu penting, apalagi untuk project besar.</p>
+                            </div>
+                            <span class="read-more-btn">Baca selengkapnya <i class="fas fa-chevron-down"></i></span>
+                        </div>
+                    </div>
+                    <div class="blog-card" data-aos="fade-up" data-aos-delay="400">
+                        <img src="https://picsum.photos/id/42/400/250" class="blog-img">
+                        <div class="blog-content">
+                            <div class="blog-date"><i class="far fa-calendar-alt"></i> 3 Mar 2025</div>
+                            <h3>Responsive Design Bukan Hanya Tentang Ukuran</h3>
+                            <div class="blog-preview">Lebih dari sekadar media query, ini pengalaman saya...</div>
+                            <div class="blog-full">
+                                <p>Responsive itu tentang konten dan interaksi, bukan cuma ngubah ukuran.</p>
+                                <h4>Yang perlu diperhatikan:</h4>
+                                <p>• Ukuran tombol harus nyaman diklik di mobile<br>• Jangan sembunyikan fitur penting<br>• Test di perangkat asli</p>
+                            </div>
+                            <span class="read-more-btn">Baca selengkapnya <i class="fas fa-chevron-down"></i></span>
+                        </div>
+                    </div>
+                    <div class="blog-card" data-aos="fade-up" data-aos-delay="500">
+                        <img src="https://picsum.photos/id/0/400/250" class="blog-img">
+                        <div class="blog-content">
+                            <div class="blog-date"><i class="far fa-calendar-alt"></i> 25 Feb 2025</div>
+                            <h3>Masa Depan Frontend Developer</h3>
+                            <div class="blog-preview">Pendapat saya soal AI dan framework baru di 2025...</div>
+                            <div class="blog-full">
+                                <p>Banyak yang takut AI bakal ganti developer. Tapi saya lihat ini peluang.</p>
+                                <h4>Yang harus dipelajari:</h4>
+                                <p>• Cara pakai AI tools (Copilot, Cursor)<br>• Dasar-dasar tetap penting<br>• Soft skill makin berharga</p>
                             </div>
                             <span class="read-more-btn">Baca selengkapnya <i class="fas fa-chevron-down"></i></span>
                         </div>
@@ -682,7 +875,7 @@
             </section>
         </div>
 
-        <!-- HALAMAN LAYANAN -->
+        <!-- HALAMAN LAYANAN (Layanan + Domain + Cara Kerja + Form Pemesanan) -->
         <div id="page-layanan" class="page">
             <section>
                 <h2 class="section-title" data-aos="fade-up">Layanan Kami</h2>
@@ -694,6 +887,79 @@
                 </div>
             </section>
 
+            <!-- JASA PEMASANGAN DOMAIN -->
+            <section>
+                <h2 class="section-title" data-aos="fade-up">Pemasangan Domain</h2>
+                <div class="domain-section">
+                    <div class="domain-search">
+                        <input type="text" placeholder="🔍 Cari domain anda disini... (contoh: hanzcode)" id="searchDomain">
+                        <button id="searchDomainBtn"><i class="fas fa-search"></i> Cari</button>
+                    </div>
+                    <div class="domain-grid" id="domainGrid">
+                        <div class="domain-card">
+                            <div class="domain-name">.id</div>
+                            <ul class="domain-features">
+                                <li><i class="fas fa-check-circle"></i> Khusus Indonesia</li>
+                                <li><i class="fas fa-check-circle"></i> Cocok untuk lokal brand</li>
+                                <li><i class="fas fa-check-circle"></i> Perpanjang mudah</li>
+                            </ul>
+                            <div class="domain-price">Rp 300.000 <span>/tahun</span></div>
+                            <button class="domain-order" data-service="Domain .id">Pesan Domain</button>
+                        </div>
+                        <div class="domain-card">
+                            <div class="domain-name">.com</div>
+                            <ul class="domain-features">
+                                <li><i class="fas fa-check-circle"></i> Paling populer</li>
+                                <li><i class="fas fa-check-circle"></i> Internasional</li>
+                                <li><i class="fas fa-check-circle"></i> Trusted worldwide</li>
+                            </ul>
+                            <div class="domain-price">Rp 350.000 <span>/tahun</span></div>
+                            <button class="domain-order" data-service="Domain .com">Pesan Domain</button>
+                        </div>
+                        <div class="domain-card">
+                            <div class="domain-name">.site</div>
+                            <ul class="domain-features">
+                                <li><i class="fas fa-check-circle"></i> Harga terjangkau</li>
+                                <li><i class="fas fa-check-circle"></i> Modern & simple</li>
+                                <li><i class="fas fa-check-circle"></i> Banyak tersedia</li>
+                            </ul>
+                            <div class="domain-price">Rp 180.000 <span>/tahun</span></div>
+                            <button class="domain-order" data-service="Domain .site">Pesan Domain</button>
+                        </div>
+                        <div class="domain-card">
+                            <div class="domain-name">.net</div>
+                            <ul class="domain-features">
+                                <li><i class="fas fa-check-circle"></i> Untuk network & tech</li>
+                                <li><i class="fas fa-check-circle"></i> Kredibel</li>
+                                <li><i class="fas fa-check-circle"></i> Alternatif .com</li>
+                            </ul>
+                            <div class="domain-price">Rp 320.000 <span>/tahun</span></div>
+                            <button class="domain-order" data-service="Domain .net">Pesan Domain</button>
+                        </div>
+                        <div class="domain-card">
+                            <div class="domain-name">.org</div>
+                            <ul class="domain-features">
+                                <li><i class="fas fa-check-circle"></i> Untuk organisasi</li>
+                                <li><i class="fas fa-check-circle"></i> Terpercaya</li>
+                                <li><i class="fas fa-check-circle"></i> Non-profit cocok</li>
+                            </ul>
+                            <div class="domain-price">Rp 280.000 <span>/tahun</span></div>
+                            <button class="domain-order" data-service="Domain .org">Pesan Domain</button>
+                        </div>
+                        <div class="domain-card">
+                            <div class="domain-name">.dev</div>
+                            <ul class="domain-features">
+                                <li><i class="fas fa-check-circle"></i> Untuk developer</li>
+                                <li><i class="fas fa-check-circle"></i> Keren & profesional</li>
+                                <li><i class="fas fa-check-circle"></i> SSL included</li>
+                            </ul>
+                            <div class="domain-price">Rp 400.000 <span>/tahun</span></div>
+                            <button class="domain-order" data-service="Domain .dev">Pesan Domain</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
             <section>
                 <h2 class="section-title" data-aos="fade-up">Cara Kerja</h2>
                 <div class="steps-grid">
@@ -701,6 +967,48 @@
                     <div class="step-item"><div class="step-number">2</div><h3>Desain</h3><p>Pembuatan mockup dan desain UI/UX</p></div>
                     <div class="step-item"><div class="step-number">3</div><h3>Development</h3><p>Proses coding dan pengembangan</p></div>
                     <div class="step-item"><div class="step-number">4</div><h3>Launch</h3><p>Review, revisi, dan go live</p></div>
+                </div>
+            </section>
+
+            <!-- FORM PEMESANAN (dipindahkan dari halaman Kontak) -->
+            <section>
+                <h2 class="section-title" data-aos="fade-up">Form Pemesanan</h2>
+                <div class="form-container">
+                    <div class="booking-form" data-aos="fade-right">
+                        <form id="bookingForm">
+                            <input type="text" placeholder="Nama Lengkap" id="bookingName" required>
+                            <div class="custom-select">
+                                <select id="bookingService" required>
+                                    <option value="">Pilih Layanan</option>
+                                    <option value="Company Profile">Company Profile</option>
+                                    <option value="Web Application">Web Application</option>
+                                    <option value="E-Commerce">E-Commerce</option>
+                                    <option value="Landing Page">Landing Page</option>
+                                    <option value="Domain .id">Domain .id</option>
+                                    <option value="Domain .com">Domain .com</option>
+                                    <option value="Domain .site">Domain .site</option>
+                                    <option value="Domain .net">Domain .net</option>
+                                    <option value="Domain .org">Domain .org</option>
+                                    <option value="Domain .dev">Domain .dev</option>
+                                </select>
+                            </div>
+                            <textarea rows="4" placeholder="Deskripsi Kebutuhan" id="bookingDesc" required></textarea>
+                            <button type="submit"><i class="fas fa-paper-plane"></i> Kirim Pesanan</button>
+                        </form>
+                    </div>
+                    <div class="steps-card" data-aos="fade-left">
+                        <h3>Cara Pemesanan</h3>
+                        <ol>
+                            <li>Isi form dengan nama dan kebutuhan</li>
+                            <li>Pilih layanan yang diinginkan</li>
+                            <li>Tim kami akan menghubungi via WhatsApp</li>
+                            <li>Diskusi dan konfirmasi spesifikasi</li>
+                            <li>Pembayaran DP 50%</li>
+                            <li>Proses pengerjaan website</li>
+                            <li>Review dan pelunasan</li>
+                            <li>Website siap online!</li>
+                        </ol>
+                    </div>
                 </div>
             </section>
         </div>
@@ -753,7 +1061,7 @@
             </section>
         </div>
 
-        <!-- HALAMAN KONTAK (FAQ + Pemesanan + Kontak) -->
+        <!-- HALAMAN KONTAK (FAQ + Kontak saja, Form Pemesanan sudah pindah ke Layanan) -->
         <div id="page-kontak" class="page">
             <section>
                 <h2 class="section-title" data-aos="fade-up">FAQ</h2>
@@ -762,41 +1070,6 @@
                     <div class="faq-item"><div class="faq-question"><i class="fas fa-question-circle"></i> Apakah dapat support setelah website selesai?<i class="fas fa-chevron-down faq-icon"></i></div><div class="faq-answer">Ya, support 7 hari setelah pembayaran untuk update minor.</div></div>
                     <div class="faq-item"><div class="faq-question"><i class="fas fa-question-circle"></i> Metode pembayaran?<i class="fas fa-chevron-down faq-icon"></i></div><div class="faq-answer">Saat ini melalui DANA.</div></div>
                     <div class="faq-item"><div class="faq-question"><i class="fas fa-question-circle"></i> Konsultasi gratis?<i class="fas fa-chevron-down faq-icon"></i></div><div class="faq-answer">Tentu, konsultasi awal gratis.</div></div>
-                </div>
-            </section>
-
-            <section>
-                <h2 class="section-title" data-aos="fade-up">Form Pemesanan</h2>
-                <div class="form-container">
-                    <div class="booking-form" data-aos="fade-right">
-                        <form id="bookingForm">
-                            <input type="text" placeholder="Nama Lengkap" id="bookingName" required>
-                            <div class="custom-select">
-                                <select id="bookingService" required>
-                                    <option value="">Pilih Layanan</option>
-                                    <option value="Company Profile">Company Profile</option>
-                                    <option value="Web Application">Web Application</option>
-                                    <option value="E-Commerce">E-Commerce</option>
-                                    <option value="Landing Page">Landing Page</option>
-                                </select>
-                            </div>
-                            <textarea rows="4" placeholder="Deskripsi Kebutuhan" id="bookingDesc" required></textarea>
-                            <button type="submit"><i class="fas fa-paper-plane"></i> Kirim Pesanan</button>
-                        </form>
-                    </div>
-                    <div class="steps-card" data-aos="fade-left">
-                        <h3>Cara Pemesanan</h3>
-                        <ol>
-                            <li>Isi form dengan nama dan kebutuhan</li>
-                            <li>Pilih layanan yang diinginkan</li>
-                            <li>Tim kami akan menghubungi via WhatsApp</li>
-                            <li>Diskusi dan konfirmasi spesifikasi</li>
-                            <li>Pembayaran DP 50%</li>
-                            <li>Proses pengerjaan website</li>
-                            <li>Review dan pelunasan</li>
-                            <li>Website siap online!</li>
-                        </ol>
-                    </div>
                 </div>
             </section>
 
@@ -888,16 +1161,13 @@
 
         // Fungsi ganti halaman
         function changePage(pageId) {
-            // Sembunyikan semua halaman
             document.querySelectorAll('.page').forEach(function(page) {
                 page.classList.remove('active');
             });
-            // Tampilkan halaman yang dipilih
             var targetPage = document.getElementById('page-' + pageId);
             if (targetPage) {
                 targetPage.classList.add('active');
             }
-            // Update class active di menu header
             var menuLinks = document.querySelectorAll('.nav-links a[data-page]');
             for (var i = 0; i < menuLinks.length; i++) {
                 var link = menuLinks[i];
@@ -907,52 +1177,44 @@
                     link.classList.remove('active');
                 }
             }
-            // Scroll ke atas
             window.scrollTo({ top: 0, behavior: 'smooth' });
-            // Refresh AOS
             setTimeout(function() { AOS.refresh(); }, 100);
         }
 
-        // Pasang event listener ke semua menu header
-        var menuItems = document.querySelectorAll('.nav-links a[data-page]');
-        for (var i = 0; i < menuItems.length; i++) {
-            menuItems[i].addEventListener('click', function(e) {
-                e.preventDefault();
-                var pageId = this.getAttribute('data-page');
-                changePage(pageId);
-                // Tutup menu mobile
-                var navLinks = document.getElementById('navLinks');
-                if (navLinks && navLinks.classList.contains('show')) {
-                    navLinks.classList.remove('show');
-                }
-            });
+        // Navigasi
+        var allNavTriggers = document.querySelectorAll('[data-page]');
+        for (var i = 0; i < allNavTriggers.length; i++) {
+            var trigger = allNavTriggers[i];
+            trigger.removeEventListener('click', handleNavigation);
+            trigger.addEventListener('click', handleNavigation);
         }
-
-        // Pasang event listener ke semua tombol dengan data-page (di hero, footer, dll)
-        var pageButtons = document.querySelectorAll('[data-page]');
-        for (var i = 0; i < pageButtons.length; i++) {
-            var btn = pageButtons[i];
-            // Skip yang sudah di-handle (menu header)
-            if (btn.closest('.nav-links')) continue;
-            btn.addEventListener('click', function(e) {
-                e.preventDefault();
-                var pageId = this.getAttribute('data-page');
+        
+        function handleNavigation(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            var pageId = this.getAttribute('data-page');
+            if (pageId) {
                 changePage(pageId);
-                // Tutup menu mobile
                 var navLinks = document.getElementById('navLinks');
                 if (navLinks && navLinks.classList.contains('show')) {
                     navLinks.classList.remove('show');
                 }
-            });
+            }
         }
 
         // Toggle menu mobile
         var menuToggle = document.getElementById('menuToggle');
-        if (menuToggle) {
-            menuToggle.addEventListener('click', function() {
-                var navLinks = document.getElementById('navLinks');
-                if (navLinks) {
-                    navLinks.classList.toggle('show');
+        var navLinks = document.getElementById('navLinks');
+        if (menuToggle && navLinks) {
+            menuToggle.addEventListener('click', function(e) {
+                e.stopPropagation();
+                navLinks.classList.toggle('show');
+            });
+            document.addEventListener('click', function(event) {
+                if (navLinks.classList.contains('show') && 
+                    !navLinks.contains(event.target) && 
+                    !menuToggle.contains(event.target)) {
+                    navLinks.classList.remove('show');
                 }
             });
         }
@@ -962,10 +1224,12 @@
         for (var i = 0; i < faqItems.length; i++) {
             var question = faqItems[i].querySelector('.faq-question');
             if (question) {
-                question.addEventListener('click', function() {
-                    this.parentElement.classList.toggle('active');
-                });
+                question.removeEventListener('click', toggleFaq);
+                question.addEventListener('click', toggleFaq);
             }
+        }
+        function toggleFaq() {
+            this.parentElement.classList.toggle('active');
         }
 
         // Hover video
@@ -989,46 +1253,77 @@
         // Blog Expand/Collapse
         var readMoreBtns = document.querySelectorAll('.read-more-btn');
         for (var i = 0; i < readMoreBtns.length; i++) {
-            readMoreBtns[i].addEventListener('click', function(e) {
-                e.stopPropagation();
-                var blogCard = this.closest('.blog-card');
-                var fullContent = blogCard.querySelector('.blog-full');
-                var isActive = this.classList.contains('active');
-                if (isActive) {
-                    fullContent.classList.remove('show');
-                    this.classList.remove('active');
-                    this.innerHTML = 'Baca selengkapnya <i class="fas fa-chevron-down"></i>';
-                } else {
-                    fullContent.classList.add('show');
-                    this.classList.add('active');
-                    this.innerHTML = 'Baca secara singkat <i class="fas fa-chevron-up"></i>';
-                }
-            });
+            readMoreBtns[i].removeEventListener('click', toggleBlog);
+            readMoreBtns[i].addEventListener('click', toggleBlog);
+        }
+        function toggleBlog(e) {
+            e.stopPropagation();
+            var blogCard = this.closest('.blog-card');
+            var fullContent = blogCard.querySelector('.blog-full');
+            var isActive = this.classList.contains('active');
+            if (isActive) {
+                fullContent.classList.remove('show');
+                this.classList.remove('active');
+                this.innerHTML = 'Baca selengkapnya <i class="fas fa-chevron-down"></i>';
+            } else {
+                fullContent.classList.add('show');
+                this.classList.add('active');
+                this.innerHTML = 'Baca secara singkat <i class="fas fa-chevron-up"></i>';
+            }
         }
 
         // Form Pemesanan
         var bookingForm = document.getElementById('bookingForm');
         if (bookingForm) {
-            bookingForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                var name = document.getElementById('bookingName').value;
-                var service = document.getElementById('bookingService').value;
-                var desc = document.getElementById('bookingDesc').value;
-                var message = 'Halo HanzCode.id, saya ' + name + ' ingin memesan layanan ' + service + '. Kebutuhan: ' + desc;
-                window.open('https://wa.me/6289684219904?text=' + encodeURIComponent(message), '_blank');
-                bookingForm.reset();
-            });
+            bookingForm.removeEventListener('submit', submitBooking);
+            bookingForm.addEventListener('submit', submitBooking);
+        }
+        function submitBooking(e) {
+            e.preventDefault();
+            var name = document.getElementById('bookingName').value;
+            var service = document.getElementById('bookingService').value;
+            var desc = document.getElementById('bookingDesc').value;
+            var message = 'Halo HanzCode.id, saya ' + name + ' ingin memesan ' + service + '. Kebutuhan: ' + desc;
+            window.open('https://wa.me/6289684219904?text=' + encodeURIComponent(message), '_blank');
+            bookingForm.reset();
         }
 
         // Form Contact
         var contactForm = document.getElementById('contactForm');
         if (contactForm) {
-            contactForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                var name = document.getElementById('contactName').value;
-                var message = document.getElementById('contactMessage').value;
-                window.open('https://wa.me/628567858301?text=' + encodeURIComponent('Halo, saya ' + name + '. ' + message), '_blank');
-                contactForm.reset();
+            contactForm.removeEventListener('submit', submitContact);
+            contactForm.addEventListener('submit', submitContact);
+        }
+        function submitContact(e) {
+            e.preventDefault();
+            var name = document.getElementById('contactName').value;
+            var message = document.getElementById('contactMessage').value;
+            window.open('https://wa.me/628567858301?text=' + encodeURIComponent('Halo, saya ' + name + '. ' + message), '_blank');
+            contactForm.reset();
+        }
+
+        // Domain search (simulasi)
+        var searchBtn = document.getElementById('searchDomainBtn');
+        var searchInput = document.getElementById('searchDomain');
+        if (searchBtn && searchInput) {
+            searchBtn.addEventListener('click', function() {
+                var keyword = searchInput.value.trim();
+                if (keyword === '') {
+                    alert('Masukkan nama domain yang ingin dicari');
+                    return;
+                }
+                alert('Domain ' + keyword + '.com tersedia! Harga Rp 350.000/tahun. Hubungi kami untuk pemesanan.');
+            });
+        }
+
+        // Tombol pesan domain
+        var domainOrderBtns = document.querySelectorAll('.domain-order');
+        for (var i = 0; i < domainOrderBtns.length; i++) {
+            domainOrderBtns[i].addEventListener('click', function() {
+                var service = this.getAttribute('data-service');
+                document.getElementById('bookingService').value = service;
+                changePage('layanan');
+                document.getElementById('bookingForm').scrollIntoView({ behavior: 'smooth' });
             });
         }
     })();
