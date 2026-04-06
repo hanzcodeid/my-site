@@ -24,7 +24,7 @@
             overflow-x: hidden;
         }
 
-        /* HEADER - TRANSPARAN DENGAN BLUR */
+        /* HEADER */
         .header-wrapper {
             position: fixed;
             top: 0;
@@ -74,17 +74,6 @@
         .nav-links a.active:after { width: 100%; }
         .nav-links a:hover,
         .nav-links a.active { color: #FBBF24; }
-        .btn-contact-nav {
-            background: rgba(10,12,16,0.8) !important;
-            border: 1px solid #FBBF24;
-            padding: 8px 24px !important;
-            border-radius: 100px;
-        }
-        .btn-contact-nav:hover {
-            background: #FBBF24 !important;
-            color: #0a0c10 !important;
-        }
-        .btn-contact-nav:after { display: none; }
         .menu-toggle {
             display: none;
             font-size: 1.8rem;
@@ -111,7 +100,6 @@
                 z-index: 1000;
                 border: 1px solid rgba(251,191,36,0.3);
                 box-shadow: 0 20px 35px -10px rgba(0,0,0,0.5);
-                pointer-events: auto;
             }
             .nav-links a {
                 font-size: 1.1rem;
@@ -119,8 +107,6 @@
                 width: 100%;
                 text-align: center;
                 border-radius: 40px;
-                transition: all 0.2s;
-                pointer-events: auto;
             }
             .nav-links a:hover {
                 background: rgba(251,191,36,0.15);
@@ -140,7 +126,7 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* BERANDA (HERO) - FIXED TIDAK BERGERAK */
+        /* HERO - FOTO */
         .hero-fixed {
             position: fixed;
             top: 0;
@@ -150,7 +136,7 @@
             z-index: 0;
             overflow: hidden;
         }
-        .hero-video-bg {
+        .hero-img-bg {
             position: absolute;
             top: 0;
             left: 0;
@@ -244,7 +230,7 @@
             .hero-image img { max-width: 280px; }
         }
 
-        /* KONTEN SCROLL */
+        /* SCROLL CONTENT */
         .scroll-content {
             position: relative;
             z-index: 10;
@@ -274,7 +260,20 @@
             border-radius: 4px;
         }
 
-        /* About */
+        /* TENTANG KAMI - BACKGROUND FOTO */
+        .about-hero-bg {
+            position: relative;
+            background: url('Pict/Tentang kami.png') center center/cover no-repeat;
+            border-radius: 40px;
+            margin-bottom: 2rem;
+            box-shadow: 0 20px 40px -15px rgba(0,0,0,0.5);
+        }
+        .about-hero-overlay {
+            background: rgba(10, 12, 16, 0.75);
+            backdrop-filter: blur(4px);
+            border-radius: 40px;
+            padding: 3rem 2rem;
+        }
         .about-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -292,7 +291,40 @@
         .about-banner { margin-top: 2rem; width: 100%; }
         .about-banner img { width: 100%; height: auto; border-radius: 20px; }
 
-        /* VISI & MISI */
+        /* PORTFOLIO GRID */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.8rem;
+        }
+        .portfolio-card {
+            background: rgba(17,22,28,0.6);
+            border-radius: 28px;
+            overflow: hidden;
+            transition: all 0.3s;
+            border: 1px solid rgba(251,191,36,0.1);
+        }
+        .portfolio-card:hover { transform: translateY(-8px); border-color: rgba(251,191,36,0.4); }
+        .portfolio-media { position: relative; width: 100%; padding-top: 56.25%; overflow: hidden; }
+        .portfolio-media img, .portfolio-media video {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;
+        }
+        .portfolio-media video { opacity: 0; transition: opacity 0.3s ease; }
+        .portfolio-card:hover .portfolio-media video { opacity: 1; }
+        .portfolio-card:hover .portfolio-media img { opacity: 0; }
+        .portfolio-content { padding: 1.5rem; }
+        .portfolio-category {
+            display: inline-block;
+            font-size: 0.7rem;
+            color: #FBBF24;
+            background: rgba(251,191,36,0.1);
+            padding: 4px 12px;
+            border-radius: 30px;
+            margin-bottom: 10px;
+        }
+        .portfolio-content h3 { font-size: 1.2rem; margin-bottom: 0.5rem; color: white; }
+
+        /* VISI MISI */
         .visi-misi-section { margin: 3rem 0; }
         .visi-misi-wrapper {
             display: flex;
@@ -359,8 +391,7 @@
             .visi-misi-divider::before, .visi-misi-divider::after { top: -4px; left: 0; }
         }
 
-        /* KEMAMPUAN KAMI */
-        .skills-section { margin: 2rem 0; }
+        /* SKILLS */
         .skills-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -384,9 +415,8 @@
             align-items: center;
             justify-content: center;
             margin: 0 auto 1rem;
-            transition: 0.3s;
         }
-        .skill-card:hover .skill-icon { background: #FBBF24; transform: scale(1.05); }
+        .skill-card:hover .skill-icon { background: #FBBF24; }
         .skill-card:hover .skill-icon i { color: #0a0c10; }
         .skill-icon i { font-size: 2rem; color: #FBBF24; transition: 0.3s; }
         .skill-card h3 { font-size: 1.2rem; color: white; margin-bottom: 0.5rem; }
@@ -402,20 +432,13 @@
         .skill-percent { font-size: 0.8rem; color: #FBBF24; font-weight: 600; }
         .skill-desc { font-size: 0.7rem; color: #9ca3af; margin-top: 0.5rem; }
 
-        /* GRAFIK SURFACE */
-        .chart-section {
-            margin: 2rem 0;
-        }
+        /* CHART */
         .chart-container {
             background: rgba(17,22,28,0.4);
             border-radius: 28px;
             padding: 2rem;
             border: 1px solid rgba(251,191,36,0.15);
             backdrop-filter: blur(4px);
-        }
-        .chart-container canvas {
-            max-height: 400px;
-            width: 100%;
         }
         .chart-title {
             text-align: center;
@@ -424,7 +447,7 @@
             color: #FBBF24;
         }
 
-        /* Testimonial */
+        /* TESTIMONIAL */
         .testimonial-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -450,14 +473,12 @@
             border: 2px solid #FBBF24;
         }
 
-        /* Blog Grid */
+        /* BLOG */
         .blog-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 1.8rem;
         }
-        @media (max-width: 900px) { .blog-grid { grid-template-columns: repeat(2, 1fr); } }
-        @media (max-width: 600px) { .blog-grid { grid-template-columns: 1fr; } }
         .blog-card {
             background: rgba(17,22,28,0.6);
             border-radius: 28px;
@@ -490,240 +511,56 @@
             gap: 5px;
             margin-top: 6px;
         }
-        
-        /* Services */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.8rem;
+
+        @media (max-width: 768px) {
+            .portfolio-grid, .blog-grid { grid-template-columns: repeat(2, 1fr); }
+            .about-grid { grid-template-columns: 1fr; }
+            .section-title { font-size: 1.8rem; }
         }
-        .service-card {
-            background: rgba(17,22,28,0.6);
-            backdrop-filter: blur(10px);
-            border-radius: 28px;
-            padding: 2rem;
-            transition: all 0.3s;
-            border: 1px solid rgba(251,191,36,0.1);
+        @media (max-width: 560px) {
+            .portfolio-grid, .blog-grid { grid-template-columns: 1fr; }
         }
-        .service-card:hover { transform: translateY(-8px); border-color: rgba(251,191,36,0.4); }
-        .service-icon {
-            width: 60px; height: 60px; background: rgba(251,191,36,0.1);
-            border-radius: 18px;
+
+        /* HALAMAN KOSONG (PENGERJAAN) */
+        .empty-page {
+            min-height: 70vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 1.2rem;
+            flex-direction: column;
+            text-align: center;
+            padding: 80px 24px;
         }
-        .service-icon i { font-size: 1.6rem; color: #FBBF24; }
-        .service-card h3 { font-size: 1.2rem; margin-bottom: 0.8rem; color: white; }
-        .service-card p { color: #9ca3af; font-size: 0.9rem; line-height: 1.5; }
-
-        /* Steps */
-        .steps-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-        .step-item { text-align: center; padding: 1.5rem; }
-        .step-number {
-            width: 50px; height: 50px;
-            background: #FBBF24;
-            color: #0a0c10;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            font-weight: 800;
-            margin: 0 auto 1rem;
-        }
-
-        /* Portfolio */
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 1.8rem;
-        }
-        .portfolio-card {
+        .empty-card {
             background: rgba(17,22,28,0.6);
-            border-radius: 28px;
-            overflow: hidden;
-            transition: all 0.3s;
-            border: 1px solid rgba(251,191,36,0.1);
+            backdrop-filter: blur(12px);
+            border-radius: 48px;
+            padding: 3rem 2rem;
+            max-width: 500px;
+            border: 1px solid rgba(251,191,36,0.2);
+            animation: pulseGlow 2s infinite;
         }
-        .portfolio-card:hover { transform: translateY(-8px); border-color: rgba(251,191,36,0.4); }
-        .portfolio-media { position: relative; width: 100%; padding-top: 56.25%; overflow: hidden; }
-        .portfolio-media img, .portfolio-media video {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;
-        }
-        .portfolio-media video { opacity: 0; transition: opacity 0.3s ease; }
-        .portfolio-card:hover .portfolio-media video { opacity: 1; }
-        .portfolio-card:hover .portfolio-media img { opacity: 0; }
-        .portfolio-content { padding: 1.5rem; }
-        .portfolio-category {
-            display: inline-block;
-            font-size: 0.7rem;
+        .empty-card i {
+            font-size: 4rem;
             color: #FBBF24;
-            background: rgba(251,191,36,0.1);
-            padding: 4px 12px;
-            border-radius: 30px;
-            margin-bottom: 10px;
+            margin-bottom: 1.5rem;
         }
-        .portfolio-content h3 { font-size: 1.2rem; margin-bottom: 0.5rem; color: white; }
-
-        /* FAQ */
-        .faq-container { display: flex; flex-direction: column; gap: 1rem; }
-        .faq-item {
-            background: rgba(17,22,28,0.6);
-            border-radius: 20px;
-            border: 1px solid rgba(251,191,36,0.1);
-            overflow: hidden;
+        .empty-card h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: #FBBF24;
         }
-        .faq-question {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1.2rem 1.5rem;
-            cursor: pointer;
-            font-weight: 600;
-            color: white;
-        }
-        .faq-question i:first-child { color: #FBBF24; margin-right: 12px; }
-        .faq-icon { color: #FBBF24; transition: transform 0.3s; }
-        .faq-answer {
-            max-height: 0;
-            padding: 0 1.5rem;
-            overflow: hidden;
-            transition: all 0.3s ease;
+        .empty-card p {
             color: #9ca3af;
-            line-height: 1.6;
+            font-size: 1rem;
         }
-        .faq-item.active .faq-answer { max-height: 150px; padding: 0 1.5rem 1.2rem 1.5rem; }
-        .faq-item.active .faq-icon { transform: rotate(180deg); }
-
-        /* Form */
-        .form-container { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
-        .booking-form {
-            background: rgba(17,22,28,0.6);
-            border-radius: 28px;
-            padding: 2rem;
-            border: 1px solid rgba(251,191,36,0.1);
-        }
-        .booking-form input, .booking-form select, .booking-form textarea {
-            width: 100%;
-            padding: 14px 18px;
-            margin-bottom: 1rem;
-            background: rgba(0,0,0,0.3);
-            border: 1px solid rgba(251,191,36,0.2);
-            border-radius: 16px;
-            color: white;
-            font-family: inherit;
-            font-size: 0.9rem;
-        }
-        .custom-select { position: relative; width: 100%; margin-bottom: 1rem; }
-        .custom-select select {
-            appearance: none;
-            width: 100%;
-            padding: 14px 18px;
-            background: rgba(0,0,0,0.3);
-            border: 1px solid rgba(251,191,36,0.2);
-            border-radius: 16px;
-            color: white;
-            cursor: pointer;
-        }
-        .custom-select::after {
-            content: '\f078';
-            font-family: 'Font Awesome 6 Free';
-            font-weight: 900;
-            position: absolute;
-            right: 18px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #FBBF24;
-            pointer-events: none;
-        }
-        .booking-form button {
-            width: 100%;
-            background: #FBBF24;
-            color: #0a0c10;
-            padding: 14px;
-            border: none;
-            border-radius: 16px;
-            font-weight: 700;
-            cursor: pointer;
-        }
-        .steps-card {
-            background: rgba(17,22,28,0.6);
-            border-radius: 28px;
-            padding: 2rem;
-            border: 1px solid rgba(251,191,36,0.1);
-        }
-        .steps-card h3 { color: #FBBF24; margin-bottom: 1rem; }
-        .steps-card ol { margin-left: 1.2rem; line-height: 2; color: #cbd5e1; }
-
-        /* Contact */
-        .contact-premium { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
-        .contact-info-card, .contact-form-card {
-            background: rgba(17,22,28,0.6);
-            backdrop-filter: blur(10px);
-            border-radius: 32px;
-            padding: 2rem;
-            border: 1px solid rgba(251,191,36,0.15);
-            transition: all 0.3s;
-        }
-        .contact-info-card:hover, .contact-form-card:hover { border-color: rgba(251,191,36,0.4); transform: translateY(-5px); }
-        .contact-info-card h3, .contact-form-card h3 { font-size: 1.5rem; color: #FBBF24; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 10px; }
-        .contact-detail { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.2rem; padding: 0.8rem; background: rgba(0,0,0,0.2); border-radius: 20px; }
-        .contact-detail i {
-            width: 45px; height: 45px;
-            background: rgba(251,191,36,0.15);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #FBBF24;
-        }
-        .social-premium { margin-top: 1.8rem; padding-top: 1.2rem; border-top: 1px solid rgba(251,191,36,0.2); }
-        .social-icons-premium { display: flex; gap: 1rem; flex-wrap: wrap; }
-        .social-icons-premium a {
-            width: 44px; height: 44px;
-            background: rgba(251,191,36,0.1);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #FBBF24;
-            transition: all 0.3s;
-            text-decoration: none;
-        }
-        .social-icons-premium a:hover { background: #FBBF24; color: #0a0c10; transform: translateY(-5px); }
-        .contact-form-card input, .contact-form-card textarea {
-            width: 100%;
-            padding: 14px 18px;
-            margin-bottom: 1rem;
-            background: rgba(0,0,0,0.3);
-            border: 1px solid rgba(251,191,36,0.2);
-            border-radius: 16px;
-            color: white;
-            font-family: inherit;
-        }
-        .contact-form-card button {
-            width: 100%;
-            background: #FBBF24;
-            color: #0a0c10;
-            padding: 14px;
-            border: none;
-            border-radius: 16px;
-            font-weight: 700;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
+        @keyframes pulseGlow {
+            0% { box-shadow: 0 0 0 0 rgba(251,191,36,0.1); border-color: rgba(251,191,36,0.2);}
+            50% { box-shadow: 0 0 0 12px rgba(251,191,36,0.05); border-color: rgba(251,191,36,0.4);}
+            100% { box-shadow: 0 0 0 0 rgba(251,191,36,0); border-color: rgba(251,191,36,0.2);}
         }
 
-        /* Footer */
+        /* FOOTER */
         footer {
             background: #06080c;
             border-top: 1px solid rgba(251,191,36,0.1);
@@ -819,22 +656,15 @@
             .footer-grid { gap: 1.8rem; }
             .footer-bottom { flex-direction: column; text-align: center; }
             .footer-bottom-links { justify-content: center; }
-            .about-grid, .form-container, .contact-premium { grid-template-columns: 1fr; }
-            .section-title { font-size: 1.8rem; }
         }
     </style>
 </head>
 <body>
 
-<!-- HEADER - TRANSPARAN DENGAN BLUR -->
 <div class="header-wrapper">
     <div class="header">
-        <div class="logo">
-            <span class="hanz">Hanz</span><span class="code">Code</span><span class="dot">.</span><span class="id">id</span>
-        </div>
-        <div class="menu-toggle" id="menuToggle">
-            <i class="fas fa-bars"></i>
-        </div>
+        <div class="logo"><span class="hanz">Hanz</span><span class="code">Code</span><span class="dot">.</span><span class="id">id</span></div>
+        <div class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></div>
         <div class="nav-links" id="navLinks">
             <a href="#tentang" data-page="tentang" class="active">Tentang</a>
             <a href="#layanan" data-page="layanan">Layanan</a>
@@ -844,11 +674,9 @@
     </div>
 </div>
 
-<!-- BERANDA (HERO) - FIXED TIDAK BERGERAK -->
+<!-- HERO - FOTO -->
 <div class="hero-fixed">
-    <video class="hero-video-bg" autoplay loop muted playsinline>
-        <source src="Pict/Sinematik.mp4" type="video/mp4">
-    </video>
+    <img class="hero-img-bg" src="Pict/Beranda.png" alt="Background">
     <div class="hero-overlay"></div>
     <div class="hero-content-wrapper">
         <div class="hero-container">
@@ -863,63 +691,57 @@
                         <div><div class="stat-number">267+</div><div class="stat-label">Project</div></div>
                     </div>
                     <div class="hero-buttons">
-                        <a href="#karya" class="btn-primary" data-page="karya">Lihat Karya <i class="fas fa-arrow-right"></i></a>
+                        <a href="#tentang" class="btn-primary" data-page="tentang">Mulai Sekarang <i class="fas fa-arrow-right"></i></a>
                         <a href="#kontak" class="btn-outline" data-page="kontak">Konsultasi <i class="fas fa-comment"></i></a>
                     </div>
                 </div>
-                <div class="hero-image">
-                    <img src="Pict/Beranda.png" alt="HanzCode">
-                </div>
+                <div class="hero-image"><img src="Pict/Beranda.png" alt="HanzCode"></div>
             </div>
         </div>
     </div>
 </div>
 
-<!-- KONTEN SCROLL -->
 <div class="scroll-content">
     <div class="page-container">
-        <!-- HALAMAN TENTANG -->
+        <!-- HALAMAN TENTANG (LENGKAP) -->
         <div id="page-tentang" class="page active">
-            <!-- Tentang Kami -->
-            <section>
-                <div class="about-grid" data-aos="fade-up">
-                    <div class="about-img"><img src="Pict/Tentang kami.png" alt="About"></div>
-                    <div class="about-text">
-                        <h2 class="section-title">Tentang Kami</h2>
-                        <p>HanzCode.id adalah layanan pengembangan web yang berfokus pada kualitas, performa, dan kepuasan klien. Kami membantu bisnis dan individu memiliki website modern yang responsive dan optimal.</p>
-                        <p>Dengan pengalaman mengerjakan berbagai project dari company profile hingga web application, kami siap membantu mewujudkan ide digital Anda menjadi kenyataan.</p>
-                        <div class="about-info">
-                            <div class="info-item"><i class="fas fa-map-marker-alt"></i> Indonesia</div>
-                            <div class="info-item"><i class="fab fa-whatsapp"></i> +62 896-8421-9904</div>
-                            <div class="info-item"><i class="fas fa-clock"></i> 24/7 Support</div>
-                        </div>
-                        <div class="about-banner">
-                            <img src="Pict/Analisa.jpeg" alt="HanzCode Banner">
+            <!-- TENTANG KAMI dengan background foto -->
+            <div class="about-hero-bg" data-aos="fade-up">
+                <div class="about-hero-overlay">
+                    <div class="about-grid">
+                        <div class="about-img"><img src="Pict/Tentang kami.png" alt="About"></div>
+                        <div class="about-text">
+                            <h2 class="section-title">Tentang Kami</h2>
+                            <p>HanzCode.id adalah layanan pengembangan web yang berfokus pada kualitas, performa, dan kepuasan klien. Kami membantu bisnis dan individu memiliki website modern yang responsive dan optimal.</p>
+                            <p>Dengan pengalaman mengerjakan berbagai project dari company profile hingga web application, kami siap membantu mewujudkan ide digital Anda menjadi kenyataan.</p>
+                            <div class="about-info">
+                                <div class="info-item"><i class="fas fa-map-marker-alt"></i> Indonesia</div>
+                                <div class="info-item"><i class="fab fa-whatsapp"></i> +62 896-8421-9904</div>
+                                <div class="info-item"><i class="fas fa-clock"></i> 24/7 Support</div>
+                            </div>
+                            <div class="about-banner"><img src="Pict/Analisa.jpeg" alt="HanzCode Banner"></div>
                         </div>
                     </div>
                 </div>
+            </div>
+
+            <!-- PORTOFOLIO (3 project) -->
+            <section data-aos="fade-up">
+                <h2 class="section-title">Portofolio Unggulan</h2>
+                <div class="portfolio-grid">
+                    <div class="portfolio-card"><div class="portfolio-media"><img src="Pict/Campany profil.png" alt="Company Profile"><video src="Pict/Campany profil video.mp4" loop muted playsinline></video></div><div class="portfolio-content"><div class="portfolio-category">Company Profile</div><h3>Landingpage Company Profile</h3></div></div>
+                    <div class="portfolio-card"><div class="portfolio-media"><img src="Pict/Web aplications.png" alt="Web App"><video src="Pict/Web Applications video.mp4" loop muted playsinline></video></div><div class="portfolio-content"><div class="portfolio-category">Web App</div><h3>Multipage Web Application</h3></div></div>
+                    <div class="portfolio-card"><div class="portfolio-media"><img src="Pict/Online store platfrom.png" alt="E-Commerce"><video src="Pict/Online store platfrom video.mp4" loop muted playsinline></video></div><div class="portfolio-content"><div class="portfolio-category">E-Commerce</div><h3>Online Store Platform</h3></div></div>
+                </div>
             </section>
 
-            <!-- VISI & MISI -->
+            <!-- VISI & MISI (dipindah ke sini, setelah portofolio) -->
             <section class="visi-misi-section" data-aos="fade-up">
                 <h2 class="section-title">Visi & Misi</h2>
-                <div class="visi-misi-wrapper" data-aos="fade-up" data-aos-delay="100">
-                    <div class="visi-box" data-aos="fade-right">
-                        <h3><i class="fas fa-eye"></i> Visi Kami</h3>
-                        <p>Menjadi mitra digital terpercaya bagi bisnis dan individu dalam membangun kehadiran online yang profesional, inovatif, dan berkelanjutan.</p>
-                        <ul>
-                            <li><i class="fas fa-arrow-right"></i> Mendorong digitalisasi UMKM Indonesia</li>
-                            <li><i class="fas fa-arrow-right"></i> Menciptakan ekosistem developer yang kolaboratif</li>
-                            <li><i class="fas fa-arrow-right"></i> Menjadi standar kualitas untuk layanan web development</li>
-                            <li><i class="fas fa-arrow-right"></i> Mengembangkan solusi teknologi yang inklusif</li>
-                        </ul>
-                    </div>
+                <div class="visi-misi-wrapper">
+                    <div class="visi-box"><h3><i class="fas fa-eye"></i> Visi Kami</h3><p>Menjadi mitra digital terpercaya bagi bisnis dan individu dalam membangun kehadiran online yang profesional, inovatif, dan berkelanjutan.</p><ul><li><i class="fas fa-arrow-right"></i> Mendorong digitalisasi UMKM Indonesia</li><li><i class="fas fa-arrow-right"></i> Menciptakan ekosistem developer yang kolaboratif</li><li><i class="fas fa-arrow-right"></i> Menjadi standar kualitas untuk layanan web development</li><li><i class="fas fa-arrow-right"></i> Mengembangkan solusi teknologi yang inklusif</li></ul></div>
                     <div class="visi-misi-divider"></div>
-                    <div class="misi-box" data-aos="fade-left">
-                        <h3><i class="fas fa-bullseye"></i> Misi Kami</h3>
-                        <p>1. Memberikan layanan pengembangan website berkualitas tinggi dengan harga yang terjangkau.</p>
-                        <p>2. Membangun hubungan jangka panjang dengan klien melalui pelayanan yang jujur, transparan, dan responsif.</p>
-                    </div>
+                    <div class="misi-box"><h3><i class="fas fa-bullseye"></i> Misi Kami</h3><p>1. Memberikan layanan pengembangan website berkualitas tinggi dengan harga yang terjangkau.</p><p>2. Membangun hubungan jangka panjang dengan klien melalui pelayanan yang jujur, transparan, dan responsif.</p><p>3. Terus berinovasi dan mengikuti perkembangan teknologi terbaru.</p><p>4. Memberikan edukasi dan berbagi pengetahuan kepada komunitas developer.</p></div>
                 </div>
             </section>
 
@@ -927,341 +749,59 @@
             <section class="skills-section" data-aos="fade-up">
                 <h2 class="section-title">Kemampuan Kami</h2>
                 <div class="skills-grid">
-                    <div class="skill-card" data-aos="zoom-in" data-aos-delay="0">
-                        <div class="skill-icon"><i class="fab fa-html5"></i></div>
-                        <h3>HTML5</h3>
-                        <div class="skill-bar"><div class="skill-progress" style="width: 95%;"></div></div>
-                        <div class="skill-percent">95%</div>
-                        <div class="skill-desc">Struktur semantik, SEO friendly</div>
-                    </div>
-                    <div class="skill-card" data-aos="zoom-in" data-aos-delay="100">
-                        <div class="skill-icon"><i class="fab fa-css3-alt"></i></div>
-                        <h3>CSS3</h3>
-                        <div class="skill-bar"><div class="skill-progress" style="width: 90%;"></div></div>
-                        <div class="skill-percent">90%</div>
-                        <div class="skill-desc">Flexbox, Grid, Animasi</div>
-                    </div>
-                    <div class="skill-card" data-aos="zoom-in" data-aos-delay="200">
-                        <div class="skill-icon"><i class="fab fa-js"></i></div>
-                        <h3>JavaScript</h3>
-                        <div class="skill-bar"><div class="skill-progress" style="width: 85%;"></div></div>
-                        <div class="skill-percent">85%</div>
-                        <div class="skill-desc">ES6+, DOM, Framework</div>
-                    </div>
-                    <div class="skill-card" data-aos="zoom-in" data-aos-delay="300">
-                        <div class="skill-icon"><i class="fas fa-globe"></i></div>
-                        <h3>Domain & Hosting</h3>
-                        <div class="skill-bar"><div class="skill-progress" style="width: 88%;"></div></div>
-                        <div class="skill-percent">88%</div>
-                        <div class="skill-desc">DNS, SSL, Deployment</div>
-                    </div>
-                    <div class="skill-card" data-aos="zoom-in" data-aos-delay="400">
-                        <div class="skill-icon"><i class="fas fa-chart-line"></i></div>
-                        <h3>SEO</h3>
-                        <div class="skill-bar"><div class="skill-progress" style="width: 82%;"></div></div>
-                        <div class="skill-percent">82%</div>
-                        <div class="skill-desc">On-page, Kecepatan</div>
-                    </div>
+                    <div class="skill-card"><div class="skill-icon"><i class="fab fa-html5"></i></div><h3>HTML5</h3><div class="skill-bar"><div class="skill-progress" style="width: 95%;"></div></div><div class="skill-percent">95%</div><div class="skill-desc">Struktur semantik, SEO friendly</div></div>
+                    <div class="skill-card"><div class="skill-icon"><i class="fab fa-css3-alt"></i></div><h3>CSS3</h3><div class="skill-bar"><div class="skill-progress" style="width: 90%;"></div></div><div class="skill-percent">90%</div><div class="skill-desc">Flexbox, Grid, Animasi</div></div>
+                    <div class="skill-card"><div class="skill-icon"><i class="fab fa-js"></i></div><h3>JavaScript</h3><div class="skill-bar"><div class="skill-progress" style="width: 85%;"></div></div><div class="skill-percent">85%</div><div class="skill-desc">ES6+, DOM, Framework</div></div>
+                    <div class="skill-card"><div class="skill-icon"><i class="fas fa-globe"></i></div><h3>Domain & Hosting</h3><div class="skill-bar"><div class="skill-progress" style="width: 88%;"></div></div><div class="skill-percent">88%</div><div class="skill-desc">DNS, SSL, Deployment</div></div>
+                    <div class="skill-card"><div class="skill-icon"><i class="fas fa-chart-line"></i></div><h3>SEO</h3><div class="skill-bar"><div class="skill-progress" style="width: 82%;"></div></div><div class="skill-percent">82%</div><div class="skill-desc">On-page, Kecepatan</div></div>
                 </div>
             </section>
 
-            <!-- GRAFIK SURFACE -->
+            <!-- PERTUMBUHAN PELANGGAN (CHART) -->
             <section class="chart-section" data-aos="fade-up">
                 <h2 class="section-title">Pertumbuhan Pelanggan</h2>
-                <div class="chart-container">
-                    <div class="chart-title"><i class="fas fa-chart-line"></i> Jumlah Pelanggan per Bulan (2025)</div>
-                    <canvas id="customerChart" width="800" height="400"></canvas>
-                </div>
+                <div class="chart-container"><div class="chart-title"><i class="fas fa-chart-line"></i> Jumlah Pelanggan per Bulan (2025)</div><canvas id="customerChart" width="800" height="400"></canvas></div>
             </section>
 
-            <!-- TESTIMONIAL (dipindahkan dari Karya) -->
+            <!-- TESTIMONIAL -->
             <section data-aos="fade-up">
                 <h2 class="section-title">Apa Kata Klien Kami?</h2>
                 <div class="testimonial-grid">
-                    <div class="testimonial-card" data-aos="fade-up">
-                        <div class="testimonial-text">"HanzCode.id mengerjakan website company profile kami dengan sangat profesional. Hasilnya modern dan cepat!"</div>
-                        <div class="testimonial-author"><img src="https://randomuser.me/api/portraits/men/32.jpg"><div><h4>Budi Santoso</h4><p>CEO, PT Maju Bersama</p></div></div>
-                    </div>
-                    <div class="testimonial-card" data-aos="fade-up" data-aos-delay="100">
-                        <div class="testimonial-text">"Desain yang diberikan sangat estetik dan responsif. Proses komunikasi lancar, hasil melebihi ekspektasi!"</div>
-                        <div class="testimonial-author"><img src="https://randomuser.me/api/portraits/women/68.jpg"><div><h4>Amanda Wijaya</h4><p>Owner, Bloom Studio</p></div></div>
-                    </div>
-                    <div class="testimonial-card" data-aos="fade-up" data-aos-delay="200">
-                        <div class="testimonial-text">"Kualitas kode rapi dan mudah dikembangkan. HanzCode.id benar-benar profesional!"</div>
-                        <div class="testimonial-author"><img src="https://randomuser.me/api/portraits/men/45.jpg"><div><h4>Reza Pratama</h4><p>CTO, TechSolution</p></div></div>
-                    </div>
+                    <div class="testimonial-card"><div class="testimonial-text">"HanzCode.id mengerjakan website company profile kami dengan sangat profesional. Hasilnya modern dan cepat!"</div><div class="testimonial-author"><img src="https://randomuser.me/api/portraits/men/32.jpg"><div><h4>Budi Santoso</h4><p>CEO, PT Maju Bersama</p></div></div></div>
+                    <div class="testimonial-card"><div class="testimonial-text">"Desain yang diberikan sangat estetik dan responsif. Proses komunikasi lancar, hasil melebihi ekspektasi!"</div><div class="testimonial-author"><img src="https://randomuser.me/api/portraits/women/68.jpg"><div><h4>Amanda Wijaya</h4><p>Owner, Bloom Studio</p></div></div></div>
+                    <div class="testimonial-card"><div class="testimonial-text">"Kualitas kode rapi dan mudah dikembangkan. HanzCode.id benar-benar profesional!"</div><div class="testimonial-author"><img src="https://randomuser.me/api/portraits/men/45.jpg"><div><h4>Reza Pratama</h4><p>CTO, TechSolution</p></div></div></div>
                 </div>
             </section>
 
-            <!-- Blog -->
+            <!-- BLOG & ARTIKEL -->
             <section>
                 <h2 class="section-title" data-aos="fade-up">Blog & Artikel</h2>
                 <div class="blog-grid">
-                    <div class="blog-card" data-aos="fade-up">
-                        <img src="https://picsum.photos/id/1/400/250" class="blog-img">
-                        <div class="blog-content">
-                            <div class="blog-date"><i class="far fa-calendar-alt"></i> 1 Apr 2025</div>
-                            <h3>Pengalaman Pertama Bikin Website untuk Klien</h3>
-                            <div class="blog-preview">Cerita awal mula saya terjun ke dunia frontend developer...</div>
-                            <div class="blog-full">
-                                <p>Semua berawal dari tugas kuliah. Saya ditawari teman untuk bikin website toko online sederhana.</p>
-                                <h4>Pelajaran berharga:</h4>
-                                <p>• Komunikasi dengan klien itu penting<br>• Jangan takut bilang "tidak tahu"<br>• Terus belajar setiap hari</p>
-                            </div>
-                            <span class="read-more-btn">Baca selengkapnya <i class="fas fa-chevron-down"></i></span>
-                        </div>
-                    </div>
-                    <div class="blog-card" data-aos="fade-up" data-aos-delay="100">
-                        <img src="https://picsum.photos/id/26/400/250" class="blog-img">
-                        <div class="blog-content">
-                            <div class="blog-date"><i class="far fa-calendar-alt"></i> 25 Mar 2025</div>
-                            <h3>Kenapa Saya Pilih Tailwind CSS?</h3>
-                            <div class="blog-preview">Alasan saya meninggalkan CSS biasa dan beralih ke Tailwind...</div>
-                            <div class="blog-full">
-                                <p>Tailwind mengubah cara saya menulis CSS. Dengan utility-first, saya bisa lebih cepat.</p>
-                                <h4>Keuntungan:</h4>
-                                <p>• Tidak perlu pusing mikirin nama class<br>• Desain konsisten<br>• File CSS lebih kecil</p>
-                            </div>
-                            <span class="read-more-btn">Baca selengkapnya <i class="fas fa-chevron-down"></i></span>
-                        </div>
-                    </div>
-                    <div class="blog-card" data-aos="fade-up" data-aos-delay="200">
-                        <img src="https://picsum.photos/id/91/400/250" class="blog-img">
-                        <div class="blog-content">
-                            <div class="blog-date"><i class="far fa-calendar-alt"></i> 18 Mar 2025</div>
-                            <h3>Tips Website Cepat di HP</h3>
-                            <div class="blog-preview">3 cara sederhana bikin website nggak lemot di smartphone...</div>
-                            <div class="blog-full">
-                                <p>Pengguna mobile makin banyak. Website lambat = customer kabur.</p>
-                                <h4>Tips:</h4>
-                                <p>• Kompres gambar<br>• Hindari terlalu banyak animasi<br>• Pakai font sistem saja</p>
-                            </div>
-                            <span class="read-more-btn">Baca selengkapnya <i class="fas fa-chevron-down"></i></span>
-                        </div>
-                    </div>
-                    <div class="blog-card" data-aos="fade-up" data-aos-delay="300">
-                        <img src="https://picsum.photos/id/15/400/250" class="blog-img">
-                        <div class="blog-content">
-                            <div class="blog-date"><i class="far fa-calendar-alt"></i> 10 Mar 2025</div>
-                            <h3>Figma vs Coding Langsung?</h3>
-                            <div class="blog-preview">Pengalaman saya bikin website tanpa desain dulu...</div>
-                            <div class="blog-full">
-                                <p>Saya dulu suka langsung coding. Tapi setelah pakai Figma, kerjaan jadi lebih rapi.</p>
-                                <h4>Kesimpulan:</h4>
-                                <p>Desain dulu itu penting, apalagi untuk project besar.</p>
-                            </div>
-                            <span class="read-more-btn">Baca selengkapnya <i class="fas fa-chevron-down"></i></span>
-                        </div>
-                    </div>
-                    <div class="blog-card" data-aos="fade-up" data-aos-delay="400">
-                        <img src="https://picsum.photos/id/42/400/250" class="blog-img">
-                        <div class="blog-content">
-                            <div class="blog-date"><i class="far fa-calendar-alt"></i> 3 Mar 2025</div>
-                            <h3>Responsive Design Bukan Hanya Ukuran</h3>
-                            <div class="blog-preview">Lebih dari sekadar media query, ini pengalaman saya...</div>
-                            <div class="blog-full">
-                                <p>Responsive itu tentang konten dan interaksi, bukan cuma ngubah ukuran.</p>
-                                <h4>Yang perlu diperhatikan:</h4>
-                                <p>• Ukuran tombol harus nyaman diklik<br>• Jangan sembunyikan fitur penting</p>
-                            </div>
-                            <span class="read-more-btn">Baca selengkapnya <i class="fas fa-chevron-down"></i></span>
-                        </div>
-                    </div>
-                    <div class="blog-card" data-aos="fade-up" data-aos-delay="500">
-                        <img src="https://picsum.photos/id/0/400/250" class="blog-img">
-                        <div class="blog-content">
-                            <div class="blog-date"><i class="far fa-calendar-alt"></i> 25 Feb 2025</div>
-                            <h3>Masa Depan Frontend Developer</h3>
-                            <div class="blog-preview">Pendapat saya soal AI dan framework baru di 2025...</div>
-                            <div class="blog-full">
-                                <p>Banyak yang takut AI bakal ganti developer. Tapi saya lihat ini peluang.</p>
-                                <h4>Yang harus dipelajari:</h4>
-                                <p>• Cara pakai AI tools<br>• Dasar-dasar tetap penting<br>• Soft skill makin berharga</p>
-                            </div>
-                            <span class="read-more-btn">Baca selengkapnya <i class="fas fa-chevron-down"></i></span>
-                        </div>
-                    </div>
+                    <div class="blog-card"><img src="https://picsum.photos/id/1/400/250" class="blog-img"><div class="blog-content"><div class="blog-date"><i class="far fa-calendar-alt"></i> 1 Apr 2025</div><h3>Pengalaman Pertama Bikin Website untuk Klien</h3><div class="blog-preview">Cerita awal mula saya terjun ke dunia frontend developer...</div><div class="blog-full"><p>Semua berawal dari tugas kuliah. Saya ditawari teman untuk bikin website toko online sederhana.</p><h4>Pelajaran berharga:</h4><p>• Komunikasi dengan klien itu penting<br>• Jangan takut bilang "tidak tahu"<br>• Terus belajar setiap hari</p></div><span class="read-more-btn">Baca selengkapnya <i class="fas fa-chevron-down"></i></span></div></div>
+                    <div class="blog-card"><img src="https://picsum.photos/id/26/400/250" class="blog-img"><div class="blog-content"><div class="blog-date"><i class="far fa-calendar-alt"></i> 25 Mar 2025</div><h3>Kenapa Saya Pilih Tailwind CSS?</h3><div class="blog-preview">Alasan saya meninggalkan CSS biasa dan beralih ke Tailwind...</div><div class="blog-full"><p>Tailwind mengubah cara saya menulis CSS. Dengan utility-first, saya bisa lebih cepat.</p><h4>Keuntungan:</h4><p>• Tidak perlu pusing mikirin nama class<br>• Desain konsisten<br>• File CSS lebih kecil</p></div><span class="read-more-btn">Baca selengkapnya <i class="fas fa-chevron-down"></i></span></div></div>
+                    <div class="blog-card"><img src="https://picsum.photos/id/91/400/250" class="blog-img"><div class="blog-content"><div class="blog-date"><i class="far fa-calendar-alt"></i> 18 Mar 2025</div><h3>Tips Website Cepat di HP</h3><div class="blog-preview">3 cara sederhana bikin website nggak lemot di smartphone...</div><div class="blog-full"><p>Pengguna mobile makin banyak. Website lambat = customer kabur.</p><h4>Tips:</h4><p>• Kompres gambar<br>• Hindari terlalu banyak animasi<br>• Pakai font sistem saja</p></div><span class="read-more-btn">Baca selengkapnya <i class="fas fa-chevron-down"></i></span></div></div>
+                    <div class="blog-card"><img src="https://picsum.photos/id/15/400/250" class="blog-img"><div class="blog-content"><div class="blog-date"><i class="far fa-calendar-alt"></i> 10 Mar 2025</div><h3>Figma vs Coding Langsung?</h3><div class="blog-preview">Pengalaman saya bikin website tanpa desain dulu...</div><div class="blog-full"><p>Saya dulu suka langsung coding. Tapi setelah pakai Figma, kerjaan jadi lebih rapi.</p><h4>Kesimpulan:</h4><p>Desain dulu itu penting, apalagi untuk project besar.</p></div><span class="read-more-btn">Baca selengkapnya <i class="fas fa-chevron-down"></i></span></div></div>
+                    <div class="blog-card"><img src="https://picsum.photos/id/42/400/250" class="blog-img"><div class="blog-content"><div class="blog-date"><i class="far fa-calendar-alt"></i> 3 Mar 2025</div><h3>Responsive Design Bukan Hanya Ukuran</h3><div class="blog-preview">Lebih dari sekadar media query, ini pengalaman saya...</div><div class="blog-full"><p>Responsive itu tentang konten dan interaksi, bukan cuma ngubah ukuran.</p><h4>Yang perlu diperhatikan:</h4><p>• Ukuran tombol harus nyaman diklik<br>• Jangan sembunyikan fitur penting</p></div><span class="read-more-btn">Baca selengkapnya <i class="fas fa-chevron-down"></i></span></div></div>
+                    <div class="blog-card"><img src="https://picsum.photos/id/0/400/250" class="blog-img"><div class="blog-content"><div class="blog-date"><i class="far fa-calendar-alt"></i> 25 Feb 2025</div><h3>Masa Depan Frontend Developer</h3><div class="blog-preview">Pendapat saya soal AI dan framework baru di 2025...</div><div class="blog-full"><p>Banyak yang takut AI bakal ganti developer. Tapi saya lihat ini peluang.</p><h4>Yang harus dipelajari:</h4><p>• Cara pakai AI tools<br>• Dasar-dasar tetap penting<br>• Soft skill makin berharga</p></div><span class="read-more-btn">Baca selengkapnya <i class="fas fa-chevron-down"></i></span></div></div>
                 </div>
             </section>
         </div>
 
-        <!-- HALAMAN LAYANAN -->
-        <div id="page-layanan" class="page">
-            <section>
-                <h2 class="section-title" data-aos="fade-up">Layanan Kami</h2>
-                <div class="services-grid">
-                    <div class="service-card" data-aos="fade-up"><div class="service-icon"><i class="fas fa-building"></i></div><h3>Company Profile</h3><p>Website perusahaan profesional dengan desain modern dan responsive. Cocok untuk bisnis yang ingin meningkatkan kredibilitas online.</p></div>
-                    <div class="service-card" data-aos="fade-up" data-aos-delay="100"><div class="service-icon"><i class="fas fa-globe"></i></div><h3>Custom Domain</h3><p>Bantu pasang dan konfigurasi domain custom untuk website Anda. Termasuk setting DNS, pointing ke hosting, dan SSL.</p></div>
-                    <div class="service-card" data-aos="fade-up" data-aos-delay="200"><div class="service-icon"><i class="fas fa-mobile-alt"></i></div><h3>Responsive Design</h3><p>Tampilan sempurna di semua perangkat dari desktop hingga mobile. Pastikan pengalaman user optimal di mana saja.</p></div>
-                    <div class="service-card" data-aos="fade-up" data-aos-delay="300"><div class="service-icon"><i class="fas fa-chart-line"></i></div><h3>SEO Optimization</h3><p>Optimasi kecepatan dan SEO agar website mudah ditemukan di mesin pencari seperti Google.</p></div>
-                </div>
-            </section>
-
-            <section>
-                <h2 class="section-title" data-aos="fade-up">Cara Kerja</h2>
-                <div class="steps-grid">
-                    <div class="step-item"><div class="step-number">1</div><h3>Konsultasi</h3><p>Diskusi kebutuhan dan tujuan website</p></div>
-                    <div class="step-item"><div class="step-number">2</div><h3>Desain</h3><p>Pembuatan mockup dan desain UI/UX</p></div>
-                    <div class="step-item"><div class="step-number">3</div><h3>Development</h3><p>Proses coding dan pengembangan</p></div>
-                    <div class="step-item"><div class="step-number">4</div><h3>Launch</h3><p>Review, revisi, dan go live</p></div>
-                </div>
-            </section>
-
-            <section>
-                <h2 class="section-title" data-aos="fade-up">Form Pemesanan</h2>
-                <div class="form-container">
-                    <div class="booking-form" data-aos="fade-right">
-                        <form id="bookingForm">
-                            <input type="text" placeholder="Nama Lengkap" id="bookingName" required>
-                            <div class="custom-select">
-                                <select id="bookingService" required>
-                                    <option value="">Pilih Layanan</option>
-                                    <option value="Company Profile">Company Profile</option>
-                                    <option value="Custom Domain">Custom Domain</option>
-                                    <option value="Responsive Design">Responsive Design</option>
-                                    <option value="SEO Optimization">SEO Optimization</option>
-                                </select>
-                            </div>
-                            <textarea rows="4" placeholder="Deskripsi Kebutuhan" id="bookingDesc" required></textarea>
-                            <button type="submit"><i class="fas fa-paper-plane"></i> Kirim Pesanan</button>
-                        </form>
-                    </div>
-                    <div class="steps-card" data-aos="fade-left">
-                        <h3>Cara Pemesanan</h3>
-                        <ol>
-                            <li>Isi form dengan nama dan kebutuhan</li>
-                            <li>Pilih layanan yang diinginkan</li>
-                            <li>Tim kami akan menghubungi via WhatsApp</li>
-                            <li>Diskusi dan konfirmasi spesifikasi</li>
-                            <li>Pembayaran DP 50%</li>
-                            <li>Proses pengerjaan website</li>
-                            <li>Review dan pelunasan</li>
-                            <li>Website siap online!</li>
-                        </ol>
-                    </div>
-                </div>
-            </section>
-        </div>
-
-        <!-- HALAMAN KARYA (hanya Portofolio) -->
-        <div id="page-karya" class="page">
-            <section>
-                <h2 class="section-title" data-aos="fade-up">Portofolio</h2>
-                <div class="portfolio-grid">
-                    <div class="portfolio-card" data-aos="fade-up">
-                        <div class="portfolio-media">
-                            <img src="Pict/Campany profil.png" alt="Company Profile">
-                            <video src="Pict/Campany profil video.mp4" loop muted playsinline></video>
-                        </div>
-                        <div class="portfolio-content">
-                            <div class="portfolio-category">Company Profile</div>
-                            <h3>Landingpage Company Profile</h3>
-                        </div>
-                    </div>
-                    <div class="portfolio-card" data-aos="fade-up" data-aos-delay="100">
-                        <div class="portfolio-media">
-                            <img src="Pict/Web aplications.png" alt="Web App">
-                            <video src="Pict/Web Applications video.mp4" loop muted playsinline></video>
-                        </div>
-                        <div class="portfolio-content">
-                            <div class="portfolio-category">Web App</div>
-                            <h3>Multipage Web Application</h3>
-                        </div>
-                    </div>
-                    <div class="portfolio-card" data-aos="fade-up" data-aos-delay="200">
-                        <div class="portfolio-media">
-                            <img src="Pict/Online store platfrom.png" alt="E-Commerce">
-                            <video src="Pict/Online store platfrom video.mp4" loop muted playsinline></video>
-                        </div>
-                        <div class="portfolio-content">
-                            <div class="portfolio-category">E-Commerce</div>
-                            <h3>Online Store Platform</h3>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </div>
-
-        <!-- HALAMAN KONTAK -->
-        <div id="page-kontak" class="page">
-            <section>
-                <h2 class="section-title" data-aos="fade-up">FAQ</h2>
-                <div class="faq-container">
-                    <div class="faq-item"><div class="faq-question"><i class="fas fa-question-circle"></i> Berapa lama waktu pengerjaan website?<i class="fas fa-chevron-down faq-icon"></i></div><div class="faq-answer">5-7 hari kerja tergantung kompleksitas project.</div></div>
-                    <div class="faq-item"><div class="faq-question"><i class="fas fa-question-circle"></i> Apakah dapat support setelah website selesai?<i class="fas fa-chevron-down faq-icon"></i></div><div class="faq-answer">Ya, support 7 hari setelah pembayaran untuk update minor.</div></div>
-                    <div class="faq-item"><div class="faq-question"><i class="fas fa-question-circle"></i> Metode pembayaran?<i class="fas fa-chevron-down faq-icon"></i></div><div class="faq-answer">Saat ini melalui DANA.</div></div>
-                    <div class="faq-item"><div class="faq-question"><i class="fas fa-question-circle"></i> Konsultasi gratis?<i class="fas fa-chevron-down faq-icon"></i></div><div class="faq-answer">Tentu, konsultasi awal gratis.</div></div>
-                </div>
-            </section>
-
-            <section>
-                <h2 class="section-title" data-aos="fade-up">Hubungi Kami</h2>
-                <div class="contact-premium">
-                    <div class="contact-info-card" data-aos="fade-right">
-                        <h3><i class="fas fa-address-card"></i> Informasi Kontak</h3>
-                        <div class="contact-detail"><i class="fas fa-map-marker-alt"></i><div><h4>Alamat</h4><p>Indramayu, Indonesia</p></div></div>
-                        <div class="contact-detail"><i class="fas fa-phone-alt"></i><div><h4>Telepon</h4><p>+62 896-8421-9904</p></div></div>
-                        <div class="contact-detail"><i class="fas fa-clock"></i><div><h4>Jam Operasional</h4><p>Senin - Jumat, 15:00 - 22:00 WIB</p></div></div>
-                        <div class="social-premium"><h4>Ikuti Kami</h4><div class="social-icons-premium"><a href="https://wa.me/628567858301" target="_blank"><i class="fab fa-whatsapp"></i></a><a href="https://wa.me/6289684219904" target="_blank"><i class="fab fa-whatsapp"></i></a><a href="https://www.tiktok.com/@hanzcodeid" target="_blank"><i class="fab fa-tiktok"></i></a></div></div>
-                    </div>
-                    <div class="contact-form-card" data-aos="fade-left">
-                        <h3><i class="fas fa-paper-plane"></i> Kirim Pesan</h3>
-                        <form id="contactForm">
-                            <input type="text" placeholder="Nama Lengkap" id="contactName" required>
-                            <textarea rows="4" placeholder="Tulis pesan Anda..." id="contactMessage" required></textarea>
-                            <button type="submit"><i class="fas fa-envelope"></i> Kirim Pesan</button>
-                        </form>
-                    </div>
-                </div>
-            </section>
-        </div>
+        <!-- HALAMAN LAINNYA: SEDANG PENGERJAAN -->
+        <div id="page-layanan" class="page"><div class="empty-page"><div class="empty-card"><i class="fas fa-tools"></i><h2>🚧 Halaman ini sedang dalam proses pengerjaan</h2><p>Mohon bersabar, kami sedang menyiapkan layanan terbaik untuk Anda.</p></div></div></div>
+        <div id="page-karya" class="page"><div class="empty-page"><div class="empty-card"><i class="fas fa-laptop-code"></i><h2>🎨 Halaman ini sedang dalam proses pengerjaan</h2><p>Portofolio keren kami sedang disusun. Nantikan showcase project-project terbaru!</p></div></div></div>
+        <div id="page-kontak" class="page"><div class="empty-page"><div class="empty-card"><i class="fas fa-envelope-open-text"></i><h2>📬 Halaman ini sedang dalam proses pengerjaan</h2><p>Form kontak dan informasi lengkap akan segera hadir.</p></div></div></div>
     </div>
 
     <footer>
         <div class="footer-container">
             <div class="footer-grid">
-                <div class="footer-col">
-                    <h4>HanzCode.id</h4>
-                    <p>Solusi pengembangan web modern dengan fokus pada performa, estetika, dan pengalaman pengguna.</p>
-                    <div class="footer-social">
-                        <a href="https://wa.me/628567858301" target="_blank"><i class="fab fa-whatsapp"></i></a>
-                        <a href="https://www.tiktok.com/@hanzcodeid" target="_blank"><i class="fab fa-tiktok"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-github"></i></a>
-                    </div>
-                </div>
-                <div class="footer-col">
-                    <h4>Menu</h4>
-                    <ul>
-                        <li><a href="#tentang" data-page="tentang"><i class="fas fa-chevron-right"></i> Tentang</a></li>
-                        <li><a href="#layanan" data-page="layanan"><i class="fas fa-chevron-right"></i> Layanan</a></li>
-                        <li><a href="#karya" data-page="karya"><i class="fas fa-chevron-right"></i> Karya</a></li>
-                        <li><a href="#kontak" data-page="kontak"><i class="fas fa-chevron-right"></i> Kontak</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Layanan</h4>
-                    <ul>
-                        <li><a href="#layanan" data-page="layanan"><i class="fas fa-chevron-right"></i> Company Profile</a></li>
-                        <li><a href="#layanan" data-page="layanan"><i class="fas fa-chevron-right"></i> Custom Domain</a></li>
-                        <li><a href="#layanan" data-page="layanan"><i class="fas fa-chevron-right"></i> SEO Optimization</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Kontak</h4>
-                    <div class="footer-contact-info"><i class="fas fa-map-marker-alt"></i><span>Indramayu, Indonesia</span></div>
-                    <div class="footer-contact-info"><i class="fab fa-whatsapp"></i><span>+62 896-8421-9904</span></div>
-                    <div class="footer-contact-info"><i class="far fa-envelope"></i><span>hanzcode@gmail.com</span></div>
-                </div>
+                <div class="footer-col"><h4>HanzCode.id</h4><p>Solusi pengembangan web modern dengan fokus pada performa, estetika, dan pengalaman pengguna.</p><div class="footer-social"><a href="https://wa.me/628567858301" target="_blank"><i class="fab fa-whatsapp"></i></a><a href="https://www.tiktok.com/@hanzcodeid" target="_blank"><i class="fab fa-tiktok"></i></a><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-github"></i></a></div></div>
+                <div class="footer-col"><h4>Menu</h4><ul><li><a href="#tentang" data-page="tentang"><i class="fas fa-chevron-right"></i> Tentang</a></li><li><a href="#layanan" data-page="layanan"><i class="fas fa-chevron-right"></i> Layanan</a></li><li><a href="#karya" data-page="karya"><i class="fas fa-chevron-right"></i> Karya</a></li><li><a href="#kontak" data-page="kontak"><i class="fas fa-chevron-right"></i> Kontak</a></li></ul></div>
+                <div class="footer-col"><h4>Layanan</h4><ul><li><a href="#layanan" data-page="layanan"><i class="fas fa-chevron-right"></i> Company Profile</a></li><li><a href="#layanan" data-page="layanan"><i class="fas fa-chevron-right"></i> Custom Domain</a></li><li><a href="#layanan" data-page="layanan"><i class="fas fa-chevron-right"></i> SEO Optimization</a></li></ul></div>
+                <div class="footer-col"><h4>Kontak</h4><div class="footer-contact-info"><i class="fas fa-map-marker-alt"></i><span>Indramayu, Indonesia</span></div><div class="footer-contact-info"><i class="fab fa-whatsapp"></i><span>+62 896-8421-9904</span></div><div class="footer-contact-info"><i class="far fa-envelope"></i><span>hanzcode@gmail.com</span></div></div>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 HanzCode.id — Frontend Developer & Web Solutions</p>
-                <div class="footer-bottom-links">
-                    <a href="#tentang" data-page="tentang">Tentang</a>
-                    <a href="#kontak" data-page="kontak">Kontak</a>
-                    <a href="#">Kebijakan Privasi</a>
-                </div>
-            </div>
+            <div class="footer-bottom"><p>&copy; 2026 HanzCode.id — Frontend Developer & Web Solutions</p><div class="footer-bottom-links"><a href="#tentang" data-page="tentang">Tentang</a><a href="#kontak" data-page="kontak">Kontak</a><a href="#">Kebijakan Privasi</a></div></div>
         </div>
     </footer>
 </div>
@@ -1279,9 +819,9 @@
 
         AOS.init({ duration: 600, once: false, offset: 80, mirror: true });
 
-        // GRAFIK SURFACE
+        // Chart
         var ctx = document.getElementById('customerChart').getContext('2d');
-        var chart = new Chart(ctx, {
+        new Chart(ctx, {
             type: 'line',
             data: {
                 labels: ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des'],
@@ -1299,173 +839,64 @@
                     fill: true
                 }]
             },
-            options: {
-                responsive: true,
-                maintainAspectRatio: true,
-                plugins: {
-                    legend: {
-                        labels: { color: '#cbd5e1' }
-                    },
-                    tooltip: {
-                        backgroundColor: '#0a0c10',
-                        titleColor: '#FBBF24',
-                        bodyColor: '#cbd5e1',
-                        borderColor: '#FBBF24',
-                        borderWidth: 1
-                    }
-                },
-                scales: {
-                    x: {
-                        ticks: { color: '#9ca3af' },
-                        grid: { color: 'rgba(255,255,255,0.05)' }
-                    },
-                    y: {
-                        ticks: { color: '#9ca3af' },
-                        grid: { color: 'rgba(255,255,255,0.05)' },
-                        title: {
-                            display: true,
-                            text: 'Jumlah Klien',
-                            color: '#9ca3af'
-                        }
-                    }
-                }
-            }
+            options: { responsive: true, maintainAspectRatio: true, plugins: { legend: { labels: { color: '#cbd5e1' } }, tooltip: { backgroundColor: '#0a0c10', titleColor: '#FBBF24', bodyColor: '#cbd5e1', borderColor: '#FBBF24', borderWidth: 1 } }, scales: { x: { ticks: { color: '#9ca3af' }, grid: { color: 'rgba(255,255,255,0.05)' } }, y: { ticks: { color: '#9ca3af' }, grid: { color: 'rgba(255,255,255,0.05)' } } } }
         });
 
         function changePage(pageId) {
-            document.querySelectorAll('.page').forEach(function(page) {
-                page.classList.remove('active');
+            document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
+            document.getElementById('page-' + pageId)?.classList.add('active');
+            document.querySelectorAll('.nav-links a[data-page]').forEach(link => {
+                if (link.getAttribute('data-page') === pageId) link.classList.add('active');
+                else link.classList.remove('active');
             });
-            var targetPage = document.getElementById('page-' + pageId);
-            if (targetPage) {
-                targetPage.classList.add('active');
-            }
-            var menuLinks = document.querySelectorAll('.nav-links a[data-page]');
-            for (var i = 0; i < menuLinks.length; i++) {
-                var link = menuLinks[i];
-                if (link.getAttribute('data-page') === pageId) {
-                    link.classList.add('active');
-                } else {
-                    link.classList.remove('active');
-                }
-            }
             window.scrollTo({ top: 0, behavior: 'smooth' });
-            setTimeout(function() { AOS.refresh(); }, 100);
+            setTimeout(() => AOS.refresh(), 100);
         }
 
-        var allNavTriggers = document.querySelectorAll('[data-page]');
-        for (var i = 0; i < allNavTriggers.length; i++) {
-            var trigger = allNavTriggers[i];
-            trigger.removeEventListener('click', handleNavigation);
-            trigger.addEventListener('click', handleNavigation);
-        }
-        
-        function handleNavigation(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            var pageId = this.getAttribute('data-page');
-            if (pageId) {
-                changePage(pageId);
-                var navLinks = document.getElementById('navLinks');
-                if (navLinks && navLinks.classList.contains('show')) {
-                    navLinks.classList.remove('show');
-                }
-            }
-        }
+        document.querySelectorAll('[data-page]').forEach(trigger => {
+            trigger.addEventListener('click', function(e) {
+                e.preventDefault();
+                let pageId = this.getAttribute('data-page');
+                if (pageId) changePage(pageId);
+                document.getElementById('navLinks')?.classList.remove('show');
+            });
+        });
 
-        var menuToggle = document.getElementById('menuToggle');
-        var navLinks = document.getElementById('navLinks');
+        let menuToggle = document.getElementById('menuToggle');
+        let navLinks = document.getElementById('navLinks');
         if (menuToggle && navLinks) {
-            menuToggle.addEventListener('click', function(e) {
-                e.stopPropagation();
-                navLinks.classList.toggle('show');
-            });
-            document.addEventListener('click', function(event) {
-                if (navLinks.classList.contains('show') && 
-                    !navLinks.contains(event.target) && 
-                    !menuToggle.contains(event.target)) {
+            menuToggle.addEventListener('click', (e) => { e.stopPropagation(); navLinks.classList.toggle('show'); });
+            document.addEventListener('click', (event) => {
+                if (navLinks.classList.contains('show') && !navLinks.contains(event.target) && !menuToggle.contains(event.target))
                     navLinks.classList.remove('show');
+            });
+        }
+
+        // Portfolio video hover
+        document.querySelectorAll('.portfolio-media').forEach(media => {
+            let card = media.parentElement;
+            let video = media.querySelector('video');
+            if (video) {
+                card.addEventListener('mouseenter', () => video.play());
+                card.addEventListener('mouseleave', () => { video.pause(); video.currentTime = 0; });
+            }
+        });
+
+        // Blog read more
+        document.querySelectorAll('.read-more-btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                let blogCard = this.closest('.blog-card');
+                let fullContent = blogCard.querySelector('.blog-full');
+                if (fullContent.classList.contains('show')) {
+                    fullContent.classList.remove('show');
+                    this.innerHTML = 'Baca selengkapnya <i class="fas fa-chevron-down"></i>';
+                } else {
+                    fullContent.classList.add('show');
+                    this.innerHTML = 'Baca secara singkat <i class="fas fa-chevron-up"></i>';
                 }
             });
-        }
-
-        var faqItems = document.querySelectorAll('.faq-item');
-        for (var i = 0; i < faqItems.length; i++) {
-            var question = faqItems[i].querySelector('.faq-question');
-            if (question) {
-                question.removeEventListener('click', toggleFaq);
-                question.addEventListener('click', toggleFaq);
-            }
-        }
-        function toggleFaq() {
-            this.parentElement.classList.toggle('active');
-        }
-
-        var portfolioMedia = document.querySelectorAll('.portfolio-media');
-        for (var i = 0; i < portfolioMedia.length; i++) {
-            var media = portfolioMedia[i];
-            var video = media.querySelector('video');
-            if (video) {
-                var card = media.parentElement;
-                card.addEventListener('mouseenter', function() {
-                    var v = this.querySelector('video');
-                    if (v) v.play();
-                });
-                card.addEventListener('mouseleave', function() {
-                    var v = this.querySelector('video');
-                    if (v) { v.pause(); v.currentTime = 0; }
-                });
-            }
-        }
-
-        var readMoreBtns = document.querySelectorAll('.read-more-btn');
-        for (var i = 0; i < readMoreBtns.length; i++) {
-            readMoreBtns[i].removeEventListener('click', toggleBlog);
-            readMoreBtns[i].addEventListener('click', toggleBlog);
-        }
-        function toggleBlog(e) {
-            e.stopPropagation();
-            var blogCard = this.closest('.blog-card');
-            var fullContent = blogCard.querySelector('.blog-full');
-            var isActive = this.classList.contains('active');
-            if (isActive) {
-                fullContent.classList.remove('show');
-                this.classList.remove('active');
-                this.innerHTML = 'Baca selengkapnya <i class="fas fa-chevron-down"></i>';
-            } else {
-                fullContent.classList.add('show');
-                this.classList.add('active');
-                this.innerHTML = 'Baca secara singkat <i class="fas fa-chevron-up"></i>';
-            }
-        }
-
-        var bookingForm = document.getElementById('bookingForm');
-        if (bookingForm) {
-            bookingForm.removeEventListener('submit', submitBooking);
-            bookingForm.addEventListener('submit', submitBooking);
-        }
-        function submitBooking(e) {
-            e.preventDefault();
-            var name = document.getElementById('bookingName').value;
-            var service = document.getElementById('bookingService').value;
-            var desc = document.getElementById('bookingDesc').value;
-            var message = 'Halo HanzCode.id, saya ' + name + ' ingin memesan ' + service + '. Kebutuhan: ' + desc;
-            window.open('https://wa.me/6289684219904?text=' + encodeURIComponent(message), '_blank');
-            bookingForm.reset();
-        }
-
-        var contactForm = document.getElementById('contactForm');
-        if (contactForm) {
-            contactForm.removeEventListener('submit', submitContact);
-            contactForm.addEventListener('submit', submitContact);
-        }
-        function submitContact(e) {
-            e.preventDefault();
-            var name = document.getElementById('contactName').value;
-            var message = document.getElementById('contactMessage').value;
-            window.open('https://wa.me/628567858301?text=' + encodeURIComponent('Halo, saya ' + name + '. ' + message), '_blank');
-            contactForm.reset();
-        }
+        });
     })();
 </script>
 </body>
