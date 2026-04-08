@@ -1,903 +1,1267 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>HanzCode.id | Frontend Developer</title>
-    <link rel="icon" type="image/x-icon" href="/Pict/favicon.ico">
-    <link rel="icon" type="image/png" sizes="16x16" href="/Pict/favicon-16x16.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/Pict/favicon-32x32.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/Pict/apple-touch-icon.png">
-    <link rel="manifest" href="/Pict/site.webmanifest">
-    <meta name="description" content="HanzCode.id - frontend developer profesional">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <title>Portofolio rehan | Network Engineer & Web Developer</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        img { -webkit-user-drag: none; user-drag: none; pointer-events: none; }
-        body {
-            font-family: 'Inter', sans-serif;
-            background: #0a0c10;
-            color: #e5e7eb;
-            overflow-x: hidden;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
-        /* HEADER */
-        .header-wrapper {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 100;
-            padding: 20px 24px 0 24px;
-            background: transparent;
+        body {
+            background: #000000;
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.3s ease;
         }
-        .header {
-            background: rgba(10, 12, 16, 0.85);
-            backdrop-filter: blur(16px);
-            border-radius: 100px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.2), 0 0 0 1px rgba(251,191,36,0.1);
+
+        /* Efek Glow - Default Red */
+        .brand .rehan,
+        .main-greeting,
+        .stat-number,
+        .about-title,
+        .portfolio-title,
+        .skills-title,
+        .visi-title,
+        .blog-title,
+        .footer-title {
+            text-shadow: 0 0 3px rgba(255, 59, 47, 0.4), 0 0 6px rgba(255, 59, 47, 0.2);
+        }
+
+        /* Scroll Reveal */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .stagger-item {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.5s ease-out;
+        }
+        .stagger-item.reveal-stagger {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ----- HEADER ----- */
+        .top-header {
+            width: 100%;
+            background-color: #000000;
+            border-bottom: 1.5px solid #3a3a3a;
+            padding: 0.5rem 1.8rem;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 8px 28px;
-            max-width: 1280px;
-            margin: 0 auto;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
-        .logo { font-weight: 800; font-size: 1.8rem; }
-        .logo .hanz { color: #fff; }
-        .logo .code, .logo .dot, .logo .id { color: #FBBF24; }
-        .nav-links { display: flex; gap: 1.5rem; align-items: center; }
-        .nav-links a {
-            text-decoration: none;
-            font-weight: 500;
-            color: #cbd5e1;
-            transition: 0.25s;
-            font-size: 1rem;
+        .brand {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 800;
+            font-size: 1.6rem;
+            letter-spacing: -0.5px;
             cursor: pointer;
-            padding: 8px 0;
-            position: relative;
         }
-        .nav-links a:after {
+        .brand .rehan { color: #ff3b2f; transition: color 0.3s ease; }
+        .brand .dot-site { color: #d1d5db; font-weight: 700; }
+
+        .header-right { display: flex; align-items: center; gap: 1.5rem; }
+        .nav-links { display: flex; gap: 1.5rem; align-items: center; flex-wrap: wrap; }
+        .nav-links a {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            font-size: 0.85rem;
+            text-decoration: none;
+            color: #e5e7eb;
+            transition: all 0.2s ease;
+            position: relative;
+            padding-bottom: 3px;
+            cursor: pointer;
+        }
+        .nav-links a:hover { color: #ffffff; }
+        .nav-links a::after {
             content: '';
             position: absolute;
+            width: 0;
+            height: 2px;
             bottom: 0;
             left: 0;
-            width: 0%;
-            height: 2px;
-            background: #FBBF24;
-            transition: width 0.25s;
+            background-color: #ff3b2f;
+            transition: width 0.2s ease;
+            border-radius: 4px;
         }
-        .nav-links a:hover:after,
-        .nav-links a.active:after { width: 100%; }
-        .nav-links a:hover,
-        .nav-links a.active { color: #FBBF24; }
-        .menu-toggle {
+        .nav-links a:hover::after { width: 100%; }
+
+        /* Mobile Navigation */
+        .mobile-nav-toggle {
             display: none;
-            font-size: 1.8rem;
-            cursor: pointer;
             background: none;
             border: none;
+            cursor: pointer;
+            font-size: 1.5rem;
             color: #e5e7eb;
-            z-index: 1002;
         }
-        @media (max-width: 900px) {
-            .header { padding: 8px 20px; }
-            .nav-links {
-                position: fixed;
-                top: 85px;
-                left: 20px;
-                right: 20px;
-                background: rgba(10,12,16,0.95);
-                backdrop-filter: blur(20px);
-                flex-direction: column;
-                gap: 1.2rem;
-                padding: 1.8rem;
-                border-radius: 32px;
-                display: none;
-                z-index: 1000;
-                border: 1px solid rgba(251,191,36,0.3);
-                box-shadow: 0 20px 35px -10px rgba(0,0,0,0.5);
-            }
-            .nav-links a {
-                font-size: 1.1rem;
-                padding: 12px 20px;
-                width: 100%;
-                text-align: center;
-                border-radius: 40px;
-            }
-            .nav-links a:hover {
-                background: rgba(251,191,36,0.15);
-                color: #FBBF24;
-            }
-            .nav-links a.active {
-                background: rgba(251,191,36,0.2);
-                color: #FBBF24;
-            }
-            .nav-links a:after { display: none; }
-            .nav-links.show { display: flex; animation: fadeSlideDown 0.3s ease; }
-            .menu-toggle { display: block; }
-            .logo { font-size: 1.4rem; }
-        }
-        @keyframes fadeSlideDown {
-            from { opacity: 0; transform: translateY(-15px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* HERO - FOTO */
-        .hero-fixed {
+        .mobile-nav-toggle:hover { color: #ff3b2f; }
+        .mobile-nav {
             position: fixed;
-            top: 0;
+            top: 65px;
             left: 0;
-            width: 100%;
-            height: 100vh;
-            z-index: 0;
-            overflow: hidden;
+            right: 0;
+            background: linear-gradient(135deg, #0a0a0a 0%, #000000 100%);
+            border-bottom: 1px solid rgba(227, 52, 47, 0.3);
+            backdrop-filter: blur(12px);
+            z-index: 99;
+            transform: translateY(-100%);
+            opacity: 0;
+            visibility: hidden;
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
         }
-        .hero-img-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: 0;
+        .mobile-nav.active {
+            transform: translateY(0);
+            opacity: 1;
+            visibility: visible;
         }
-        .hero-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
+        .mobile-nav-container { display: flex; flex-direction: column; align-items: center; gap: 0; padding: 1rem 0; }
+        .mobile-nav a {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-decoration: none;
+            color: #e5e7eb;
+            padding: 0.8rem 1.5rem;
             width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.65);
-            z-index: 1;
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            cursor: pointer;
         }
-        .hero-content-wrapper {
-            position: absolute;
-            top: 0;
-            left: 0;
+        .mobile-nav a:hover { color: #ff3b2f; background: rgba(227, 52, 47, 0.1); }
+
+        /* HOME SECTION */
+        .home-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 3rem;
             width: 100%;
-            height: 100%;
-            z-index: 2;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem 3rem;
+        }
+        .hero-left { flex: 1; max-width: 650px; }
+        .subtitle-tag {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: #ffffff;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+            opacity: 0.7;
+        }
+        .main-greeting {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 800;
+            font-size: 2.8rem;
+            color: #ff3b2f;
+            line-height: 1.2;
+            margin-bottom: 1.2rem;
+            white-space: nowrap;
+            transition: color 0.3s ease, text-shadow 0.3s ease;
+        }
+        .desc-text {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85rem;
+            color: #cbd5e1;
+            line-height: 1.5;
+            margin-bottom: 1.8rem;
+        }
+        .stats-container { display: flex; gap: 1.5rem; margin-bottom: 2rem; }
+        .stat-box {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(227, 52, 47, 0.3);
+            border-radius: 16px;
+            padding: 0.9rem 1.2rem;
+            text-align: center;
+            flex: 1;
+            transition: border-color 0.3s ease;
+        }
+        .stat-number { font-family: 'Orbitron', sans-serif; font-size: 1.8rem; font-weight: 800; color: #ff3b2f; transition: color 0.3s ease; }
+        .stat-label { font-family: 'Orbitron', sans-serif; font-size: 0.7rem; color: #cbd5e1; text-transform: uppercase; }
+        .button-group { display: flex; gap: 1.2rem; margin-bottom: 2rem; }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 0.7rem 1.5rem;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-decoration: none;
+            border-radius: 12px;
+            transition: all 0.25s ease;
+            cursor: pointer;
+        }
+        .btn-portfolio { background-color: #e3342f; color: #ffffff; transition: background-color 0.3s ease; }
+        .btn-portfolio:hover { background-color: #2a2a36; color: #e5e7eb; transform: translateY(-2px); }
+        .btn-contacts { background-color: #2a2a36; color: #e5e7eb; transition: background-color 0.3s ease; }
+        .btn-contacts:hover { background-color: #e3342f; color: #ffffff; transform: translateY(-2px); }
+        
+        .social-section { margin-top: 2rem; }
+        .social-title { font-family: 'Orbitron', sans-serif; font-size: 0.7rem; color: #cbd5e1; margin-bottom: 1rem; opacity: 0.6; }
+        .social-icons { display: flex; gap: 1.2rem; }
+        .social-icon {
+            width: 45px;
+            height: 45px;
+            background: #000000;
+            border: 1.5px solid rgba(227, 52, 47, 0.4);
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
+            color: #e5e7eb;
+            font-size: 1.3rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
         }
-        .hero-container {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 0 24px;
-            width: 100%;
+        .social-icon:hover { background: #e3342f; color: #ffffff; transform: translateY(-3px); transition: background 0.3s ease; }
+
+        .hero-right { flex-shrink: 0; display: flex; align-items: flex-start; gap: 1rem; }
+        .vertical-icon { display: flex; flex-direction: column; align-items: center; gap: 0.5rem; padding: 1rem 0; }
+        .vertical-line { width: 2px; height: 50px; background: linear-gradient(180deg, #ff3b2f, #e3342f80, transparent); transition: background 0.3s ease; }
+        .vertical-line.bottom { background: linear-gradient(0deg, #ff3b2f, #e3342f80, transparent); }
+        .icon-circle {
+            width: 55px;
+            height: 55px;
+            background: rgba(227, 52, 47, 0.15);
+            border: 1.5px solid rgba(227, 52, 47, 0.5);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
         }
-        .hero {
+        .icon-circle i { font-size: 1.8rem; color: #e3342f; transition: color 0.3s ease; }
+        .vertical-text {
+            font-family: 'Orbitron', sans-serif;
+            writing-mode: vertical-rl;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: #ff3b2f;
+            padding: 0.5rem 0.2rem;
+            transition: color 0.3s ease;
+        }
+        .video-container {
+            width: 360px;
+            border-radius: 20px;
+            border: 2px solid rgba(227, 52, 47, 0.5);
+            overflow: hidden;
+            aspect-ratio: 9 / 16;
+            transition: border-color 0.3s ease;
+        }
+        video { width: 100%; height: 100%; object-fit: cover; }
+
+        /* ABOUT SECTION */
+        .about-section {
+            min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: space-between;
             gap: 3rem;
-            flex-wrap: wrap;
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem 3rem;
         }
-        .hero-content { flex: 1; }
-        .hero-badge {
-            background: rgba(251,191,36,0.12);
+        .about-left { display: flex; gap: 1rem; align-items: center; }
+        .about-image-container {
+            width: 400px;
+            border-radius: 20px;
+            border: 2px solid rgba(227, 52, 47, 0.5);
+            overflow: hidden;
+            aspect-ratio: 4 / 5;
+            transition: border-color 0.3s ease;
+        }
+        .about-image { width: 100%; height: 100%; object-fit: cover; filter: grayscale(100%); transition: filter 0.5s; }
+        .about-image-container:hover .about-image { filter: grayscale(0%); }
+        .about-vertical-text { display: flex; flex-direction: column; align-items: center; gap: 0.5rem; }
+        .about-right { flex: 1; max-width: 650px; }
+        .about-title { font-family: 'Orbitron', sans-serif; font-weight: 800; font-size: 2.8rem; color: #ff3b2f; margin-bottom: 1.2rem; transition: color 0.3s ease; }
+        .about-desc { font-family: 'Inter', sans-serif; font-size: 0.9rem; color: #cbd5e1; line-height: 1.6; margin-bottom: 1.2rem; }
+        
+        .download-cv-container { margin-top: 2rem; }
+        .btn-download {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
-            padding: 6px 18px;
-            border-radius: 100px;
-            font-size: 0.85rem;
-            color: #FBBF24;
-            margin-bottom: 1.5rem;
-            border: 1px solid rgba(251,191,36,0.2);
-        }
-        .hero-content h1 { font-size: 3.2rem; font-weight: 800; line-height: 1.2; margin-bottom: 1.2rem; }
-        .hero-content h1 .highlight { color: #FBBF24; }
-        .hero-content p { font-size: 1.1rem; color: #cbd5e1; margin-bottom: 2rem; line-height: 1.6; }
-        .hero-stats { display: flex; gap: 2rem; margin-bottom: 2rem; flex-wrap: wrap; }
-        .stat-number { font-size: 1.8rem; font-weight: 800; color: #FBBF24; }
-        .stat-label { font-size: 0.8rem; color: #cbd5e1; }
-        .hero-buttons { display: flex; gap: 1rem; flex-wrap: wrap; }
-        .btn-primary {
-            background: #FBBF24;
-            color: #0a0c10;
-            padding: 12px 28px;
-            border-radius: 100px;
-            font-weight: 600;
-            transition: all 0.3s;
-            border: 2px solid #FBBF24;
-            display: inline-block;
+            gap: 0.6rem;
+            padding: 0.7rem 1.8rem;
+            background-color: #2a2a36;
+            color: #e5e7eb;
+            border-radius: 30px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.9rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
             cursor: pointer;
         }
-        .btn-primary:hover { background: transparent; color: #FBBF24; transform: translateY(-3px); }
-        .btn-outline {
-            background: rgba(10,12,16,0.7);
-            border: 2px solid #FBBF24;
-            color: #FBBF24;
-            padding: 12px 28px;
-            border-radius: 100px;
-            font-weight: 600;
-            transition: all 0.3s;
-            display: inline-block;
-            cursor: pointer;
-        }
-        .btn-outline:hover { background: #FBBF24; color: #0a0c10; transform: translateY(-3px); }
-        .hero-image img { width: 100%; max-width: 380px; border-radius: 32px; }
-        @media (max-width: 768px) {
-            .hero { flex-direction: column-reverse; text-align: center; }
-            .hero-stats, .hero-buttons { justify-content: center; }
-            .hero-content h1 { font-size: 2.2rem; }
-            .hero-image img { max-width: 280px; }
-        }
+        .btn-download:hover { background-color: #e3342f; color: #ffffff; transform: translateY(-2px); transition: background-color 0.3s ease; }
 
-        /* SCROLL CONTENT */
-        .scroll-content {
-            position: relative;
-            z-index: 10;
-            background: linear-gradient(135deg, #0a0c10 0%, #0f1117 100%);
-            margin-top: 100vh;
+        /* PORTFOLIO SECTION */
+        .portfolio-section {
+            min-height: 100vh;
+            padding: 4rem 3rem;
+            max-width: 1400px;
+            margin: 0 auto;
         }
-        .page-container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
-        .page { display: none; }
-        .page.active { display: block; }
-        section { padding: 80px 0; }
-        .section-title {
-            font-size: 2.3rem;
-            font-weight: 700;
-            margin-bottom: 2.5rem;
-            position: relative;
-            display: inline-block;
-            color: #fff;
-        }
-        .section-title:after {
-            content: '';
-            position: absolute;
-            bottom: -12px;
-            left: 0;
+        .portfolio-header { text-align: center; margin-bottom: 3rem; }
+        .portfolio-icon {
             width: 60px;
-            height: 4px;
-            background: #FBBF24;
-            border-radius: 4px;
-        }
-
-        /* TENTANG KAMI - BACKGROUND FOTO */
-        .about-hero-bg {
-            position: relative;
-            background: url('Pict/AM.png) center center/cover no-repeat;
-            border-radius: 40px;
-            margin-bottom: 2rem;
-            box-shadow: 0 20px 40px -15px rgba(0,0,0,0.5);
-        }
-        .about-hero-overlay {
-            background: rgba(10, 12, 16, 0.75);
-            backdrop-filter: blur(4px);
-            border-radius: 40px;
-            padding: 3rem 2rem;
-        }
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
+            height: 60px;
+            background: rgba(227, 52, 47, 0.15);
+            border: 1.5px solid rgba(227, 52, 47, 0.5);
+            border-radius: 50%;
+            display: inline-flex;
             align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
         }
-        .about-img img { width: 100%; border-radius: 32px; }
-        .about-text p { color: #9ca3af; line-height: 1.6; margin-bottom: 1.2rem; }
-        .about-info { display: flex; flex-wrap: wrap; gap: 1.2rem; margin-top: 1.5rem; }
-        .info-item { display: flex; align-items: center; gap: 8px; }
-        .info-item i {
-            width: 32px; height: 32px; background: rgba(251,191,36,0.1);
-            border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #FBBF24;
-        }
-        .about-banner { margin-top: 2rem; width: 100%; }
-        .about-banner img { width: 100%; height: auto; border-radius: 20px; }
-
-        /* PORTFOLIO GRID */
+        .portfolio-icon i { font-size: 1.8rem; color: #ff3b2f; transition: color 0.3s ease; }
+        .portfolio-title { font-family: 'Orbitron', sans-serif; font-size: 2.5rem; color: #ff3b2f; transition: color 0.3s ease; }
+        .portfolio-subtitle { font-family: 'Inter', sans-serif; font-size: 0.9rem; color: #cbd5e1; margin-top: 0.5rem; opacity: 0.7; }
         .portfolio-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 1.8rem;
+            gap: 2rem;
         }
         .portfolio-card {
-            background: rgba(17,22,28,0.6);
-            border-radius: 28px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(227, 52, 47, 0.2);
+            border-radius: 20px;
             overflow: hidden;
-            transition: all 0.3s;
-            border: 1px solid rgba(251,191,36,0.1);
+            transition: all 0.4s ease, border-color 0.3s ease;
         }
-        .portfolio-card:hover { transform: translateY(-8px); border-color: rgba(251,191,36,0.4); }
-        .portfolio-media { position: relative; width: 100%; padding-top: 56.25%; overflow: hidden; }
-        .portfolio-media img, .portfolio-media video {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;
-        }
-        .portfolio-media video { opacity: 0; transition: opacity 0.3s ease; }
-        .portfolio-card:hover .portfolio-media video { opacity: 1; }
-        .portfolio-card:hover .portfolio-media img { opacity: 0; }
-        .portfolio-content { padding: 1.5rem; }
-        .portfolio-category {
+        .portfolio-card:hover { transform: translateY(-8px); border-color: rgba(227, 52, 47, 0.6); box-shadow: 0 15px 30px rgba(0,0,0,0.3); }
+        .portfolio-card-image { height: 200px; overflow: hidden; }
+        .portfolio-card-image img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(100%); transition: all 0.5s; }
+        .portfolio-card:hover .portfolio-card-image img { transform: scale(1.05); filter: grayscale(0%); }
+        .portfolio-card-content { padding: 1.5rem; }
+        .portfolio-card-title { font-family: 'Orbitron', sans-serif; font-size: 1.2rem; color: #ffffff; margin-bottom: 0.5rem; }
+        .portfolio-card-desc { font-size: 0.8rem; color: #cbd5e1; margin-bottom: 1rem; }
+        .portfolio-tag {
             display: inline-block;
-            font-size: 0.7rem;
-            color: #FBBF24;
-            background: rgba(251,191,36,0.1);
-            padding: 4px 12px;
-            border-radius: 30px;
-            margin-bottom: 10px;
+            font-size: 0.65rem;
+            padding: 0.2rem 0.6rem;
+            background: rgba(227, 52, 47, 0.15);
+            border-radius: 20px;
+            color: #ff3b2f;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+            transition: all 0.3s ease;
         }
-        .portfolio-content h3 { font-size: 1.2rem; margin-bottom: 0.5rem; color: white; }
+        .portfolio-card-link {
+            color: #e5e7eb;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 0.8rem;
+            transition: color 0.3s ease;
+        }
+        .portfolio-card-link:hover { color: #ff3b2f; }
 
-        /* VISI MISI */
-        .visi-misi-section { margin: 3rem 0; }
-        .visi-misi-wrapper {
+        /* SKILLS SECTION */
+        .skills-section {
+            min-height: auto;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 4rem 3rem;
+        }
+        .skills-header { text-align: center; margin-bottom: 3rem; }
+        .skills-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(227, 52, 47, 0.15);
+            border: 1.5px solid rgba(227, 52, 47, 0.5);
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+        }
+        .skills-icon i { font-size: 1.8rem; color: #ff3b2f; transition: color 0.3s ease; }
+        .skills-title { font-family: 'Orbitron', sans-serif; font-size: 2.5rem; color: #ff3b2f; transition: color 0.3s ease; }
+        .skills-subtitle { font-family: 'Inter', sans-serif; font-size: 0.9rem; color: #cbd5e1; margin-top: 0.5rem; opacity: 0.7; }
+        
+        .skills-grid {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            gap: 1.2rem;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+        }
+        .skill-item {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(227, 52, 47, 0.2);
+            border-radius: 16px;
+            padding: 1rem 1.2rem;
+            text-align: center;
+            transition: all 0.3s ease, border-color 0.3s ease;
+            min-width: 110px;
+            flex-shrink: 0;
+        }
+        .skill-item .skill-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            display: inline-block;
+            filter: grayscale(100%);
+            transition: filter 0.3s ease;
+        }
+        .skill-item:hover .skill-icon { filter: grayscale(0%); }
+        .skill-item:hover {
+            transform: translateY(-5px);
+            border-color: rgba(227, 52, 47, 0.6);
+            background: rgba(227, 52, 47, 0.08);
+        }
+        .skill-name { font-family: 'Orbitron', sans-serif; font-size: 0.7rem; font-weight: 500; color: #e5e7eb; }
+
+        /* Warna asli ikon skill - tidak berubah dengan mode */
+        .skill-item:nth-child(1) .skill-icon { color: #1D6F42; }
+        .skill-item:nth-child(2) .skill-icon { color: #2B579A; }
+        .skill-item:nth-child(3) .skill-icon { color: #D35230; }
+        .skill-item:nth-child(4) .skill-icon { color: #D83B01; }
+        .skill-item:nth-child(5) .skill-icon { color: #1BA0D7; }
+        .skill-item:nth-child(6) .skill-icon { color: #007ACC; }
+        .skill-item:nth-child(7) .skill-icon { color: #E44D26; }
+        .skill-item:nth-child(8) .skill-icon { color: #264DE4; }
+        .skill-item:nth-child(9) .skill-icon { color: #F7DF1E; }
+
+        .skills-photo-container {
+            width: 100%;
+            border-radius: 20px;
+            border: 2px solid rgba(227, 52, 47, 0.5);
+            overflow: hidden;
+            background: #000;
+            aspect-ratio: 16 / 4;
+            transition: all 0.3s ease;
+        }
+        .skills-photo-container:hover {
+            border-color: rgba(227, 52, 47, 0.9);
+            box-shadow: 0 0 30px rgba(227, 52, 47, 0.5);
+            transition: box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+        .skills-photo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            filter: grayscale(30%);
+            transition: filter 0.5s ease;
+        }
+        .skills-photo-container:hover .skills-photo { filter: grayscale(0%); }
+
+        /* VISI & MISI */
+        .visimisi-section {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 4rem 3rem;
+        }
+        .visimisi-header { text-align: center; margin-bottom: 3rem; }
+        .visimisi-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(227, 52, 47, 0.15);
+            border: 1.5px solid rgba(227, 52, 47, 0.5);
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+        }
+        .visimisi-icon i { font-size: 1.8rem; color: #ff3b2f; transition: color 0.3s ease; }
+        .visi-title { font-family: 'Orbitron', sans-serif; font-size: 2.5rem; color: #ff3b2f; transition: color 0.3s ease; }
+        
+        .visimisi-wrapper {
             display: flex;
             gap: 3rem;
             position: relative;
-            background: transparent;
-            padding: 1rem;
         }
-        .visi-box, .misi-box { flex: 1; padding: 1rem; transition: all 0.3s ease; background: transparent; }
-        .visi-box:hover, .misi-box:hover { transform: translateY(-5px); }
-        .visi-box h3, .misi-box h3 {
-            color: #FBBF24;
+        .visimisi-wrapper::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 10%;
+            bottom: 10%;
+            width: 1.5px;
+            background: linear-gradient(180deg, #e3342f, rgba(227, 52, 47, 0.5), transparent);
+            transform: translateX(-50%);
+            transition: background 0.3s ease;
+        }
+        .visi-card, .misi-card {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(227, 52, 47, 0.2);
+            border-radius: 20px;
+            padding: 2rem;
+            transition: all 0.3s ease, border-color 0.3s ease;
+        }
+        .visi-card:hover, .misi-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(227, 52, 47, 0.6);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        .visi-card h3, .misi-card h3 {
+            font-family: 'Orbitron', sans-serif;
             font-size: 1.5rem;
-            margin-bottom: 1.2rem;
+            color: #ff3b2f;
+            margin-bottom: 1rem;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 0.8rem;
+            transition: color 0.3s ease;
         }
-        .visi-box p, .misi-box p { color: #cbd5e1; line-height: 1.8; font-size: 0.95rem; margin-bottom: 0.8rem; }
-        .visi-box ul, .misi-box ul { list-style: none; margin-top: 0.5rem; }
-        .visi-box ul li, .misi-box ul li {
-            color: #9ca3af;
-            padding: 6px 0;
-            display: flex;
-            align-items: center;
-            gap: 10px;
+        .visi-card p, .misi-card p {
+            font-family: 'Inter', sans-serif;
             font-size: 0.9rem;
+            color: #cbd5e1;
+            line-height: 1.6;
         }
-        .visi-box ul li i, .misi-box ul li i { color: #FBBF24; width: 20px; }
-        .visi-misi-divider {
-            width: 2px;
-            background: linear-gradient(180deg, #FBBF24 0%, #FBBF24 70%, transparent 100%);
-            margin: 0;
+        .misi-list {
+            list-style: none;
+            padding: 0;
+        }
+        .misi-list li {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            color: #cbd5e1;
+            margin-bottom: 0.8rem;
+            padding-left: 1.5rem;
             position: relative;
         }
-        .visi-misi-divider::before {
-            content: '';
+        .misi-list li::before {
+            content: '▹';
             position: absolute;
-            top: 0;
-            left: -4px;
-            width: 10px;
-            height: 10px;
-            background: #FBBF24;
-            border-radius: 50%;
-        }
-        .visi-misi-divider::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: -4px;
-            width: 10px;
-            height: 10px;
-            background: #FBBF24;
-            border-radius: 50%;
-        }
-        @media (max-width: 768px) {
-            .visi-misi-wrapper { flex-direction: column; }
-            .visi-misi-divider {
-                width: 100%;
-                height: 2px;
-                background: linear-gradient(90deg, #FBBF24, #FBBF24 70%, transparent 100%);
-                margin: 1rem 0;
-            }
-            .visi-misi-divider::before, .visi-misi-divider::after { top: -4px; left: 0; }
+            left: 0;
+            color: #ff3b2f;
+            transition: color 0.3s ease;
         }
 
-        /* SKILLS */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
-            margin-top: 1rem;
+        /* BLOG SECTION */
+        .blog-section {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 4rem 3rem;
         }
-        .skill-card {
-            background: rgba(17,22,28,0.5);
-            border: 1px solid rgba(251,191,36,0.15);
-            border-radius: 24px;
-            padding: 1.5rem;
-            text-align: center;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(4px);
-        }
-        .skill-card:hover { transform: translateY(-8px); border-color: #FBBF24; background: rgba(17,22,28,0.7); }
-        .skill-icon {
-            width: 70px; height: 70px; background: rgba(251,191,36,0.1);
-            border-radius: 20px;
-            display: flex;
+        .blog-header { text-align: center; margin-bottom: 3rem; }
+        .blog-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(227, 52, 47, 0.15);
+            border: 1.5px solid rgba(227, 52, 47, 0.5);
+            border-radius: 50%;
+            display: inline-flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 1rem;
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
         }
-        .skill-card:hover .skill-icon { background: #FBBF24; }
-        .skill-card:hover .skill-icon i { color: #0a0c10; }
-        .skill-icon i { font-size: 2rem; color: #FBBF24; transition: 0.3s; }
-        .skill-card h3 { font-size: 1.2rem; color: white; margin-bottom: 0.5rem; }
-        .skill-bar {
-            width: 100%;
-            height: 6px;
-            background: rgba(255,255,255,0.1);
-            border-radius: 10px;
-            margin: 0.8rem 0;
-            overflow: hidden;
-        }
-        .skill-progress { height: 100%; background: #FBBF24; border-radius: 10px; width: 0%; transition: width 1s ease; }
-        .skill-percent { font-size: 0.8rem; color: #FBBF24; font-weight: 600; }
-        .skill-desc { font-size: 0.7rem; color: #9ca3af; margin-top: 0.5rem; }
-
-        /* CHART */
-        .chart-container {
-            background: rgba(17,22,28,0.4);
-            border-radius: 28px;
-            padding: 2rem;
-            border: 1px solid rgba(251,191,36,0.15);
-            backdrop-filter: blur(4px);
-        }
-        .chart-title {
-            text-align: center;
-            margin-bottom: 1.5rem;
-            font-size: 1.1rem;
-            color: #FBBF24;
-        }
-
-        /* TESTIMONIAL */
-        .testimonial-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.8rem;
-        }
-        .testimonial-card {
-            background: rgba(17,22,28,0.6);
-            border-radius: 24px;
-            padding: 1.8rem;
-            border: 1px solid rgba(251,191,36,0.1);
-            transition: all 0.3s;
-        }
-        .testimonial-card:hover {
-            transform: translateY(-5px);
-            border-color: rgba(251,191,36,0.3);
-        }
-        .testimonial-text { font-style: italic; color: #cbd5e1; line-height: 1.6; margin-bottom: 1.2rem; }
-        .testimonial-author { display: flex; align-items: center; gap: 12px; }
-        .testimonial-author img {
-            width: 45px; height: 45px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 2px solid #FBBF24;
-        }
-
-        /* BLOG */
+        .blog-icon i { font-size: 1.8rem; color: #ff3b2f; transition: color 0.3s ease; }
+        .blog-title { font-family: 'Orbitron', sans-serif; font-size: 2.5rem; color: #ff3b2f; transition: color 0.3s ease; }
         .blog-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 1.8rem;
+            gap: 2rem;
         }
         .blog-card {
-            background: rgba(17,22,28,0.6);
-            border-radius: 28px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(227, 52, 47, 0.2);
+            border-radius: 20px;
             overflow: hidden;
-            transition: all 0.3s;
-            border: 1px solid rgba(251,191,36,0.1);
+            transition: all 0.4s ease, border-color 0.3s ease;
         }
-        .blog-card:hover { transform: translateY(-5px); border-color: rgba(251,191,36,0.3); }
-        .blog-img { width: 100%; height: 180px; object-fit: cover; }
-        .blog-content { padding: 1.2rem; }
-        .blog-date { font-size: 0.7rem; color: #FBBF24; margin-bottom: 6px; }
-        .blog-content h3 { font-size: 1rem; margin-bottom: 6px; color: white; }
-        .blog-preview { color: #9ca3af; font-size: 0.8rem; line-height: 1.4; margin-bottom: 10px; }
-        .blog-full {
-            max-height: 0;
+        .blog-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(227, 52, 47, 0.6);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+        }
+        .blog-card-image {
+            height: 180px;
             overflow: hidden;
-            transition: max-height 0.5s ease-out;
-            color: #cbd5e1;
+        }
+        .blog-card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(100%);
+            transition: all 0.5s;
+        }
+        .blog-card:hover .blog-card-image img {
+            transform: scale(1.05);
+            filter: grayscale(0%);
+        }
+        .blog-card-content {
+            padding: 1.5rem;
+        }
+        .blog-date {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.7rem;
+            color: #ff3b2f;
+            margin-bottom: 0.5rem;
+            transition: color 0.3s ease;
+        }
+        .blog-card h3 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.1rem;
+            color: #ffffff;
+            margin-bottom: 0.8rem;
+        }
+        .blog-card p {
+            font-family: 'Inter', sans-serif;
             font-size: 0.8rem;
+            color: #cbd5e1;
             line-height: 1.5;
-        }
-        .blog-full.show { max-height: 300px; transition: max-height 0.5s ease-in; margin-top: 10px; padding-top: 10px; border-top: 1px solid rgba(251,191,36,0.2); }
-        .read-more-btn {
-            color: #FBBF24;
-            font-size: 0.75rem;
-            font-weight: 500;
-            cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-            margin-top: 6px;
-        }
-
-        @media (max-width: 768px) {
-            .portfolio-grid, .blog-grid { grid-template-columns: repeat(2, 1fr); }
-            .about-grid { grid-template-columns: 1fr; }
-            .section-title { font-size: 1.8rem; }
-        }
-        @media (max-width: 560px) {
-            .portfolio-grid, .blog-grid { grid-template-columns: 1fr; }
-        }
-
-        /* HALAMAN KOSONG (PENGERJAAN) */
-        .empty-page {
-            min-height: 70vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-            text-align: center;
-            padding: 80px 24px;
-        }
-        .empty-card {
-            background: rgba(17,22,28,0.6);
-            backdrop-filter: blur(12px);
-            border-radius: 48px;
-            padding: 3rem 2rem;
-            max-width: 500px;
-            border: 1px solid rgba(251,191,36,0.2);
-            animation: pulseGlow 2s infinite;
-        }
-        .empty-card i {
-            font-size: 4rem;
-            color: #FBBF24;
-            margin-bottom: 1.5rem;
-        }
-        .empty-card h2 {
-            font-size: 1.8rem;
             margin-bottom: 1rem;
-            color: #FBBF24;
         }
-        .empty-card p {
-            color: #9ca3af;
-            font-size: 1rem;
+        .blog-readmore {
+            color: #ff3b2f;
+            text-decoration: none;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.7rem;
+            transition: color 0.3s ease;
+            cursor: pointer;
         }
-        @keyframes pulseGlow {
-            0% { box-shadow: 0 0 0 0 rgba(251,191,36,0.1); border-color: rgba(251,191,36,0.2);}
-            50% { box-shadow: 0 0 0 12px rgba(251,191,36,0.05); border-color: rgba(251,191,36,0.4);}
-            100% { box-shadow: 0 0 0 0 rgba(251,191,36,0); border-color: rgba(251,191,36,0.2);}
-        }
+        .blog-readmore:hover { letter-spacing: 1px; }
 
         /* FOOTER */
-        footer {
-            background: #06080c;
-            border-top: 1px solid rgba(251,191,36,0.1);
+        .footer {
+            background: #050505;
+            border-top: 1px solid rgba(227, 52, 47, 0.3);
+            padding: 3rem 3rem 1.5rem;
+            margin-top: 2rem;
+            transition: border-color 0.3s ease;
         }
         .footer-container {
-            max-width: 1280px;
+            max-width: 1400px;
             margin: 0 auto;
-            padding: 50px 24px 30px;
-        }
-        .footer-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2.5rem;
-            margin-bottom: 3rem;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
         }
         .footer-col h4 {
-            color: #FBBF24;
+            font-family: 'Orbitron', sans-serif;
             font-size: 1.1rem;
-            margin-bottom: 1.2rem;
-            position: relative;
-            display: inline-block;
+            color: #ff3b2f;
+            margin-bottom: 1rem;
+            transition: color 0.3s ease;
         }
-        .footer-col h4:after {
-            content: '';
-            position: absolute;
-            bottom: -6px;
-            left: 0;
-            width: 40px;
-            height: 2px;
-            background: #FBBF24;
-            border-radius: 2px;
-        }
-        .footer-col p { color: #9ca3af; font-size: 0.85rem; line-height: 1.6; margin-bottom: 1rem; }
-        .footer-col ul { list-style: none; }
-        .footer-col ul li { margin-bottom: 0.7rem; }
-        .footer-col ul li a {
-            color: #9ca3af;
+        .footer-col p, .footer-col a {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85rem;
+            color: #cbd5e1;
             text-decoration: none;
-            font-size: 0.85rem;
-            transition: all 0.2s;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            cursor: pointer;
+            line-height: 1.8;
+            display: block;
+            transition: all 0.3s ease;
         }
-        .footer-col ul li a:hover { color: #FBBF24; transform: translateX(5px); }
-        .footer-contact-info {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 0.8rem;
-            color: #9ca3af;
-            font-size: 0.85rem;
+        .footer-col a:hover {
+            color: #ff3b2f;
+            transform: translateX(5px);
         }
-        .footer-contact-info i { width: 30px; color: #FBBF24; }
         .footer-social {
             display: flex;
             gap: 1rem;
             margin-top: 1rem;
         }
         .footer-social a {
-            width: 38px; height: 38px;
-            background: rgba(251,191,36,0.1);
+            width: 35px;
+            height: 35px;
+            background: rgba(255, 255, 255, 0.05);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #FBBF24;
-            transition: all 0.3s;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            color: #e5e7eb;
             text-decoration: none;
         }
-        .footer-social a:hover { background: #FBBF24; color: #0a0c10; transform: translateY(-3px); }
-        .footer-bottom {
-            border-top: 1px solid rgba(251,191,36,0.1);
-            padding-top: 25px;
+        .footer-social a:hover {
+            background: #e3342f;
+            transform: translateY(-3px);
+            color: #ffffff;
+        }
+        .footer-form {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 1rem;
+            flex-direction: column;
+            gap: 0.8rem;
         }
-        .footer-bottom p { color: #6b7280; font-size: 0.8rem; }
-        .footer-bottom-links { display: flex; gap: 1.5rem; }
-        .footer-bottom-links a {
-            color: #6b7280;
-            text-decoration: none;
+        .footer-form input, .footer-form textarea {
+            width: 100%;
+            padding: 0.7rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(227, 52, 47, 0.3);
+            border-radius: 8px;
+            color: #ffffff;
+            font-family: 'Inter', sans-serif;
             font-size: 0.8rem;
-            transition: 0.2s;
-            cursor: pointer;
+            transition: border-color 0.3s ease;
         }
-        .footer-bottom-links a:hover { color: #FBBF24; }
+        .footer-form input:focus, .footer-form textarea:focus {
+            outline: none;
+            border-color: #e3342f;
+        }
+        .footer-form button {
+            background: #e3342f;
+            color: white;
+            border: none;
+            padding: 0.7rem;
+            border-radius: 8px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .footer-form button:hover {
+            background: #ff4d47;
+            transform: translateY(-2px);
+        }
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.7rem;
+            color: #888;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 992px) {
+            .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
+            .blog-grid { grid-template-columns: repeat(2, 1fr); }
+            .footer-container { grid-template-columns: repeat(2, 1fr); }
+        }
         @media (max-width: 768px) {
-            .footer-grid { gap: 1.8rem; }
-            .footer-bottom { flex-direction: column; text-align: center; }
-            .footer-bottom-links { justify-content: center; }
+            .top-header { padding: 0.5rem 1rem; }
+            .brand { font-size: 1.2rem; }
+            .nav-links { display: none; }
+            .mobile-nav-toggle { display: block; }
+            .home-section { flex-direction: column; padding: 1.5rem; text-align: center; }
+            .hero-right { display: none; }
+            .main-greeting { font-size: 1.8rem; white-space: normal; }
+            .stats-container { flex-direction: column; gap: 0.8rem; }
+            .button-group { justify-content: center; }
+            .social-icons { justify-content: center; }
+            .about-section { flex-direction: column; padding: 1.5rem; text-align: center; }
+            .about-left { flex-direction: column; }
+            .about-image-container { width: 280px; }
+            .about-vertical-text { display: none; }
+            .about-desc { text-align: left; }
+            .download-cv-container { display: none; }
+            .portfolio-section { padding: 2rem 1.5rem; }
+            .portfolio-grid { grid-template-columns: 1fr; }
+            .skills-section { padding: 2rem 1.5rem; }
+            .skills-grid { flex-direction: column; align-items: center; gap: 1rem; }
+            .skill-item { width: 100%; max-width: 280px; }
+            .skills-photo-container { display: none; }
+            .visimisi-section { padding: 2rem 1.5rem; }
+            .visimisi-wrapper { flex-direction: column; }
+            .visimisi-wrapper::before { display: none; }
+            .blog-section { padding: 2rem 1.5rem; }
+            .blog-grid { grid-template-columns: 1fr; }
+            .footer { padding: 2rem 1.5rem 1rem; }
+            .footer-container { 
+                grid-template-columns: 1fr; 
+                gap: 1.5rem;
+                text-align: left;
+            }
+            .footer-col {
+                text-align: left;
+            }
+            .footer-social {
+                justify-content: flex-start;
+            }
+            /* Kolom Send Message tetap rata kiri juga, tapi form di dalamnya tetap full width */
+            .footer-col:last-child {
+                text-align: left;
+            }
+        }
+        @media (min-width: 769px) {
+            .mobile-nav { display: none !important; }
+            .mobile-nav-toggle { display: none; }
+        }
+        @media (max-width: 480px) {
+            .brand { font-size: 1rem; }
+            .main-greeting { font-size: 1.5rem; }
+            .about-title { font-size: 1.8rem; }
+            .portfolio-title { font-size: 1.8rem; }
+            .skills-title { font-size: 1.8rem; }
+            .visi-title { font-size: 1.8rem; }
+            .blog-title { font-size: 1.8rem; }
         }
     </style>
 </head>
 <body>
 
-<div class="header-wrapper">
-    <div class="header">
-        <div class="logo"><span class="hanz">Hanz</span><span class="code">Code</span><span class="dot">.</span><span class="id">id</span></div>
-        <div class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></div>
-        <div class="nav-links" id="navLinks">
-            <a href="#tentang" data-page="tentang" class="active">Tentang</a>
-            <a href="#layanan" data-page="layanan">Layanan</a>
-            <a href="#karya" data-page="karya">Karya</a>
-            <a href="#kontak" data-page="kontak">Kontak</a>
+    <!-- ========== HEADER ========== -->
+    <header class="top-header">
+        <div class="brand" id="brandHome"><span class="rehan">Porto</span><span class="dot-site">folio</span></div>
+        <div class="header-right">
+            <div class="nav-links">
+                <a class="nav-home">Home</a>
+                <a class="nav-about">About</a>
+                <a class="nav-portfolio">Portfolio</a>
+                <a class="nav-skills">Skill</a>
+                <a class="nav-visimisi">Visi & Misi</a>
+                <a class="nav-blog">Blog</a>
+            </div>
+            <button class="mobile-nav-toggle" id="mobileNavToggle"><i class="fas fa-bars"></i></button>
+        </div>
+    </header>
+    
+    <!-- ========== MOBILE NAVIGATION ========== -->
+    <div class="mobile-nav" id="mobileNav">
+        <div class="mobile-nav-container">
+            <a class="mobile-nav-home">Home</a>
+            <a class="mobile-nav-about">About</a>
+            <a class="mobile-nav-portfolio">Portfolio</a>
+            <a class="mobile-nav-skills">Skill</a>
+            <a class="mobile-nav-visimisi">Visi & Misi</a>
+            <a class="mobile-nav-blog">Blog</a>
         </div>
     </div>
-</div>
 
-<!-- HERO - FOTO -->
-<div class="hero-fixed">
-    <img class="hero-img-bg" src="Pict/Situp.jpeg" alt="Background">
-    <div class="hero-overlay"></div>
-    <div class="hero-content-wrapper">
-        <div class="hero-container">
-            <div class="hero">
-                <div class="hero-content">
-                    <div class="hero-badge"><i class="fas fa-code"></i> Frontend Developer</div>
-                    <h1>Building <span class="highlight">Digital Experiences</span><br>That Inspire</h1>
-                    <p>HanzCode.id - solusi pengembangan web modern dengan fokus pada performa, estetika, dan pengalaman pengguna yang luar biasa.</p>
-                    <div class="hero-stats">
-                        <div><div class="stat-number">587B+</div><div class="stat-label">Suka</div></div>
-                        <div><div class="stat-number">156k</div><div class="stat-label">Pengikut</div></div>
-                        <div><div class="stat-number">267+</div><div class="stat-label">Project</div></div>
-                    </div>
-                    <div class="hero-buttons">
-                        <a href="#tentang" class="btn-primary" data-page="tentang">Mulai Sekarang <i class="fas fa-arrow-right"></i></a>
-                        <a href="#kontak" class="btn-outline" data-page="kontak">Konsultasi <i class="fas fa-comment"></i></a>
-                    </div>
+    <!-- ========== SECTION HOME ========== -->
+    <section class="home-section" id="home">
+        <div class="hero-left">
+            <div class="subtitle-tag reveal">Network engineer & Web developer</div>
+            <h1 class="main-greeting reveal">Hello everyone I'am rehan</h1>
+            <div class="desc-text reveal">Crafting resilient network architectures & seamless full-stack experiences — from low‑level TCP handshakes to responsive React components.</div>
+            <div class="stats-container">
+                <div class="stat-box stagger-item"><div class="stat-number">3</div><div class="stat-label">Years experience</div></div>
+                <div class="stat-box stagger-item"><div class="stat-number">28</div><div class="stat-label">Project complete</div></div>
+                <div class="stat-box stagger-item"><div class="stat-number">7</div><div class="stat-label">Client happy</div></div>
+            </div>
+            <div class="button-group reveal">
+                <a class="btn btn-portfolio" href="#portfolio"><i class="fas fa-folder-open"></i> Portofolio</a>
+                <a class="btn btn-contacts" href="#footer"><i class="fas fa-envelope"></i> Contacts</a>
+            </div>
+            <div class="social-section reveal">
+                <div class="social-title">FIND ME ON</div>
+                <div class="social-icons">
+                    <a href="#" class="social-icon stagger-item" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="#" class="social-icon stagger-item" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" class="social-icon stagger-item" target="_blank"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-icon stagger-item" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-icon stagger-item" target="_blank"><i class="fab fa-youtube"></i></a>
                 </div>
-                <div class="hero-image"><img src="Pict/Beranda.png" alt="HanzCode"></div>
             </div>
         </div>
-    </div>
-</div>
-
-<div class="scroll-content">
-    <div class="page-container">
-        <!-- HALAMAN TENTANG (LENGKAP) -->
-        <div id="page-tentang" class="page active">
-            <!-- TENTANG KAMI dengan background foto -->
-            <div class="about-hero-bg" data-aos="fade-up">
-                <div class="about-hero-overlay">
-                    <div class="about-grid">
-                        <div class="about-img"><img src="Pict/Tentang kami.png" alt="About"></div>
-                        <div class="about-text">
-                            <h2 class="section-title">Tentang Kami</h2>
-                            <p>HanzCode.id adalah layanan pengembangan web yang berfokus pada kualitas, performa, dan kepuasan klien. Kami membantu bisnis dan individu memiliki website modern yang responsive dan optimal.</p>
-                            <p>Dengan pengalaman mengerjakan berbagai project dari company profile hingga web application, kami siap membantu mewujudkan ide digital Anda menjadi kenyataan.</p>
-                            <div class="about-info">
-                                <div class="info-item"><i class="fas fa-map-marker-alt"></i> Indonesia</div>
-                                <div class="info-item"><i class="fab fa-whatsapp"></i> +62 896-8421-9904</div>
-                                <div class="info-item"><i class="fas fa-clock"></i> 24/7 Support</div>
-                            </div>
-                            <div class="about-banner"><img src="Pict/Analisa.jpeg" alt="HanzCode Banner"></div>
-                        </div>
-                    </div>
+        <div class="hero-right reveal">
+            <div class="vertical-icon"><div class="vertical-line"></div><div class="icon-circle"><i class="fas fa-code"></i></div><div class="vertical-text">RESPONSIF</div><div class="vertical-line bottom"></div></div>
+            <div class="video-wrapper">
+                <div class="video-container">
+                    <video id="homeVideo" autoplay muted loop playsinline>
+                        <source id="videoSourceRed" src="Pict/Video.mp4" type="video/mp4">
+                    </video>
                 </div>
             </div>
-
-            <!-- PORTOFOLIO (3 project) -->
-            <section data-aos="fade-up">
-                <h2 class="section-title">Portofolio Unggulan</h2>
-                <div class="portfolio-grid">
-                    <div class="portfolio-card"><div class="portfolio-media"><img src="Pict/Campany profil.png" alt="Company Profile"><video src="Pict/Campany profil video.mp4" loop muted playsinline></video></div><div class="portfolio-content"><div class="portfolio-category">Company Profile</div><h3>Landingpage Company Profile</h3></div></div>
-                    <div class="portfolio-card"><div class="portfolio-media"><img src="Pict/Web aplications.png" alt="Web App"><video src="Pict/Web Applications video.mp4" loop muted playsinline></video></div><div class="portfolio-content"><div class="portfolio-category">Web App</div><h3>Multipage Web Application</h3></div></div>
-                    <div class="portfolio-card"><div class="portfolio-media"><img src="Pict/Online store platfrom.png" alt="E-Commerce"><video src="Pict/Online store platfrom video.mp4" loop muted playsinline></video></div><div class="portfolio-content"><div class="portfolio-category">E-Commerce</div><h3>Online Store Platform</h3></div></div>
-                </div>
-            </section>
-
-            <!-- VISI & MISI (dipindah ke sini, setelah portofolio) -->
-            <section class="visi-misi-section" data-aos="fade-up">
-                <h2 class="section-title">Visi & Misi</h2>
-                <div class="visi-misi-wrapper">
-                    <div class="visi-box"><h3><i class="fas fa-eye"></i> Visi Kami</h3><p>Menjadi mitra digital terpercaya bagi bisnis dan individu dalam membangun kehadiran online yang profesional, inovatif, dan berkelanjutan.</p><ul><li><i class="fas fa-arrow-right"></i> Mendorong digitalisasi UMKM Indonesia</li><li><i class="fas fa-arrow-right"></i> Menciptakan ekosistem developer yang kolaboratif</li><li><i class="fas fa-arrow-right"></i> Menjadi standar kualitas untuk layanan web development</li><li><i class="fas fa-arrow-right"></i> Mengembangkan solusi teknologi yang inklusif</li></ul></div>
-                    <div class="visi-misi-divider"></div>
-                    <div class="misi-box"><h3><i class="fas fa-bullseye"></i> Misi Kami</h3><p>1. Memberikan layanan pengembangan website berkualitas tinggi dengan harga yang terjangkau.</p><p>2. Membangun hubungan jangka panjang dengan klien melalui pelayanan yang jujur, transparan, dan responsif.</p><p>3. Terus berinovasi dan mengikuti perkembangan teknologi terbaru.</p><p>4. Memberikan edukasi dan berbagi pengetahuan kepada komunitas developer.</p></div>
-                </div>
-            </section>
-
-            <!-- KEMAMPUAN KAMI -->
-            <section class="skills-section" data-aos="fade-up">
-                <h2 class="section-title">Kemampuan Kami</h2>
-                <div class="skills-grid">
-                    <div class="skill-card"><div class="skill-icon"><i class="fab fa-html5"></i></div><h3>HTML5</h3><div class="skill-bar"><div class="skill-progress" style="width: 95%;"></div></div><div class="skill-percent">95%</div><div class="skill-desc">Struktur semantik, SEO friendly</div></div>
-                    <div class="skill-card"><div class="skill-icon"><i class="fab fa-css3-alt"></i></div><h3>CSS3</h3><div class="skill-bar"><div class="skill-progress" style="width: 90%;"></div></div><div class="skill-percent">90%</div><div class="skill-desc">Flexbox, Grid, Animasi</div></div>
-                    <div class="skill-card"><div class="skill-icon"><i class="fab fa-js"></i></div><h3>JavaScript</h3><div class="skill-bar"><div class="skill-progress" style="width: 85%;"></div></div><div class="skill-percent">85%</div><div class="skill-desc">ES6+, DOM, Framework</div></div>
-                    <div class="skill-card"><div class="skill-icon"><i class="fas fa-globe"></i></div><h3>Domain & Hosting</h3><div class="skill-bar"><div class="skill-progress" style="width: 88%;"></div></div><div class="skill-percent">88%</div><div class="skill-desc">DNS, SSL, Deployment</div></div>
-                    <div class="skill-card"><div class="skill-icon"><i class="fas fa-chart-line"></i></div><h3>SEO</h3><div class="skill-bar"><div class="skill-progress" style="width: 82%;"></div></div><div class="skill-percent">82%</div><div class="skill-desc">On-page, Kecepatan</div></div>
-                </div>
-            </section>
-
-            <!-- PERTUMBUHAN PELANGGAN (CHART) -->
-            <section class="chart-section" data-aos="fade-up">
-                <h2 class="section-title">Pertumbuhan Pelanggan</h2>
-                <div class="chart-container"><div class="chart-title"><i class="fas fa-chart-line"></i> Jumlah Pelanggan per Bulan (2025)</div><canvas id="customerChart" width="800" height="400"></canvas></div>
-            </section>
-
-            <!-- TESTIMONIAL -->
-            <section data-aos="fade-up">
-                <h2 class="section-title">Apa Kata Klien Kami?</h2>
-                <div class="testimonial-grid">
-                    <div class="testimonial-card"><div class="testimonial-text">"HanzCode.id mengerjakan website company profile kami dengan sangat profesional. Hasilnya modern dan cepat!"</div><div class="testimonial-author"><img src="https://randomuser.me/api/portraits/men/32.jpg"><div><h4>Budi Santoso</h4><p>CEO, PT Maju Bersama</p></div></div></div>
-                    <div class="testimonial-card"><div class="testimonial-text">"Desain yang diberikan sangat estetik dan responsif. Proses komunikasi lancar, hasil melebihi ekspektasi!"</div><div class="testimonial-author"><img src="https://randomuser.me/api/portraits/women/68.jpg"><div><h4>Amanda Wijaya</h4><p>Owner, Bloom Studio</p></div></div></div>
-                    <div class="testimonial-card"><div class="testimonial-text">"Kualitas kode rapi dan mudah dikembangkan. HanzCode.id benar-benar profesional!"</div><div class="testimonial-author"><img src="https://randomuser.me/api/portraits/men/45.jpg"><div><h4>Reza Pratama</h4><p>CTO, TechSolution</p></div></div></div>
-                </div>
-            </section>
-
-            <!-- BLOG & ARTIKEL -->
-            <section>
-                <h2 class="section-title" data-aos="fade-up">Blog & Artikel</h2>
-                <div class="blog-grid">
-                    <div class="blog-card"><img src="https://picsum.photos/id/1/400/250" class="blog-img"><div class="blog-content"><div class="blog-date"><i class="far fa-calendar-alt"></i> 1 Apr 2025</div><h3>Pengalaman Pertama Bikin Website untuk Klien</h3><div class="blog-preview">Cerita awal mula saya terjun ke dunia frontend developer...</div><div class="blog-full"><p>Semua berawal dari tugas kuliah. Saya ditawari teman untuk bikin website toko online sederhana.</p><h4>Pelajaran berharga:</h4><p>• Komunikasi dengan klien itu penting<br>• Jangan takut bilang "tidak tahu"<br>• Terus belajar setiap hari</p></div><span class="read-more-btn">Baca selengkapnya <i class="fas fa-chevron-down"></i></span></div></div>
-                    <div class="blog-card"><img src="https://picsum.photos/id/26/400/250" class="blog-img"><div class="blog-content"><div class="blog-date"><i class="far fa-calendar-alt"></i> 25 Mar 2025</div><h3>Kenapa Saya Pilih Tailwind CSS?</h3><div class="blog-preview">Alasan saya meninggalkan CSS biasa dan beralih ke Tailwind...</div><div class="blog-full"><p>Tailwind mengubah cara saya menulis CSS. Dengan utility-first, saya bisa lebih cepat.</p><h4>Keuntungan:</h4><p>• Tidak perlu pusing mikirin nama class<br>• Desain konsisten<br>• File CSS lebih kecil</p></div><span class="read-more-btn">Baca selengkapnya <i class="fas fa-chevron-down"></i></span></div></div>
-                    <div class="blog-card"><img src="https://picsum.photos/id/91/400/250" class="blog-img"><div class="blog-content"><div class="blog-date"><i class="far fa-calendar-alt"></i> 18 Mar 2025</div><h3>Tips Website Cepat di HP</h3><div class="blog-preview">3 cara sederhana bikin website nggak lemot di smartphone...</div><div class="blog-full"><p>Pengguna mobile makin banyak. Website lambat = customer kabur.</p><h4>Tips:</h4><p>• Kompres gambar<br>• Hindari terlalu banyak animasi<br>• Pakai font sistem saja</p></div><span class="read-more-btn">Baca selengkapnya <i class="fas fa-chevron-down"></i></span></div></div>
-                    <div class="blog-card"><img src="https://picsum.photos/id/15/400/250" class="blog-img"><div class="blog-content"><div class="blog-date"><i class="far fa-calendar-alt"></i> 10 Mar 2025</div><h3>Figma vs Coding Langsung?</h3><div class="blog-preview">Pengalaman saya bikin website tanpa desain dulu...</div><div class="blog-full"><p>Saya dulu suka langsung coding. Tapi setelah pakai Figma, kerjaan jadi lebih rapi.</p><h4>Kesimpulan:</h4><p>Desain dulu itu penting, apalagi untuk project besar.</p></div><span class="read-more-btn">Baca selengkapnya <i class="fas fa-chevron-down"></i></span></div></div>
-                    <div class="blog-card"><img src="https://picsum.photos/id/42/400/250" class="blog-img"><div class="blog-content"><div class="blog-date"><i class="far fa-calendar-alt"></i> 3 Mar 2025</div><h3>Responsive Design Bukan Hanya Ukuran</h3><div class="blog-preview">Lebih dari sekadar media query, ini pengalaman saya...</div><div class="blog-full"><p>Responsive itu tentang konten dan interaksi, bukan cuma ngubah ukuran.</p><h4>Yang perlu diperhatikan:</h4><p>• Ukuran tombol harus nyaman diklik<br>• Jangan sembunyikan fitur penting</p></div><span class="read-more-btn">Baca selengkapnya <i class="fas fa-chevron-down"></i></span></div></div>
-                    <div class="blog-card"><img src="https://picsum.photos/id/0/400/250" class="blog-img"><div class="blog-content"><div class="blog-date"><i class="far fa-calendar-alt"></i> 25 Feb 2025</div><h3>Masa Depan Frontend Developer</h3><div class="blog-preview">Pendapat saya soal AI dan framework baru di 2025...</div><div class="blog-full"><p>Banyak yang takut AI bakal ganti developer. Tapi saya lihat ini peluang.</p><h4>Yang harus dipelajari:</h4><p>• Cara pakai AI tools<br>• Dasar-dasar tetap penting<br>• Soft skill makin berharga</p></div><span class="read-more-btn">Baca selengkapnya <i class="fas fa-chevron-down"></i></span></div></div>
-                </div>
-            </section>
         </div>
+    </section>
 
-        <!-- HALAMAN LAINNYA: SEDANG PENGERJAAN -->
-        <div id="page-layanan" class="page"><div class="empty-page"><div class="empty-card"><i class="fas fa-tools"></i><h2>🚧 Halaman ini sedang dalam proses pengerjaan</h2><p>Mohon bersabar, kami sedang menyiapkan layanan terbaik untuk Anda.</p></div></div></div>
-        <div id="page-karya" class="page"><div class="empty-page"><div class="empty-card"><i class="fas fa-laptop-code"></i><h2>🎨 Halaman ini sedang dalam proses pengerjaan</h2><p>Portofolio keren kami sedang disusun. Nantikan showcase project-project terbaru!</p></div></div></div>
-        <div id="page-kontak" class="page"><div class="empty-page"><div class="empty-card"><i class="fas fa-envelope-open-text"></i><h2>📬 Halaman ini sedang dalam proses pengerjaan</h2><p>Form kontak dan informasi lengkap akan segera hadir.</p></div></div></div>
-    </div>
+    <!-- ========== SECTION ABOUT ========== -->
+    <section class="about-section" id="about">
+        <div class="about-left reveal">
+            <div class="about-image-container"><img class="about-image" src="https://images.unsplash.com/photo-1534972195531-d756b9bfa9f2?w=800&h=1000&fit=crop" alt="Rehan"></div>
+            <div class="about-vertical-text"><div class="vertical-line"></div><div class="vertical-text">TOUCH TO SEE COLORS</div><div class="vertical-line bottom"></div></div>
+        </div>
+        <div class="about-right">
+            <div class="reveal" style="display: flex; gap: 1rem; align-items: center; margin-bottom: 1rem;"><div class="icon-circle" style="width:45px;height:45px;"><i class="fas fa-user-astronaut"></i></div><div class="vertical-text" style="writing-mode: horizontal-tb;">ABOUT ME</div></div>
+            <h2 class="about-title reveal">Who Am I?</h2>
+            <div class="about-desc reveal">I'm Rehan — a 17-year-old tech enthusiast from Indonesia with an insatiable curiosity for how things work. Since childhood, I've been fascinated by computers, networks, and the logic behind every line of code.</div>
+            <div class="about-desc reveal">As a Network Engineer, I specialize in designing, implementing, and securing robust network infrastructures. From configuring Cisco devices to analyzing packet flows with Wireshark, I ensure seamless connectivity and optimal performance.</div>
+            <div class="about-desc reveal">As a Web Developer, I craft responsive, user-centric web applications using modern technologies like React, Node.js, and various CSS frameworks. I enjoy bridging the gap between backend logic and frontend aesthetics, creating experiences that are both functional and visually engaging.</div>
+            <div class="download-cv-container reveal">
+                <a href="#" class="btn-download" download><i class="fas fa-download"></i> Download CV</a>
+            </div>
+        </div>
+    </section>
 
-    <footer>
+    <!-- ========== SECTION PORTFOLIO ========== -->
+    <section class="portfolio-section" id="portfolio">
+        <div class="portfolio-header reveal"><div class="portfolio-icon"><i class="fas fa-folder-open"></i></div><h2 class="portfolio-title">My Portfolio</h2><p class="portfolio-subtitle">Some of my recent work & projects</p></div>
+        <div class="portfolio-grid">
+            <div class="portfolio-card stagger-item"><div class="portfolio-card-image"><img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=600&h=400&fit=crop" alt="Network Security"></div><div class="portfolio-card-content"><h3 class="portfolio-card-title">Network Security Suite</h3><p class="portfolio-card-desc">Advanced network monitoring and threat detection system with real-time alerts.</p><div><span class="portfolio-tag">Python</span><span class="portfolio-tag">Cisco</span><span class="portfolio-tag">Wireshark</span></div><a href="#" class="portfolio-card-link">View Project →</a></div></div>
+            <div class="portfolio-card stagger-item"><div class="portfolio-card-image"><img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop" alt="Dashboard"></div><div class="portfolio-card-content"><h3 class="portfolio-card-title">Full Stack Dashboard</h3><p class="portfolio-card-desc">Complete admin dashboard with analytics, user management, and real-time data.</p><div><span class="portfolio-tag">React</span><span class="portfolio-tag">Node.js</span><span class="portfolio-tag">MongoDB</span></div><a href="#" class="portfolio-card-link">View Project →</a></div></div>
+            <div class="portfolio-card stagger-item"><div class="portfolio-card-image"><img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=600&h=400&fit=crop" alt="Cloud"></div><div class="portfolio-card-content"><h3 class="portfolio-card-title">Cloud Infrastructure</h3><p class="portfolio-card-desc">Scalable cloud architecture with automated deployment and monitoring.</p><div><span class="portfolio-tag">AWS</span><span class="portfolio-tag">Docker</span><span class="portfolio-tag">K8s</span></div><a href="#" class="portfolio-card-link">View Project →</a></div></div>
+            <div class="portfolio-card stagger-item"><div class="portfolio-card-image"><img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=600&h=400&fit=crop" alt="E-commerce"></div><div class="portfolio-card-content"><h3 class="portfolio-card-title">E-commerce Platform</h3><p class="portfolio-card-desc">Modern e-commerce solution with payment gateway integration.</p><div><span class="portfolio-tag">Next.js</span><span class="portfolio-tag">PostgreSQL</span><span class="portfolio-tag">Stripe</span></div><a href="#" class="portfolio-card-link">View Project →</a></div></div>
+            <div class="portfolio-card stagger-item"><div class="portfolio-card-image"><img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=600&h=400&fit=crop" alt="Mobile App"></div><div class="portfolio-card-content"><h3 class="portfolio-card-title">Mobile App Development</h3><p class="portfolio-card-desc">Cross-platform mobile app for task management and productivity.</p><div><span class="portfolio-tag">Flutter</span><span class="portfolio-tag">Firebase</span><span class="portfolio-tag">REST API</span></div><a href="#" class="portfolio-card-link">View Project →</a></div></div>
+            <div class="portfolio-card stagger-item"><div class="portfolio-card-image"><img src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=600&h=400&fit=crop" alt="IoT"></div><div class="portfolio-card-content"><h3 class="portfolio-card-title">IoT Smart Home</h3><p class="portfolio-card-desc">Smart home automation system with device control and monitoring.</p><div><span class="portfolio-tag">Arduino</span><span class="portfolio-tag">MQTT</span><span class="portfolio-tag">React Native</span></div><a href="#" class="portfolio-card-link">View Project →</a></div></div>
+        </div>
+    </section>
+
+    <!-- ========== SECTION SKILLS ========== -->
+    <section class="skills-section" id="skills">
+        <div class="skills-header reveal"><div class="skills-icon"><i class="fas fa-code"></i></div><h2 class="skills-title">My Skills</h2><p class="skills-subtitle">Technologies & tools I work with</p></div>
+        <div class="skills-grid">
+            <div class="skill-item stagger-item"><div class="skill-icon"><i class="fas fa-file-excel"></i></div><div class="skill-name">Microsoft Excel</div></div>
+            <div class="skill-item stagger-item"><div class="skill-icon"><i class="fas fa-file-word"></i></div><div class="skill-name">Microsoft Word</div></div>
+            <div class="skill-item stagger-item"><div class="skill-icon"><i class="fas fa-file-powerpoint"></i></div><div class="skill-name">Microsoft PowerPoint</div></div>
+            <div class="skill-item stagger-item"><div class="skill-icon"><i class="fas fa-project-diagram"></i></div><div class="skill-name">Microsoft Visio</div></div>
+            <div class="skill-item stagger-item"><div class="skill-icon"><i class="fas fa-network-wired"></i></div><div class="skill-name">Cisco Packet Tracer</div></div>
+            <div class="skill-item stagger-item"><div class="skill-icon"><i class="fas fa-code"></i></div><div class="skill-name">Visual Studio Code</div></div>
+            <div class="skill-item stagger-item"><div class="skill-icon"><i class="fab fa-html5"></i></div><div class="skill-name">HTML</div></div>
+            <div class="skill-item stagger-item"><div class="skill-icon"><i class="fab fa-css3-alt"></i></div><div class="skill-name">CSS</div></div>
+            <div class="skill-item stagger-item"><div class="skill-icon"><i class="fab fa-js"></i></div><div class="skill-name">JavaScript</div></div>
+        </div>
+        <div class="skills-photo-container reveal"><img class="skills-photo" src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=1600&h=400&fit=crop" alt="Coding workspace"></div>
+    </section>
+
+    <!-- ========== SECTION VISI & MISI ========== -->
+    <section class="visimisi-section" id="visimisi">
+        <div class="visimisi-header reveal"><div class="visimisi-icon"><i class="fas fa-bullseye"></i></div><h2 class="visi-title">Vision & Mission</h2></div>
+        <div class="visimisi-wrapper">
+            <div class="visi-card reveal"><h3><i class="fas fa-eye"></i> Vision</h3><p>To become an innovative and trustworthy Network Engineer and Web Developer, capable of providing technological solutions that have a positive impact on society and the digital industry in Indonesia and the world.</p></div>
+            <div class="misi-card reveal"><h3><i class="fas fa-check-circle"></i> Mission</h3><ul class="misi-list"><li>Continuously learn and keep up with the latest technology trends</li><li>Build secure, scalable, and user-friendly networks and applications</li><li>Collaborate with teams and clients to create the best solutions</li><li>Make real contributions through open source and social projects</li></ul></div>
+        </div>
+    </section>
+
+    <!-- ========== SECTION BLOG ========== -->
+    <section class="blog-section" id="blog">
+        <div class="blog-header reveal"><div class="blog-icon"><i class="fas fa-blog"></i></div><h2 class="blog-title">Personal Blog</h2><p class="portfolio-subtitle">Experience & career journey</p></div>
+        <div class="blog-grid">
+            <div class="blog-card stagger-item"><div class="blog-card-image"><img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=400&fit=crop" alt="First client"></div><div class="blog-card-content"><div class="blog-date">March 15, 2024</div><h3>First Experience with a Client</h3><p>Working on a company profile website project for a local SME. Valuable lessons about communication and deadlines.</p><a href="#" class="blog-readmore">Read more →</a></div></div>
+            <div class="blog-card stagger-item"><div class="blog-card-image"><img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600&h=400&fit=crop" alt="Network infrastructure"></div><div class="blog-card-content"><div class="blog-date">February 2, 2024</div><h3>Building an Office Network from Scratch</h3><p>Experience configuring Cisco routers, switches, and access points for 50 users. Exciting challenges!</p><a href="#" class="blog-readmore">Read more →</a></div></div>
+            <div class="blog-card stagger-item"><div class="blog-card-image"><img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop" alt="E-commerce launch"></div><div class="blog-card-content"><div class="blog-date">January 10, 2024</div><h3>Launching a Full-Stack E-commerce</h3><p>This year's biggest project: an e-commerce platform with payment gateway. 1000+ users on the first day.</p><a href="#" class="blog-readmore">Read more →</a></div></div>
+            <div class="blog-card stagger-item"><div class="blog-card-image"><img src="https://images.unsplash.com/photo-1599658880436-c61792e70672?w=600&h=400&fit=crop" alt="Workshop"></div><div class="blog-card-content"><div class="blog-date">December 5, 2023</div><h3>Network Security Workshop</h3><p>Being a mentor in a cybersecurity workshop for university students. Material about firewalls and IDS/IPS.</p><a href="#" class="blog-readmore">Read more →</a></div></div>
+            <div class="blog-card stagger-item"><div class="blog-card-image"><img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=600&h=400&fit=crop" alt="Mobile app"></div><div class="blog-card-content"><div class="blog-date">November 20, 2023</div><h3>Mobile App for SMEs</h3><p>Developing a mobile application for stock inventory management using Flutter and Firebase.</p><a href="#" class="blog-readmore">Read more →</a></div></div>
+            <div class="blog-card stagger-item"><div class="blog-card-image"><img src="https://images.unsplash.com/photo-1543286386-713bdd548da4?w=600&h=400&fit=crop" alt="Cloud certification"></div><div class="blog-card-content"><div class="blog-date">October 1, 2023</div><h3>AWS Cloud Practitioner Certification</h3><p>Successfully achieved AWS Cloud Practitioner certification after 2 months of intensive study.</p><a href="#" class="blog-readmore">Read more →</a></div></div>
+        </div>
+    </section>
+
+    <!-- ========== FOOTER ========== -->
+    <footer class="footer" id="footer">
         <div class="footer-container">
-            <div class="footer-grid">
-                <div class="footer-col"><h4>HanzCode.id</h4><p>Solusi pengembangan web modern dengan fokus pada performa, estetika, dan pengalaman pengguna.</p><div class="footer-social"><a href="https://wa.me/628567858301" target="_blank"><i class="fab fa-whatsapp"></i></a><a href="https://www.tiktok.com/@hanzcodeid" target="_blank"><i class="fab fa-tiktok"></i></a><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-github"></i></a></div></div>
-                <div class="footer-col"><h4>Menu</h4><ul><li><a href="#tentang" data-page="tentang"><i class="fas fa-chevron-right"></i> Tentang</a></li><li><a href="#layanan" data-page="layanan"><i class="fas fa-chevron-right"></i> Layanan</a></li><li><a href="#karya" data-page="karya"><i class="fas fa-chevron-right"></i> Karya</a></li><li><a href="#kontak" data-page="kontak"><i class="fas fa-chevron-right"></i> Kontak</a></li></ul></div>
-                <div class="footer-col"><h4>Layanan</h4><ul><li><a href="#layanan" data-page="layanan"><i class="fas fa-chevron-right"></i> Company Profile</a></li><li><a href="#layanan" data-page="layanan"><i class="fas fa-chevron-right"></i> Custom Domain</a></li><li><a href="#layanan" data-page="layanan"><i class="fas fa-chevron-right"></i> SEO Optimization</a></li></ul></div>
-                <div class="footer-col"><h4>Kontak</h4><div class="footer-contact-info"><i class="fas fa-map-marker-alt"></i><span>Indramayu, Indonesia</span></div><div class="footer-contact-info"><i class="fab fa-whatsapp"></i><span>+62 896-8421-9904</span></div><div class="footer-contact-info"><i class="far fa-envelope"></i><span>hanzcode@gmail.com</span></div></div>
+            <div class="footer-col">
+                 <div class="brand" id="brandHome"><span class="rehan">Porto</span><span class="dot-site">folio</span></div>
+                <p>Network Engineer & Web Developer based in Indonesia. Building innovative and impactful digital solutions.</p>
+                <div class="footer-social">
+                    <a href="#" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+                    <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+                </div>
             </div>
-            <div class="footer-bottom"><p>&copy; 2026 HanzCode.id — Frontend Developer & Web Solutions</p><div class="footer-bottom-links"><a href="#tentang" data-page="tentang">Tentang</a><a href="#kontak" data-page="kontak">Kontak</a><a href="#">Kebijakan Privasi</a></div></div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <a class="footer-nav-home">Home</a>
+                <a class="footer-nav-about">About</a>
+                <a class="footer-nav-portfolio">Portfolio</a>
+                <a class="footer-nav-skills">Skill</a>
+                <a class="footer-nav-visimisi">Visi & Misi</a>
+                <a class="footer-nav-blog">Blog</a>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <p><i class="fas fa-envelope"></i> <a href="mailto:rehan@example.com">rehan@example.com</a></p>
+                <p><i class="fas fa-phone"></i> <a href="tel:+6281234567890">+62 812 3456 7890</a></p>
+                <p><i class="fas fa-map-marker-alt"></i> Indonesia</p>
+            </div>
+            <div class="footer-col">
+                <h4>Send Message</h4>
+                <form class="footer-form" id="footerForm">
+                    <input type="text" placeholder="Your Name" id="footerName" required>
+                    <input type="email" placeholder="Your Email" id="footerEmail" required>
+                    <textarea rows="2" placeholder="Message..." id="footerMessage" required></textarea>
+                    <button type="submit">Send Message <i class="fas fa-paper-plane"></i></button>
+                </form>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; This portfolio note is still a demo.</p>
         </div>
     </footer>
-</div>
 
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>
-    (function() {
-        document.addEventListener('keydown', function(e) {
-            if ((e.ctrlKey && e.key === 'u') || (e.ctrlKey && e.key === 'U') || e.key === 'F12' ||
-                (e.ctrlKey && e.shiftKey && e.key === 'I') || (e.ctrlKey && e.shiftKey && e.key === 'J')) {
-                e.preventDefault();
-            }
-        });
-        document.addEventListener('contextmenu', function(e) { e.preventDefault(); return false; });
-
-        AOS.init({ duration: 600, once: false, offset: 80, mirror: true });
-
-        // Chart
-        var ctx = document.getElementById('customerChart').getContext('2d');
-        new Chart(ctx, {
-            type: 'line',
-            data: {
-                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des'],
-                datasets: [{
-                    label: 'Jumlah Pelanggan',
-                    data: [12, 15, 18, 22, 28, 35, 42, 50, 58, 67, 75, 85],
-                    borderColor: '#FBBF24',
-                    backgroundColor: 'rgba(251, 191, 36, 0.1)',
-                    borderWidth: 2,
-                    pointBackgroundColor: '#FBBF24',
-                    pointBorderColor: '#0a0c10',
-                    pointRadius: 4,
-                    pointHoverRadius: 6,
-                    tension: 0.3,
-                    fill: true
-                }]
-            },
-            options: { responsive: true, maintainAspectRatio: true, plugins: { legend: { labels: { color: '#cbd5e1' } }, tooltip: { backgroundColor: '#0a0c10', titleColor: '#FBBF24', bodyColor: '#cbd5e1', borderColor: '#FBBF24', borderWidth: 1 } }, scales: { x: { ticks: { color: '#9ca3af' }, grid: { color: 'rgba(255,255,255,0.05)' } }, y: { ticks: { color: '#9ca3af' }, grid: { color: 'rgba(255,255,255,0.05)' } } } }
-        });
-
-        function changePage(pageId) {
-            document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
-            document.getElementById('page-' + pageId)?.classList.add('active');
-            document.querySelectorAll('.nav-links a[data-page]').forEach(link => {
-                if (link.getAttribute('data-page') === pageId) link.classList.add('active');
-                else link.classList.remove('active');
-            });
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-            setTimeout(() => AOS.refresh(), 100);
-        }
-
-        document.querySelectorAll('[data-page]').forEach(trigger => {
-            trigger.addEventListener('click', function(e) {
-                e.preventDefault();
-                let pageId = this.getAttribute('data-page');
-                if (pageId) changePage(pageId);
-                document.getElementById('navLinks')?.classList.remove('show');
-            });
-        });
-
-        let menuToggle = document.getElementById('menuToggle');
-        let navLinks = document.getElementById('navLinks');
-        if (menuToggle && navLinks) {
-            menuToggle.addEventListener('click', (e) => { e.stopPropagation(); navLinks.classList.toggle('show'); });
-            document.addEventListener('click', (event) => {
-                if (navLinks.classList.contains('show') && !navLinks.contains(event.target) && !menuToggle.contains(event.target))
-                    navLinks.classList.remove('show');
-            });
-        }
-
-        // Portfolio video hover
-        document.querySelectorAll('.portfolio-media').forEach(media => {
-            let card = media.parentElement;
-            let video = media.querySelector('video');
-            if (video) {
-                card.addEventListener('mouseenter', () => video.play());
-                card.addEventListener('mouseleave', () => { video.pause(); video.currentTime = 0; });
-            }
-        });
-
-        // Blog read more
-        document.querySelectorAll('.read-more-btn').forEach(btn => {
-            btn.addEventListener('click', function(e) {
-                e.stopPropagation();
-                let blogCard = this.closest('.blog-card');
-                let fullContent = blogCard.querySelector('.blog-full');
-                if (fullContent.classList.contains('show')) {
-                    fullContent.classList.remove('show');
-                    this.innerHTML = 'Baca selengkapnya <i class="fas fa-chevron-down"></i>';
-                } else {
-                    fullContent.classList.add('show');
-                    this.innerHTML = 'Baca secara singkat <i class="fas fa-chevron-up"></i>';
+    <script>
+        // ========== SCROLL REVEAL ==========
+        const revealElements = document.querySelectorAll('.reveal, .stagger-item');
+        function checkReveal() {
+            const windowHeight = window.innerHeight;
+            const threshold = 100;
+            revealElements.forEach(el => {
+                const top = el.getBoundingClientRect().top;
+                if (top < windowHeight - threshold) {
+                    if (el.classList.contains('stagger-item')) el.classList.add('reveal-stagger');
+                    else el.classList.add('active');
                 }
             });
+        }
+        window.addEventListener('load', checkReveal);
+        window.addEventListener('scroll', checkReveal);
+        window.addEventListener('resize', checkReveal);
+
+        // ========== SCROLL FUNCTION ==========
+        function scrollToSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            if (section) {
+                const offset = 70;
+                const sectionTop = section.offsetTop - offset;
+                window.scrollTo({ top: sectionTop, behavior: 'smooth' });
+            }
+        }
+
+        // ========== NAVIGATION CLICK HANDLERS ==========
+        document.querySelectorAll('.nav-home, .mobile-nav-home, .footer-nav-home, .brand').forEach(el => {
+            el.addEventListener('click', () => scrollToSection('home'));
         });
-    })();
-</script>
+        document.querySelectorAll('.nav-about, .mobile-nav-about, .footer-nav-about').forEach(el => {
+            el.addEventListener('click', () => scrollToSection('about'));
+        });
+        document.querySelectorAll('.nav-portfolio, .mobile-nav-portfolio, .footer-nav-portfolio, .btn-portfolio').forEach(el => {
+            el.addEventListener('click', () => scrollToSection('portfolio'));
+        });
+        document.querySelectorAll('.nav-skills, .mobile-nav-skills, .footer-nav-skills').forEach(el => {
+            el.addEventListener('click', () => scrollToSection('skills'));
+        });
+        document.querySelectorAll('.nav-visimisi, .mobile-nav-visimisi, .footer-nav-visimisi').forEach(el => {
+            el.addEventListener('click', () => scrollToSection('visimisi'));
+        });
+        document.querySelectorAll('.nav-blog, .mobile-nav-blog, .footer-nav-blog').forEach(el => {
+            el.addEventListener('click', () => scrollToSection('blog'));
+        });
+        
+        document.querySelectorAll('.btn-contacts').forEach(el => {
+            el.addEventListener('click', () => {
+                document.querySelector('.footer').scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+
+        // ========== MOBILE NAVIGATION TOGGLE ==========
+        const mobileNavToggle = document.getElementById('mobileNavToggle');
+        const mobileNav = document.getElementById('mobileNav');
+        mobileNavToggle.addEventListener('click', () => {
+            mobileNav.classList.toggle('active');
+            const icon = mobileNavToggle.querySelector('i');
+            if (mobileNav.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+                document.body.style.overflow = 'hidden';
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+                document.body.style.overflow = '';
+            }
+        });
+        document.querySelectorAll('.mobile-nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileNav.classList.remove('active');
+                document.body.style.overflow = '';
+                const icon = mobileNavToggle.querySelector('i');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            });
+        });
+
+        // ========== FORM FOOTER ==========
+        const footerForm = document.getElementById('footerForm');
+        footerForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = document.getElementById('footerName').value;
+            const email = document.getElementById('footerEmail').value;
+            const message = document.getElementById('footerMessage').value;
+            window.location.href = `mailto:rehan@example.com?subject=Message from ${name} via rehan.site&body=Name: ${name}%0AEmail: ${email}%0A%0AMessage:%0A${message}`;
+            alert('Your message will open in your email app. Thank you!');
+            footerForm.reset();
+        });
+
+        // ========== KEAMANAN: DISABLE CTRL+S DAN CTRL+U ==========
+        document.addEventListener('keydown', function(e) {
+            if ((e.ctrlKey || e.metaKey) && e.key === 's') {
+                e.preventDefault();
+                alert('Saving is disabled on this page.');
+                return false;
+            }
+            if ((e.ctrlKey || e.metaKey) && e.key === 'u') {
+                e.preventDefault();
+                alert('View source is disabled on this page.');
+                return false;
+            }
+        });
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+            return false;
+        });
+
+        // ========== VIDEO URLs UNTUK MODE BIRU & MERAH ==========
+        const videoRed = "Pict/Video.mp4";
+        const videoBlue = "Pict/Videoo.mp4";
+
+        // ========== FITUR RAHASIA VVV ==========
+        let vCount = 0;
+        let vTimeout;
+        let isBlueMode = false;
+
+        function applyColorMode(isBlue) {
+            const redColor = isBlue ? '#3b82f6' : '#e3342f';
+            const redLight = isBlue ? '#60a5fa' : '#ff3b2f';
+            const redBorder = isBlue ? 'rgba(59, 130, 246, 0.3)' : 'rgba(227, 52, 47, 0.3)';
+            const redBorderHover = isBlue ? 'rgba(59, 130, 246, 0.6)' : 'rgba(227, 52, 47, 0.6)';
+            const redBorderLight = isBlue ? 'rgba(59, 130, 246, 0.5)' : 'rgba(227, 52, 47, 0.5)';
+            const redBgLight = isBlue ? 'rgba(59, 130, 246, 0.15)' : 'rgba(227, 52, 47, 0.15)';
+            const redGlow = isBlue ? 'rgba(59, 130, 246, 0.4)' : 'rgba(255, 59, 47, 0.4)';
+            const redGlowLight = isBlue ? 'rgba(59, 130, 246, 0.2)' : 'rgba(255, 59, 47, 0.2)';
+            
+            // Update video
+            const video = document.getElementById('homeVideo');
+            const currentSrc = video.querySelector('source').src;
+            const newVideoUrl = isBlue ? videoBlue : videoRed;
+            if (currentSrc !== newVideoUrl) {
+                video.querySelector('source').src = newVideoUrl;
+                video.load();
+                video.play();
+            }
+            
+            // Update text colors
+            document.querySelectorAll('.brand .rehan, .main-greeting, .stat-number, .about-title, .portfolio-title, .skills-title, .visi-title, .blog-title, .vertical-text, .portfolio-tag, .blog-date, .visi-card h3, .misi-card h3, .footer-col h4, .portfolio-card-link, .blog-readmore').forEach(el => {
+                el.style.color = redLight;
+            });
+            document.querySelector('.brand .rehan').style.color = redLight;
+            
+            // Update portfolio tags background
+            document.querySelectorAll('.portfolio-tag').forEach(el => {
+                el.style.background = redBgLight;
+                el.style.color = redLight;
+            });
+            
+            // Update social icons border
+            document.querySelectorAll('.social-icon').forEach(el => {
+                el.style.borderColor = redBorder;
+            });
+            
+            // Update skill items hover background
+            const styleSheet = document.createElement('style');
+            styleSheet.id = 'dynamic-color-style';
+            const oldStyle = document.getElementById('dynamic-color-style');
+            if (oldStyle) oldStyle.remove();
+            styleSheet.textContent = `
+                .skills-photo-container:hover {
+                    border-color: ${redLight} !important;
+                    box-shadow: 0 0 30px ${redGlow} !important;
+                }
+                .video-container:hover {
+                    border-color: ${redLight} !important;
+                }
+                .stat-box:hover, .portfolio-card:hover, .skill-item:hover, .visi-card:hover, .misi-card:hover, .blog-card:hover {
+                    border-color: ${redBorderHover} !important;
+                }
+                .skill-item:hover {
+                    background: ${redBgLight} !important;
+                }
+                .nav-links a::after { background-color: ${redColor} !important; }
+                .btn-portfolio { background-color: ${redColor} !important; }
+                .btn-portfolio:hover { background-color: #2a2a36 !important; }
+                .btn-contacts:hover { background-color: ${redColor} !important; }
+                .social-icon:hover { background: ${redColor} !important; border-color: ${redColor} !important; }
+                .btn-download:hover { background-color: ${redColor} !important; }
+                .footer-social a:hover { background: ${redColor} !important; color: #ffffff !important; }
+                .footer-form button { background-color: ${redColor} !important; }
+                .footer-form button:hover { background-color: ${redLight} !important; }
+                .footer-col a:hover { color: ${redLight} !important; }
+                .portfolio-card-link:hover { color: ${redLight} !important; }
+                .blog-readmore:hover { color: ${redLight} !important; }
+                .mobile-nav a:hover { color: ${redLight} !important; background: ${redBgLight} !important; }
+                .misi-list li::before { color: ${redLight} !important; }
+                .visimisi-wrapper::before { background: linear-gradient(180deg, ${redColor}, ${redBorder}, transparent) !important; }
+                .footer-form input:focus, .footer-form textarea:focus { border-color: ${redColor} !important; }
+                .footer-form input, .footer-form textarea { border-color: ${redBorder} !important; }
+                .icon-circle, .portfolio-icon, .skills-icon, .visimisi-icon, .blog-icon {
+                    border-color: ${redBorderLight} !important;
+                    background: ${redBgLight} !important;
+                }
+                .vertical-line, .vertical-line.bottom {
+                    background: linear-gradient(180deg, ${redColor}, ${redBorder}, transparent) !important;
+                }
+                .vertical-line.bottom {
+                    background: linear-gradient(0deg, ${redColor}, ${redBorder}, transparent) !important;
+                }
+                .footer {
+                    border-top-color: ${redBorder} !important;
+                }
+                .stat-box, .portfolio-card, .skill-item, .visi-card, .misi-card, .blog-card, .video-container, .about-image-container, .skills-photo-container {
+                    border-color: ${redBorder} !important;
+                }
+                .about-image-container:hover {
+                    border-color: ${redLight} !important;
+                    box-shadow: 0 0 20px ${redGlow} !important;
+                }
+            `;
+            document.head.appendChild(styleSheet);
+            
+            // Update text shadows
+            document.querySelectorAll('.brand .rehan, .main-greeting, .stat-number, .about-title, .portfolio-title, .skills-title, .visi-title, .blog-title').forEach(el => {
+                el.style.textShadow = `0 0 3px ${redGlow}, 0 0 6px ${redGlowLight}`;
+            });
+            
+            // Update icon colors
+            document.querySelectorAll('.icon-circle i, .portfolio-icon i, .skills-icon i, .visimisi-icon i, .blog-icon i').forEach(el => {
+                el.style.color = redLight;
+            });
+            
+            // Update gradient lines
+            document.querySelectorAll('.vertical-line').forEach(el => {
+                el.style.background = `linear-gradient(180deg, ${redColor}, ${redBorder}, transparent)`;
+            });
+            document.querySelectorAll('.vertical-line.bottom').forEach(el => {
+                el.style.background = `linear-gradient(0deg, ${redColor}, ${redBorder}, transparent)`;
+            });
+        }
+        
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'v' || e.key === 'V') {
+                vCount++;
+                clearTimeout(vTimeout);
+                vTimeout = setTimeout(() => { vCount = 0; }, 1000);
+                
+                if (vCount === 3) {
+                    isBlueMode = !isBlueMode;
+                    applyColorMode(isBlueMode);
+                    vCount = 0;
+                    const feedback = document.createElement('div');
+                    feedback.textContent = isBlueMode ? '🔵 ICE BLUE MODE ACTIVATED' : '🔴 NORMAL MODE ACTIVATED';
+                    feedback.style.position = 'fixed';
+                    feedback.style.bottom = '20px';
+                    feedback.style.right = '20px';
+                    feedback.style.background = isBlueMode ? '#3b82f6' : '#e3342f';
+                    feedback.style.color = 'white';
+                    feedback.style.padding = '8px 16px';
+                    feedback.style.borderRadius = '8px';
+                    feedback.style.fontFamily = 'Orbitron, monospace';
+                    feedback.style.fontSize = '12px';
+                    feedback.style.zIndex = '9999';
+                    feedback.style.opacity = '0.9';
+                    document.body.appendChild(feedback);
+                    setTimeout(() => { feedback.remove(); }, 2000);
+                }
+            }
+        });
+    </script>
 </body>
 </html>
